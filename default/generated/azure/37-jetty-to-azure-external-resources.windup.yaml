@@ -8,10 +8,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
-  - tomcat
+  - jetty
   links:
-  - title: Inventory external resources
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-spring-apps
   - title: Azure services
     url: https://azure.microsoft.com/products
   message: |-
@@ -24,13 +22,13 @@
 
      * **Mail Sessions**: If your application sends emails, consider using Azure Communication Services. It provides a variety of communication capabilities, including sending emails from your application.
 
-     * **Environment Variables**: If your application is configured through environment variables, consider user Azure App Configuration. It enables you to centrally manage and store application settings and configuration data. When dealing with secrets or passwords in your Tomcat application, it is recommended to use Azure Key Vault to securely store and manage sensitive information.
+     * **Environment Variables**: If your application is configured through environment variables, consider user Azure App Configuration. It enables you to centrally manage and store application settings and configuration data. When dealing with secrets or passwords in your jetty application, it is recommended to use Azure Key Vault to securely store and manage sensitive information.
 
      Review the Azure service offerings and choose the appropriate services for your specific needs.
-  ruleID: tomcat-to-azure-external-resources-01000
+  ruleID: jetty-to-azure-external-resources-01000
   when:
     builtin.xml:
       filepaths:
-      - context.xml
+      - jetty-env.xml
       namespaces: {}
-      xpath: /Context/Resource
+      xpath: /Configure/New
