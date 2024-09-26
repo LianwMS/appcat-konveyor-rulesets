@@ -55,7 +55,7 @@
   when:
     java.referenced:
       location: METHOD_CALL
-      pattern: java.lang.System.(getSecurityManager|setSecurityManager)*
+      pattern: java.lang.System.(getSecurityManager|setSecurityManager)(*)
 - category: mandatory
   customVariables: []
   description: java.lang.Thread.checkAccess method has been deprecated
@@ -72,7 +72,7 @@
   when:
     java.referenced:
       location: METHOD_CALL
-      pattern: java.lang.Thread.checkAccess*
+      pattern: java.lang.Thread.checkAccess(*)
 - category: mandatory
   customVariables: []
   description: java.lang.ThreadGroup.checkAccess method has been deprecated
@@ -89,7 +89,7 @@
   when:
     java.referenced:
       location: METHOD_CALL
-      pattern: java.lang.ThreadGroup.checkAccess*
+      pattern: java.lang.ThreadGroup.checkAccess(*)
 - category: mandatory
   customVariables: []
   description: java.util.logging.LogManager.checkAccess method has been deprecated
@@ -106,7 +106,7 @@
   when:
     java.referenced:
       location: METHOD_CALL
-      pattern: java.util.logging.LogManager.checkAccess*
+      pattern: java.util.logging.LogManager.checkAccess(*)
 - category: mandatory
   customVariables:
   - name: methodNames

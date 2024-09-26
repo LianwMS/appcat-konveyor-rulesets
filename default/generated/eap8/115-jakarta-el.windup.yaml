@@ -14,7 +14,7 @@
   when:
     java.referenced:
       location: METHOD_CALL
-      pattern: javax.el.MethodExpression.isParmetersProvided*
+      pattern: javax.el.MethodExpression.isParmetersProvided(*)
 - category: mandatory
   customVariables: []
   description: The incorrectly spelled jakarta.el.MethodExpression.isParmetersProvided()
@@ -31,4 +31,4 @@
   when:
     java.referenced:
       location: METHOD_CALL
-      pattern: jakarta.el.MethodExpression.isParmetersProvided*
+      pattern: jakarta.el.MethodExpression.isParmetersProvided(*)
