@@ -17,16 +17,16 @@
   when:
     or:
     - java.referenced:
-        location: PACKAGE
+        location: IMPORT
         pattern: java.net.(Socket|MulticastSocket|DatagramSocket|InetSocketAddress)*
     - java.referenced:
-        location: PACKAGE
+        location: IMPORT
         pattern: java.net.ServerSocket*
     - java.referenced:
-        location: PACKAGE
+        location: IMPORT
         pattern: java.nio.channels.AsynchronousServerSocketChannel*
     - java.referenced:
-        location: PACKAGE
+        location: IMPORT
         pattern: java.nio.channels.ServerSocketChannel*
 - category: optional
   customVariables:
@@ -49,5 +49,5 @@
   ruleID: socket-communication-00001
   when:
     java.referenced:
-      location: PACKAGE
+      location: IMPORT
       pattern: java.nio.channels.(NetworkChannel|MulticastChannel|DatagramChannel|AsynchronousSocketChannel|SocketChannel)*
