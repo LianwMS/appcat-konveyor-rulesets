@@ -2,11 +2,7 @@
   description: Embedded HSQLDB Driver
   labels:
   - konveyor.io/include=always
-  links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
+  links: []
   ruleID: database-01400
   tag:
   - HSQLDB Driver
@@ -14,31 +10,56 @@
   when:
     builtin.file:
       pattern: .*hsqldb.*\.jar
-- customVariables: []
-  description: Embedded MySQL Driver
+- category: potential
+  customVariables: []
+  description: MySQL database found
+  effort: 3
   labels:
   - konveyor.io/include=always
+  - database
   links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
+  - title: Azure Database for MySQL documentation
+    url: https://learn.microsoft.com/azure/mysql
+  - title: Azure Database Migration Service documentation
+    url: https://learn.microsoft.com/azure/dms
+  - title: Azure Monitor documentation
+    url: https://learn.microsoft.com/azure/azure-monitor
+  - title: Microsoft Defender for Cloud
+    url: https://learn.microsoft.com/azure/defender-for-cloud
+  - title: Backup and restore in Azure Database for MySQL
+    url: https://learn.microsoft.com/azure/mysql/single-server/concepts-backup
+  message: |-
+    To migrate a Java application that uses a MySQL database to Azure, you can follow these recommendations:
+
+     * Use a managed **Azure Database for MySQL**: For that create a managed MySQL database in Azure and choose the appropriate pricing tier based on your application's requirements for performance, storage, and availability.
+
+     * **Migrate** the existing MySQL database: For that you can use the Azure Database Migration Service (DMS) to perform an online migration with minimal downtime.
+
+     * Update the application's **database connection** details: Modify the Java application's configuration to point to the newly provisioned Azure Database for MySQL. Update the connection string, hostname, port, username, and password information accordingly.
+
+     * Enable **monitoring and diagnostics**: Utilize Azure Monitor to gain insights into the performance and health of your Java application and the underlying MySQL database. Set up metrics, alerts, and log analytics to proactively identify and resolve issues.
+
+     * Implement **security** measures: Apply security best practices to protect your Java application and the MySQL database. This includes implementing authentication and authorization mechanisms with passwordless connections and leveraging Microsoft Defender for Cloud for threat detection and vulnerability assessments.
+
+     * **Backup** your data: Azure Database for MySQL provides automated backups by default. You can configure the retention period for backups based on your requirements. You can also enable geo-redundant backups, if needed, to enhance data durability and availability.
   ruleID: database-01500
   tag:
   - MySQL Driver
-  - Embedded MySQL Driver
   when:
-    builtin.file:
-      pattern: .*mysql-connector.*\.jar
+    or:
+    - java.dependency:
+        lowerbound: 0.0.0
+        nameregex: .*mysql.*
+    - builtin.filecontent:
+        filePattern: build\.gradle
+        pattern: mysql
+    - builtin.file:
+        pattern: .*mysql-connector.*\.jar
 - customVariables: []
   description: Embedded Derby Driver
   labels:
   - konveyor.io/include=always
-  links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
+  links: []
   ruleID: database-01600
   tag:
   - Derby Driver
@@ -46,31 +67,56 @@
   when:
     builtin.file:
       pattern: .*derby.*\.jar
-- customVariables: []
-  description: Embedded PostgreSQL Driver
+- category: potential
+  customVariables: []
+  description: PostgreSQL database found
+  effort: 3
   labels:
   - konveyor.io/include=always
+  - database
   links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
+  - title: Azure PostgreSQL Flexible Server documentation
+    url: https://learn.microsoft.com/azure/postgresql/flexible-server
+  - title: Azure Database Migration Service documentation
+    url: https://learn.microsoft.com/azure/dms
+  - title: Azure Monitor documentation
+    url: https://learn.microsoft.com/azure/azure-monitor
+  - title: Microsoft Defender for Cloud
+    url: https://learn.microsoft.com/azure/defender-for-cloud
+  - title: Backup and restore in Azure Database for PostgreSQL
+    url: https://learn.microsoft.com/azure/postgresql/single-server/concepts-backup
+  message: |-
+    To migrate a Java application that uses a PostgreSQL database to Azure, you can follow these recommendations:
+
+     * Use a managed **Azure Database for PostgreSQL Flexible Server**: For that create a managed PostgreSQL Flexible Server database in Azure and choose the appropriate pricing tier based on your application's requirements for performance, storage, and availability.
+
+     * **Migrate** the existing PostgreSQL database: For that you can use the Azure Database Migration Service (DMS) to perform an online migration with minimal downtime.
+
+     * Update the application's **database connection** details: Modify the Java application's configuration to point to the newly provisioned Azure Database for PostgreSQL. Update the connection string, hostname, port, username, and password information accordingly.
+
+     * Enable **monitoring and diagnostics**: Utilize Azure Monitor to gain insights into the performance and health of your Java application and the underlying PostgreSQL database. Set up metrics, alerts, and log analytics to proactively identify and resolve issues.
+
+     * Implement **security** measures: Apply security best practices to protect your Java application and the PostgreSQL database. This includes implementing authentication and authorization mechanisms with passwordless connections and leveraging Microsoft Defender for Cloud for threat detection and vulnerability assessments.
+
+     * **Backup** your data: Azure Database for PostgreSQL provides automated backups by default. You can configure the retention period for backups based on your requirements. You can also enable geo-redundant backups, if needed, to enhance data durability and availability.
   ruleID: database-01700
   tag:
   - PostgreSQL Driver
-  - Embedded PostgreSQL Driver
   when:
-    builtin.file:
-      pattern: .*postgresql.*\.jar
+    or:
+    - java.dependency:
+        lowerbound: 0.0.0
+        nameregex: .*postgresql.*
+    - builtin.filecontent:
+        filePattern: build\.gradle
+        pattern: postgresql
+    - builtin.file:
+        pattern: .*postgresql.*\.jar
 - customVariables: []
   description: Embedded H2 Driver
   labels:
   - konveyor.io/include=always
-  links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
+  links: []
   ruleID: database-01800
   tag:
   - H2 Driver
@@ -82,12 +128,8 @@
   description: Embedded Microsoft SQL Driver
   labels:
   - konveyor.io/include=always
-  links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
-  ruleID: database-01900
+  links: []
+  ruleID: database-01805
   tag:
   - Microsoft SQL Driver
   - Embedded Microsoft SQL Driver
@@ -97,32 +139,53 @@
         pattern: sqljdbc.*\.jar
     - builtin.file:
         pattern: mssql-jdbc.*\.jar
-- customVariables: []
-  description: Embedded SQLite Driver
+- category: potential
+  customVariables: []
+  description: Microsoft SQL database found
+  effort: 3
   labels:
   - konveyor.io/include=always
+  - database
   links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
-  ruleID: database-02000
+  - title: Azure SQL documentation
+    url: https://learn.microsoft.com/azure/azure-sql
+  - title: Azure Database Migration Service documentation
+    url: https://learn.microsoft.com/azure/dms
+  - title: Azure Monitor documentation
+    url: https://learn.microsoft.com/azure/azure-monitor
+  - title: Microsoft Defender for Cloud
+    url: https://learn.microsoft.com/azure/defender-for-cloud
+  - title: Change automated backup settings for Azure SQL Database
+    url: https://learn.microsoft.com/azure/azure-sql/database/automated-backups-change-settings
+  message: |-
+    To migrate a Java application that uses a Microsoft SQL database to Azure, you can follow these recommendations:
+
+     * Use a managed **Azure SQL**: For that create a managed Azure SQL database in Azure and choose the appropriate pricing tier based on your application's requirements for performance, storage, and availability.
+
+     * **Migrate** the existing Microsoft SQL database: For that you can use the Azure Database Migration Service (DMS) to perform an online migration with minimal downtime.
+
+     * Update the application's **database connection** details: Modify the Java application's configuration to point to the newly provisioned Azure SQL. Update the connection string, hostname, port, username, and password information accordingly.
+
+     * Enable **monitoring and diagnostics**: Utilize Azure Monitor to gain insights into the performance and health of your Java application and the underlying Azure SQL database. Set up metrics, alerts, and log analytics to proactively identify and resolve issues.
+
+     * Implement **security** measures: Apply security best practices to protect your Java application and the Azure SQL database. This includes implementing authentication and authorization mechanisms with passwordless connections and leveraging Microsoft Defender for Cloud for threat detection and vulnerability assessments.
+
+     * **Backup** your data: Azure SQL provides automated backups by default. You can configure the retention period for backups based on your requirements. You can also enable geo-redundant backups, if needed, to enhance data durability and availability.
+  ruleID: database-01900
   tag:
-  - SQLite Driver
-  - Embedded SQLite Driver
+  - Microsoft SQL Driver
   when:
-    builtin.file:
-      pattern: .*sqlite-jdbc.*\.jar
+    or:
+    - builtin.file:
+        pattern: sqljdbc.*\.jar
+    - builtin.file:
+        pattern: mssql-jdbc.*\.jar
 - customVariables: []
   description: Embedded Oracle DB Driver
   labels:
   - konveyor.io/include=always
-  links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
-  ruleID: database-02100
+  links: []
+  ruleID: database-02000
   tag:
   - Oracle DB Driver
   - Embedded Oracle DB Driver
@@ -136,15 +199,64 @@
   description: Embedded Cassandra Client
   labels:
   - konveyor.io/include=always
-  links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
-  ruleID: database-02200
+  links: []
+  ruleID: database-02100
   tag:
   - Cassandra Client
   - Embedded Cassandra Client
+  when:
+    or:
+    - builtin.file:
+        pattern: .*sqlite-jdbc.*\.jar
+    - builtin.file:
+        pattern: .*cassandra.*\.jar
+    - builtin.file:
+        pattern: .*hector.*\.jar
+    - builtin.file:
+        pattern: .*astyanax.*\.jar
+    - builtin.file:
+        pattern: .*phantom-dsl.*\.jar
+    - builtin.file:
+        pattern: .*cql.*\.jar
+    - builtin.file:
+        pattern: .*hecuba-client.*\.jar
+    - builtin.file:
+        pattern: .*c-star-path.*\.jar
+    - builtin.file:
+        pattern: .*scale7-pelops.*\.jar
+- category: potential
+  customVariables: []
+  description: Cassandra database found
+  effort: 3
+  labels:
+  - konveyor.io/include=always
+  - database
+  links:
+  - title: Azure Managed Instance for Apache Cassandra documentation
+    url: https://learn.microsoft.com/azure/managed-instance-apache-cassandra
+  - title: Azure Database Migration Service documentation
+    url: https://learn.microsoft.com/azure/dms
+  - title: Azure Monitor documentation
+    url: https://learn.microsoft.com/azure/azure-monitor
+  - title: Microsoft Defender for Cloud
+    url: https://learn.microsoft.com/azure/defender-for-cloud
+  message: |-
+    To migrate a Java application that uses a Cassandra database to Azure, you can follow these recommendations:
+
+     * Use an **Azure Managed Instance for Apache Cassandra**: Create an Azure Managed Instance for Apache Cassandra database and choose the appropriate pricing tier based on your application's requirements for performance, storage, and availability.
+
+     * **Migrate your Cassandra data**: Take a backup of your Cassandra data and restore the backup to Azure Managed Instance for Apache Cassandra. You can use Azure Database Migration Service to facilitate the backup and restore process.
+
+     * Update the application's **database connection** details: Modify your Java application's configuration to point to the new Azure Managed Instance for Apache Cassandra. Update the connection string and authentication details in your application code to ensure connectivity to the Azure Managed Instance for Apache Cassandra.
+
+     * Enable **monitoring and diagnostics**: Utilize Azure Monitor to gain insights into the performance and health of your Java application and the underlying Azure Managed Instance for Apache Cassandra database. Set up metrics, alerts, and log analytics to proactively identify and resolve issues.
+
+     * Implement **security** measures: Apply security best practices to protect your Java application and the Azure Managed Instance for Apache Cassandra database. This includes implementing authentication and authorization mechanisms with passwordless connections and leveraging Microsoft Defender for Cloud for threat detection and vulnerability assessments.
+
+     * **Backup** your data: Azure Managed Instance for Apache Cassandra provides built-in backup functionality that allows you to create automated backups of your data. Enable backup for your account and configure the backup retention policy to specify how long the backups should be retained.
+  ruleID: database-02200
+  tag:
+  - Cassandra Client
   when:
     or:
     - builtin.file:
@@ -164,31 +276,11 @@
     - builtin.file:
         pattern: .*scale7-pelops.*\.jar
 - customVariables: []
-  description: Embedded Axion Driver
-  labels:
-  - konveyor.io/include=always
-  links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
-  ruleID: database-02300
-  tag:
-  - Axion Driver
-  - Embedded Axion Driver
-  when:
-    builtin.file:
-      pattern: .*axion.*\.jar
-- customVariables: []
   description: Embedded MckoiSQLDB Driver
   labels:
   - konveyor.io/include=always
-  links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
-  ruleID: database-02400
+  links: []
+  ruleID: database-02300
   tag:
   - MckoiSQLDB Driver
   - Embedded MckoiSQLDB Driver
@@ -199,12 +291,8 @@
   description: Embedded MongoDB Client
   labels:
   - konveyor.io/include=always
-  links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
-  ruleID: database-02500
+  links: []
+  ruleID: database-02400
   tag:
   - MongoDB Client
   - Embedded MongoDB Client
@@ -222,28 +310,59 @@
         pattern: .*gmongo.*\.jar
     - builtin.file:
         pattern: .*rogue.*\.jar
-- customVariables: []
-  description: Embedded framework - Spring Data
+- category: potential
+  customVariables: []
+  description: MongoDB database found
+  effort: 3
   labels:
   - konveyor.io/include=always
-  links: []
-  ruleID: database-02600
+  - database
+  links:
+  - title: Azure Cosmos DB for MongoDB documentation
+    url: https://learn.microsoft.com/azure/cosmos-db/mongodb
+  - title: Azure Database Migration Service documentation
+    url: https://learn.microsoft.com/azure/dms
+  - title: Azure Monitor documentation
+    url: https://learn.microsoft.com/azure/azure-monitor
+  - title: Microsoft Defender for Cloud
+    url: https://learn.microsoft.com/azure/defender-for-cloud
+  message: |-
+    To migrate a Java application that uses a MongoDB database to Azure, you can follow these recommendations:
+
+     * Use a managed **Azure Cosmos DB for MongoDB**: Create a managed Cosmos DB for MongoDB database in Azure and choose the appropriate pricing tier based on your application's requirements for performance, storage, and availability.
+
+     * **Migrate your MongoDB data**: Take a backup of your MongoDB data and restore the backup to Azure Cosmos DB for MongoDB. You can use Azure Database Migration Service to facilitate the backup and restore process.
+
+     * Update the application's **database connection** details: Modify your Java application's configuration to point to the new Azure Cosmos DB for MongoDB instance. Update the connection string and authentication details in your application code to ensure connectivity to Azure Cosmos DB.
+
+     * Enable **monitoring and diagnostics**: Utilize Azure Monitor to gain insights into the performance and health of your Java application and the underlying Azure Cosmos DB for MongoDB database. Set up metrics, alerts, and log analytics to proactively identify and resolve issues.
+
+     * Implement **security** measures: Apply security best practices to protect your Java application and the Azure Cosmos DB for MongoDB database. This includes implementing authentication and authorization mechanisms with passwordless connections and leveraging Microsoft Defender for Cloud for threat detection and vulnerability assessments.
+
+     * **Backup** your data: Azure Cosmos DB provides built-in backup functionality that allows you to create automated backups of your data. Enable backup for your Azure Cosmos DB account and configure the backup retention policy to specify how long the backups should be retained.
+  ruleID: database-02500
   tag:
-  - Spring Data
-  - Embedded framework - Spring Data
+  - MongoDB Client
   when:
-    builtin.file:
-      pattern: spring-data.*\.jar
+    or:
+    - builtin.file:
+        pattern: .*mongodb.*\.jar
+    - builtin.file:
+        pattern: .*casbah.*\.jar
+    - builtin.file:
+        pattern: .*reactivemongo.*\.jar
+    - builtin.file:
+        pattern: .*jongo.*\.jar
+    - builtin.file:
+        pattern: .*gmongo.*\.jar
+    - builtin.file:
+        pattern: .*rogue.*\.jar
 - customVariables: []
   description: Embedded framework - Morphia
   labels:
   - konveyor.io/include=always
-  links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
-  ruleID: database-02700
+  links: []
+  ruleID: database-02600
   tag:
   - Morphia
   - Embedded framework - Morphia
@@ -254,12 +373,8 @@
   description: Embedded LevelDB Client
   labels:
   - konveyor.io/include=always
-  links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
-  ruleID: database-02800
+  links: []
+  ruleID: database-02700
   tag:
   - LevelDB Client
   - Embedded LevelDB Client
@@ -270,12 +385,8 @@
   description: Embedded Apache HBase Client
   labels:
   - konveyor.io/include=always
-  links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
-  ruleID: database-02900
+  links: []
+  ruleID: database-02800
   tag:
   - Apache HBase Client
   - Embedded Apache HBase Client
@@ -286,12 +397,8 @@
   description: Embedded Apache Accumulo Client
   labels:
   - konveyor.io/include=always
-  links:
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 6 Supported Configurations
-    url: https://access.redhat.com/articles/111663
-  - title: Red Hat JBoss Enterprise Application Platform (EAP) 7 Supported Configurations
-    url: https://access.redhat.com/articles/2026253
-  ruleID: database-03100
+  links: []
+  ruleID: database-02900
   tag:
   - Apache Accumulo Client
   - Embedded Apache Accumulo Client
@@ -303,7 +410,7 @@
   labels:
   - konveyor.io/include=always
   links: []
-  ruleID: database-03200
+  ruleID: database-03000
   tag:
   - Spring Data JPA
   - Embedded Spring Data JPA
@@ -318,3 +425,54 @@
     - java.dependency:
         lowerbound: 0.0.0
         name: org.springframework.data.spring-data-jpa
+- customVariables: []
+  description: Embedded MariaDB Driver
+  labels:
+  - konveyor.io/include=always
+  links: []
+  message: The application embeds an MariaDB Driver library.
+  ruleID: database-03100
+  tag:
+  - MariaDB Driver
+  - Embedded MariaDB Driver
+  when:
+    builtin.file:
+      pattern: .*mariadb.*\.jar
+- category: potential
+  customVariables: []
+  description: MariaDB database found
+  effort: 3
+  labels:
+  - konveyor.io/include=always
+  - database
+  links:
+  - title: Azure Database for MariaDB documentation
+    url: https://learn.microsoft.com/azure/mariadb
+  - title: Azure Database Migration Service documentation
+    url: https://learn.microsoft.com/azure/dms
+  - title: Azure Monitor documentation
+    url: https://learn.microsoft.com/azure/azure-monitor
+  - title: Microsoft Defender for Cloud
+    url: https://learn.microsoft.com/azure/defender-for-cloud
+  - title: Backup and restore in Azure Database for MariaDB
+    url: https://learn.microsoft.com/azure/mariadb/howto-restore-server-portal
+  message: |-
+    To migrate a Java application that uses a MariaDB database to Azure, you can follow these recommendations:
+
+     * Use a managed **Azure Database for MariaDB**: For that create a managed MariaDB database in Azure and choose the appropriate pricing tier based on your application's requirements for performance, storage, and availability.
+
+     * **Migrate** the existing MariaDB database: For that you can use the Azure Database Migration Service (DMS) to perform an online migration with minimal downtime.
+
+     * Update the application's **database connection** details: Modify the Java application's configuration to point to the newly provisioned Azure Database for MariaDB. Update the connection string, hostname, port, username, and password information accordingly.
+
+     * Enable **monitoring and diagnostics**: Utilize Azure Monitor to gain insights into the performance and health of your Java application and the underlying MariaDB database. Set up metrics, alerts, and log analytics to proactively identify and resolve issues.
+
+     * Implement **security** measures: Apply security best practices to protect your Java application and the MariaDB database. This includes implementing authentication and authorization mechanisms with passwordless connections and leveraging Microsoft Defender for Cloud for threat detection and vulnerability assessments.
+
+     * **Backup** your data: Azure Database for MariaDB provides automated backups by default. You can configure the retention period for backups based on your requirements. You can also enable geo-redundant backups, if needed, to enhance data durability and availability.
+  ruleID: database-03200
+  tag:
+  - MariaDB Driver
+  when:
+    builtin.file:
+      pattern: .*mariadb.*\.jar
