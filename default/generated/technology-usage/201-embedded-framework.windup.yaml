@@ -3,6 +3,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the Apache Axis framework.
   ruleID: embedded-framework-01000
   tag:
   - Apache Axis
@@ -15,6 +16,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the Apache Axis2 framework.
   ruleID: embedded-framework-01010
   tag:
   - Apache Axis2
@@ -27,6 +29,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the Apache CXF framework.
   ruleID: embedded-framework-01100
   tag:
   - Apache CXF
@@ -39,6 +42,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the XFire framework.
   ruleID: embedded-framework-01200
   tag:
   - XFire
@@ -51,6 +55,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the Jersey framework.
   ruleID: embedded-framework-01300
   tag:
   - Jersey
@@ -63,6 +68,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the Unirest framework.
   ruleID: embedded-framework-01400
   tag:
   - Unirest
@@ -75,6 +81,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the Hibernate framework.
   ruleID: embedded-framework-01500
   tag:
   - Hibernate
@@ -87,6 +94,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the Hibernate OGM framework.
   ruleID: embedded-framework-01600
   tag:
   - Hibernate OGM
@@ -99,6 +107,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the EclipseLink framework.
   ruleID: embedded-framework-01700
   tag:
   - EclipseLink
@@ -111,6 +120,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the Spring Batch framework.
   ruleID: embedded-framework-02000
   tag:
   - Spring Batch
@@ -123,6 +133,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the AspectJ framework.
   ruleID: embedded-framework-02200
   tag:
   - AspectJ
@@ -135,6 +146,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the JBPM framework.
   ruleID: embedded-framework-02300
   tag:
   - JBPM
@@ -147,6 +159,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the iLog framework.
   ruleID: embedded-framework-02400
   tag:
   - iLog
@@ -159,6 +172,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the Camunda framework.
   ruleID: embedded-framework-03000
   tag:
   - Camunda
@@ -171,6 +185,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the Pega framework.
   ruleID: embedded-framework-03100
   tag:
   - Pega
@@ -183,6 +198,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the Blaze framework.
   ruleID: embedded-framework-03200
   tag:
   - Blaze
@@ -195,6 +211,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the MRules framework.
   ruleID: embedded-framework-03300
   tag:
   - MRules
@@ -207,6 +224,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the Easy Rules framework.
   ruleID: embedded-framework-03400
   tag:
   - Easy Rules
@@ -219,6 +237,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the AOP Alliance library.
   ruleID: embedded-framework-04700
   tag:
   - AOP Alliance
@@ -231,6 +250,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds SNMP4J.
   ruleID: embedded-framework-05000
   tag:
   - SNMP4J
@@ -243,6 +263,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a HTTP client.
   ruleID: embedded-framework-05100
   tag:
   - HTTP Client
@@ -255,6 +276,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Javax Inject library.
   ruleID: embedded-framework-05300
   tag:
   - Javax Inject
@@ -270,6 +292,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Google Guice library.
   ruleID: embedded-framework-05400
   tag:
   - Google Guice
@@ -282,6 +305,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a CDI library.
   ruleID: embedded-framework-05500
   tag:
   - CDI
@@ -294,6 +318,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Plexus Container library.
   ruleID: embedded-framework-05600
   tag:
   - Plexus Container
@@ -306,6 +331,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Weld library.
   ruleID: embedded-framework-05700
   tag:
   - Weld
@@ -318,6 +344,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Dagger library.
   ruleID: embedded-framework-05800
   tag:
   - Dagger
@@ -330,6 +357,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a GIN (GWT INjection) library.
   ruleID: embedded-framework-05900
   tag:
   - GIN
@@ -342,6 +370,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a PicoContainer library.
   ruleID: embedded-framework-06000
   tag:
   - PicoContainer
@@ -354,6 +383,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Scaldi library.
   ruleID: embedded-framework-06100
   tag:
   - Scaldi
@@ -366,6 +396,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Macros library.
   ruleID: embedded-framework-06200
   tag:
   - Macros
@@ -378,6 +409,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Injekt for Kotlin library.
   ruleID: embedded-framework-06300
   tag:
   - Injekt for Kotlin
@@ -390,6 +422,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Kodein library.
   ruleID: embedded-framework-06400
   tag:
   - Kodein
@@ -402,6 +435,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Peaberry library.
   ruleID: embedded-framework-06500
   tag:
   - Peaberry
@@ -414,6 +448,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Sticky Configured library.
   ruleID: embedded-framework-06600
   tag:
   - Sticky Configured
@@ -426,6 +461,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Ka DI library.
   ruleID: embedded-framework-06700
   tag:
   - Ka DI
@@ -438,6 +474,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Polyforms DI library.
   ruleID: embedded-framework-06800
   tag:
   - Polyforms DI
@@ -450,6 +487,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a JayWire library.
   ruleID: embedded-framework-06900
   tag:
   - JayWire
@@ -462,6 +500,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Silk DI library.
   ruleID: embedded-framework-07000
   tag:
   - Silk DI
@@ -474,6 +513,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Grapht DI library.
   ruleID: embedded-framework-07100
   tag:
   - Grapht DI
@@ -486,6 +526,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Syringe library.
   ruleID: embedded-framework-07200
   tag:
   - Syringe
@@ -498,6 +539,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Cfg Engine library.
   ruleID: embedded-framework-07300
   tag:
   - Cfg Engine
@@ -510,6 +552,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a BeanInject library.
   ruleID: embedded-framework-07400
   tag:
   - BeanInject
@@ -522,6 +565,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Tornado Inject library.
   ruleID: embedded-framework-07500
   tag:
   - Tornado Inject
@@ -534,6 +578,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Airframe library.
   ruleID: embedded-framework-07600
   tag:
   - Airframe
@@ -546,6 +591,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Winter library.
   ruleID: embedded-framework-07700
   tag:
   - Winter
@@ -558,6 +604,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a KouInject library.
   ruleID: embedded-framework-07800
   tag:
   - KouInject
@@ -570,6 +617,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds an Iroh library.
   ruleID: embedded-framework-07900
   tag:
   - Iroh
@@ -582,6 +630,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Micro DI library.
   ruleID: embedded-framework-08000
   tag:
   - Micro DI
@@ -594,6 +643,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a SubCut library.
   ruleID: embedded-framework-08100
   tag:
   - SubCut
@@ -606,6 +656,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Spring DI library.
   ruleID: embedded-framework-08200
   tag:
   - Spring DI
@@ -619,6 +670,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Micrometer library.
   ruleID: embedded-framework-08300
   tag:
   - Micrometer
@@ -632,6 +684,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the Spring Web framework.
   ruleID: embedded-framework-08400
   tag:
   - Spring Web
@@ -652,6 +705,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds a Spring Shell library.
   ruleID: embedded-framework-08500
   tag:
   - Spring Shell
@@ -665,6 +719,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds Spring Boot Flo.
   ruleID: embedded-framework-08600
   tag:
   - Spring Boot Flo
@@ -678,6 +733,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds Spring Scheduled.
   ruleID: embedded-framework-08700
   tag:
   - Spring Scheduled
@@ -691,6 +747,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds Spring Cloud Function.
   ruleID: embedded-framework-08800
   tag:
   - Spring Cloud Function
@@ -708,6 +765,7 @@
   labels:
   - konveyor.io/include=always
   links: []
+  message: The application embeds the Quartz framework.
   ruleID: embedded-framework-08900
   tag:
   - Quartz
@@ -715,51 +773,124 @@
   when:
     builtin.file:
       pattern: .*quartz.*\.jar
-- customVariables: []
-  description: Embedded framework - Zipkin
-  labels:
-  - konveyor.io/include=always
-  links: []
-  ruleID: embedded-framework-09100
-  tag:
-  - Zipkin
-  - Embedded framework - Zipkin
-  when:
-    builtin.file:
-      pattern: .*zipkin.*\.jar
-- customVariables: []
+- category: potential
+  customVariables: []
   description: Embedded framework - Feign
+  effort: 0
   labels:
   - konveyor.io/include=always
-  links: []
+  links:
+  - title: Migrate clients bypassing the service registry
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-apps?pivots=sc-standard-tier#identify-clients-that-bypass-the-service-registry
+  - title: Spring Cloud OpenFeign
+    url: https://spring.io/projects/spring-cloud-openfeign/
+  message: |-
+    The application embeds the Feign framework. If you are migrating to Azure Spring Apps, it is recommended to use Spring Cloud OpenFeign instead (Spring Cloud Feign has been deprecated).
+
+     When migrating to Azure Spring Apps, Eureka (Standard Tier) or Service Registry (Enterprise Tier) will be hosted for you. Spring Cloud OpenFeign will easily discover the service registry and invoke the services.
   ruleID: embedded-framework-09000
   tag:
   - Feign
-  - Embedded framework - Feign
   when:
-    builtin.file:
-      pattern: feign-.*\.jar
-- customVariables: []
-  description: Embedded framework - Redis
+    or:
+    - java.dependency:
+        lowerbound: 0.0.0
+        nameregex: com\.netflix\.feign\..*
+    - java.dependency:
+        lowerbound: 0.0.0
+        name: org.springframework.cloud.spring-cloud-starter-feign
+    - builtin.file:
+        pattern: feign-.*\.jar
+- category: potential
+  customVariables: []
+  description: Embedded framework - Zipkin
+  effort: 0
   labels:
   - konveyor.io/include=always
-  links: []
-  ruleID: embedded-framework-09200
+  links:
+  - title: Azure Monitor
+    url: https://learn.microsoft.com/azure/azure-monitor/
+  - title: Spring Boot to Azure - identify Zipkin dependencies
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-apps?pivots=sc-standard-tier#identify-zipkin-dependencies
+  - title: Use Application Insights Java In-Process Agent in Azure Spring Apps
+    url: https://learn.microsoft.com/azure/spring-apps/how-to-application-insights
+  - title: Distributed Tracing
+    url: https://learn.microsoft.com/azure/azure-monitor/app/distributed-trace-data
+  message: |-
+    The application embeds the Zipkin framework. To migrate a Java application that uses Zipkin to Azure, it is recommended to use Azure Monitor instead.
+
+     * **Identify Zipkin dependencies**: Identify the Zipkin dependencies in your application.
+
+     * **Replace with Azure Monitor**: Azure Monitor provides distributed tracing capabilities. Azure services such as Azure Spring Apps, Azure Kubernetes Service, Azure App Service support auto-instrumentation for Azure Monitor.
+  ruleID: embedded-framework-09100
   tag:
-  - Redis
-  - Embedded framework - Redis
+  - Zipkin
   when:
-    builtin.file:
-      pattern: .*redis.*\.jar
-- customVariables: []
-  description: Embedded framework - Eureka
+    or:
+    - java.dependency:
+        lowerbound: 0.0.0
+        name: org.springframework.boot.spring-cloud-starter-zipkin
+    - java.dependency:
+        lowerbound: 0.0.0
+        nameregex: io\.zipkin.*
+    - builtin.file:
+        pattern: .*zipkin.*\.jar
+- category: potential
+  customVariables: []
+  description: Embedded framework - Eureka Client
+  effort: 0
   labels:
   - konveyor.io/include=always
-  links: []
+  links:
+  - title: Azure Spring Apps - Enable Service Registration
+    url: https://learn.microsoft.com/azure/spring-apps/how-to-service-registration?pivots=programming-language-java
+  - title: Azure Spring Apps - Access Config Server and Service Registry
+    url: https://learn.microsoft.com/azure/spring-apps/how-to-access-data-plane-azure-ad-rbac
+  - title: Restricted configurations
+    url: http://aka.ms/spring-cloud-to-asa?pivots=sc-standard-tier#remove-restricted-configurations
+  message: |-
+    The application embeds the Eureka client. If you are migrating to Azure Spring Apps, the connection info of Eureka will be injected upon app start.
+
+     Find any explicit configurations of config server connection info:
+
+     If configured in **configuration files**: they will be ignored and overrided by Azure Spring Apps.
+
+     If configured in **command line parameters**, **Java system attribute**, **environment variable**: they need to be removed or you might experience conflicts and unexpected behavior.
   ruleID: embedded-framework-09300
   tag:
   - Eureka
-  - Embedded framework - Eureka
   when:
-    builtin.file:
-      pattern: .*eureka.*\.jar
+    or:
+    - java.dependency:
+        lowerbound: 0.0.0
+        nameregex: .*eureka-client.*
+    - builtin.file:
+        pattern: .*eureka-client.*\.jar
+- category: potential
+  customVariables: []
+  description: Embedded framework - Eureka Server
+  effort: 0
+  labels:
+  - konveyor.io/include=always
+  links:
+  - title: Azure Spring Apps - Don't include the Spring Cloud registry
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-apps?toc=%2Fazure%2Fspring-apps%2Ftoc.json&bc=%2Fazure%2Fspring-apps%2Fbreadcrumb%2Ftoc.json&pivots=sc-standard-tier#create-an-azure-spring-apps-instance-and-apps
+  - title: Azure Spring Apps - Enable Service Registration
+    url: https://learn.microsoft.com/azure/spring-apps/how-to-service-registration?pivots=programming-language-java
+  - title: Azure Spring Apps - Access Config Server and Service Registry
+    url: https://learn.microsoft.com/azure/spring-apps/how-to-access-data-plane-azure-ad-rbac
+  - title: Restricted configurations
+    url: http://aka.ms/spring-cloud-to-asa?pivots=sc-standard-tier#remove-restricted-configurations
+  message: The application embeds the Eureka server. If you are migrating to Azure
+    Spring Apps, Eureka (Standard Tier) or Service Registry (Enterprise Tier) will
+    be hosted for you.
+  ruleID: embedded-framework-09400
+  tag:
+  - Eureka
+  when:
+    or:
+    - java.dependency:
+        lowerbound: 0.0.0
+        nameregex: .*eureka-server.*
+    - builtin.file:
+        pattern: .*eureka-server.*\.jar
