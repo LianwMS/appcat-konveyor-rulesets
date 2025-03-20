@@ -10,5 +10,4 @@ tests:
   - name: tc-1
     hasIncidents:
       atLeast: 4
-      messageMatches: Redis Cache connection string, username, or password used in
-        this application
+      messageMatches: Redis Cache connection string, username, or password used in this application

@@ -1,6 +1,7 @@
 // Contains code that should match for the following tests:
 //
 // eap-to-azure-appservice-environment-variables-001
+package org.sample;
 
 public class SystemGetEnvGetProperty {
 

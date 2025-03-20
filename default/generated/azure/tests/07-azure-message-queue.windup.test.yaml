@@ -49,4 +49,4 @@ tests:
   - name: tc-1
     hasIncidents:
       atLeast: 1
-      messageMatches: The application uses Spring JMS RabbitMQ dependency
+      messageMatches: The application uses Spring JMS RabbitMQ dependency.
