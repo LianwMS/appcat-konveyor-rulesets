@@ -230,6 +230,9 @@
     - java.dependency:
         lowerbound: 0.0.0
         name: org.springframework.boot.spring-boot-starter-amqp
+    - java.dependency:
+        lowerbound: 0.0.0
+        name: org.springframework.amqp.spring-rabbit
     - builtin.filecontent:
         filePattern: build\.gradle
         pattern: spring-boot-starter-amqp
