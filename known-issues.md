@@ -1,4 +1,8 @@
+### azure ###
 - 08-azure-password.windup.yaml: Xpath condition stops after finding a single match in a file https://github.com/konveyor/analyzer-lsp/issues/795
 - 10-azure-system-config.windup.yaml： rules with METHOD_CALL locations do not work on calls to static methods https://github.com/konveyor/analyzer-lsp/issues/769
 - 20-spring-boot-to-azure-spring-boot-version.windup.test.yaml: test command could not well handle multiple projects
 - 21-spring-boot-to-azure-spring-cloud-version.windup.test.yaml: test command could not well handle multiple projects
+
+### cloud-readiness ###
+- 06-jni-native-code.windup.yaml： rules with METHOD_CALL locations do not work on calls to static methods https://github.com/konveyor/analyzer-lsp/issues/769

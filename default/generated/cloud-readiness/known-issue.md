@@ -1,1 +1,0 @@
-06-jni-native-code.windup.yaml： rules with METHOD_CALL locations do not work on calls to static methods https://github.com/konveyor/analyzer-lsp/issues/769
