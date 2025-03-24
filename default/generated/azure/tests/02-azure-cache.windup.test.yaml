@@ -8,6 +8,7 @@ tests:
 - ruleID: azure-cache-redis-01000
   testCases:
   - name: tc-1
-    hasIncidents:
+    hasInsights:
       atLeast: 4
-      messageMatches: Redis Cache connection string, username, or password used in this application
+      messageMatches: Redis Cache connection string, username, or password used in
+        this application

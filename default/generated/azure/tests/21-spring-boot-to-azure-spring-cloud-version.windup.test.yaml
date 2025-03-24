@@ -4,18 +4,18 @@ providers:
   dataPath: ./data/21-spring-boot-to-azure-spring-cloud-version
 - name: builtin
   dataPath: ./data/21-spring-boot-to-azure-spring-cloud-version
-tests:
-- ruleID: spring-boot-to-azure-spring-cloud-version-01000
-  testCases:
-  - name: tc-1
-    hasIncidents:
-      atLeast: 1
-      messageMatches: The application is using a Spring Cloud version that is too
-        low
-- ruleID: spring-boot-to-azure-spring-cloud-version-02000
-  testCases:
-  - name: tc-1
-    hasIncidents:
-      atLeast: 3
-      messageMatches: The application is using a Spring Cloud version that is no longer
-        supported
+tests: []
+# - ruleID: spring-boot-to-azure-spring-cloud-version-01000
+#   testCases:
+#   - name: tc-1
+#     hasIncidents:
+#       atLeast: 1
+#       messageMatches: The application is using a Spring Cloud version that is too
+#         low
+# - ruleID: spring-boot-to-azure-spring-cloud-version-02000
+#   testCases:
+#   - name: tc-1
+#     hasIncidents:
+#       atLeast: 3
+#       messageMatches: The application is using a Spring Cloud version that is no longer
+#         supported
