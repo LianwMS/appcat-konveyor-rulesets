@@ -44,5 +44,5 @@
   when:
     or:
     - builtin.filecontent:
-        filePattern: application.*\.(properties|yaml|yml)
+        filePattern: (application|bootstrap).*\.(properties|yaml|yml)
         pattern: (redis|jedis|lettuce)\.(.*\.)?(url|host|nodes|username|password)
