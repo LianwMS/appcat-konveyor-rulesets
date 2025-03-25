@@ -21,7 +21,7 @@ tests:
   testCases:
   - name: tc-1
     hasIncidents:
-      atLeast: 1
+      atLeast: 3
       messageMatches: The application contains AWS S3
 - ruleID: azure-aws-config-sqs-04000
   testCases:
