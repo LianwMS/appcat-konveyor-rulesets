@@ -112,7 +112,7 @@
         name: io.awspring.cloud.spring-cloud-aws-starter-s3
     - builtin.filecontent:
         filePattern: (application|bootstrap).*\.(properties|yaml|yml)
-        pattern: aws(?:\.s3|:\s*\n\s*s3)
+        pattern: aws(?:\s*:\s*\n(?:\s+.+\n)*?\s*s3:|\.s3)
     - java.referenced:
         location: PACKAGE
         pattern: com.amazonaws.services.s3*
@@ -342,7 +342,7 @@
   when:
     builtin.filecontent:
       filePattern: (application|bootstrap).*\.(properties|yaml|yml)
-      pattern: aws(?:\.sqs|:\s*\n\s*sqs)
+      pattern: aws(?:\s*:\s*\n(?:\s+.+\n)*?\s*sqs:|\.sqs)
 - category: mandatory
   customVariables: []
   description: AWS Secrets Manager configuration
