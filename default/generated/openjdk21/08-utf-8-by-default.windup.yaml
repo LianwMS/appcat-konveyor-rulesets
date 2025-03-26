@@ -14,7 +14,7 @@
     url: https://openjdk.org/jeps/400
   message: "If not supplied, the `java.io.{{className}}` constructor uses UTF-8 by
     default. \n If you haven't provided the character set, and UTF-8 is not appropriate
-    for your class, then supply the appropriate character set to the constructor call.\n "
+    for your class, then supply the appropriate character set to the constructor call."
   ruleID: utf-8-by-default-00000
   when:
     java.referenced:
@@ -36,7 +36,7 @@
     url: https://openjdk.org/jeps/400
   message: "If not supplied, the `java.util.{{classNames}}` constructor uses UTF-8
     by default. \n If you haven't provided the character set, and UTF-8 is not appropriate
-    for your class, then supply the appropriate character set to the constructor call.\n "
+    for your class, then supply the appropriate character set to the constructor call."
   ruleID: utf-8-by-default-00010
   when:
     java.referenced:
@@ -55,12 +55,12 @@
     url: https://openjdk.org/jeps/400
   message: "If not supplied, the `java.net.URLEncoder.encode` method uses UTF-8 by
     default. \n If you haven't provided the character set, and UTF-8 is not appropriate
-    for your class, then then supply the appropriate character set to the method call.\n "
+    for your class, then then supply the appropriate character set to the method call."
   ruleID: utf-8-by-default-00020
   when:
     java.referenced:
       location: METHOD_CALL
-      pattern: java.net.URLEncoder.encode(*)
+      pattern: java.net.URLEncoder.encode
 - category: potential
   customVariables: []
   description: The java.net.URLDecoder.decode method uses UTF-8 by default
@@ -74,9 +74,9 @@
     url: https://openjdk.org/jeps/400
   message: "If not supplied, the `java.net.URLDecoder.decode` method uses UTF-8 by
     default. \n If you haven't provided the character set, and UTF-8 is not appropriate
-    for your class, then then supply the appropriate character set to the method call.\n "
+    for your class, then then supply the appropriate character set to the method call."
   ruleID: utf-8-by-default-00030
   when:
     java.referenced:
       location: METHOD_CALL
-      pattern: java.net.URLDecoder.decode(*)
+      pattern: java.net.URLDecoder.decode
