@@ -9,11 +9,13 @@
 
 ### openjdk11 ###
 - 01-java-removals.windup.yaml(java-removals-00000): rules with METHOD_CALL locations do not work on calls to static methods https://github.com/konveyor/analyzer-lsp/issues/769
+- 01-java-removals.windup.test.yaml(removed-packages-00000): test passed locally but failed in CI.
 
 ### openjdk17 ###
 - 05-security-manager-deprecation.windup.yaml(security-manager-deprecation-00020/0030/0040/0050): rules with METHOD_CALL locations do not work on calls to static methods https://github.com/konveyor/analyzer-lsp/issues/769
+- 04-removed-packages.windup.test.yaml(removed-packages-00000): test passed locally but failed in CI.
 
-### openjdk18 ###
+### openjdk21 ###
 - 01-deprecation-openjdk18.windup.yaml(deprecation-00005): rules with METHOD_CALL locations do not work on calls to static methods https://github.com/konveyor/analyzer-lsp/issues/769
 - 04-deprecation-openjdk21.windup.yaml: rules with METHOD_CALL locations and with args do not work
 
