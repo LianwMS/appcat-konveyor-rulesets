@@ -19,3 +19,21 @@
 - 01-deprecation-openjdk18.windup.yaml(deprecation-00005): rules with METHOD_CALL locations do not work on calls to static methods https://github.com/konveyor/analyzer-lsp/issues/769
 - 04-deprecation-openjdk21.windup.yaml: rules with METHOD_CALL locations and with args do not work
 
+### technology-usage ###
+ 
+The following rule failed because builtin.hasTags is not working in test. An upstream fix is required.
+- 03-web-technology-usage.windup.yaml
+- 05-test-frameworks-technology-usage.windup.yaml
+- 11-non-xml-rules-technology-usage.rhamt.yaml
+- 14-markup-technology-usage.windup.yaml
+- 20-javase-technology-usage.windup.yaml
+- 26-embedded-framework-technology-usage.windup.yaml
+- 28-ejb-technology-usage.windup.yaml
+- 31-database-technology-usage.windup.yaml
+- 35-configuration-management-technology-usage.windup.yaml
+- 37-clustering-technology-usage.windup.yaml
+- 39-apm-technology-usage.windup.yaml
+- 45-3rd-party-spring-technology-usage.windup.yaml
+ 
+Failed determine the cause of this failure. It may be helpful to track upstream updates in the future.
+- 42-web.windup.yaml

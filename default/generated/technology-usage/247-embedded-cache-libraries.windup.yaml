@@ -53,6 +53,7 @@
   ruleID: embedded-cache-libraries-16000
   tag:
   - Redis
+  - Redis Cache library
   when:
     or:
     - java.dependency:
