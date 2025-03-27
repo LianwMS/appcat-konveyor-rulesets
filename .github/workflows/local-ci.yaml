@@ -14,7 +14,7 @@ jobs:
       - name: Run kantra test
         id: kantra-test
         run: |
-          podman cp $(podman create --name kantra-download quay.io/konveyor/kantra:latest):/usr/local/bin/kantra .
+          podman cp $(podman create --name kantra-download quay.io/konveyor/kantra:v0.7.0-alpha.1):/usr/local/bin/kantra .
           podman rm kantra-download
           ./kantra test ./default/generated/ | tee output.log || true
           tail -n5 output.log > message.md
