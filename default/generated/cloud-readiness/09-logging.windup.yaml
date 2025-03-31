@@ -1,6 +1,6 @@
 - category: mandatory
   customVariables: []
-  description: Don't log to file system
+  description: Avoid File System Logging in Java Code
   effort: 1
   labels:
   - konveyor.io/source=java
@@ -63,7 +63,7 @@
       pattern: java.util.logging.SocketHandler*
 - category: mandatory
   customVariables: []
-  description: Don't log to file system
+  description: Avoid File System Logging in Configuration
   effort: 1
   labels:
   - konveyor.io/source=java
