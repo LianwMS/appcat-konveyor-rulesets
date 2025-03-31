@@ -38,5 +38,5 @@
   when:
     or:
     - builtin.filecontent:
-        filePattern: .*\.(properties|yaml|yml)
+        filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
         pattern: (eureka\.client\.(serviceUrl\.defaultZone|service-url\.defaultZone))|(eureka\.client\.tls\.keystore)|(eureka\.instance\.preferIpAddress)|(eureka\.instance\.instance-id)|(server\.port)|(spring\.cloud\.config\.tls\.keystore)|(spring\.config\.import)|(spring\.application\.name)|(spring\.jmx\.enabled)|(management\.endpoints\.jmx\.exposure\.include)
