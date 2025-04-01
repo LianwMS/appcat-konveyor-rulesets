@@ -134,7 +134,7 @@
   ruleID: local-storage-00003
   when:
     builtin.filecontent:
-      filePattern: .*(\\.java|\\.properties|\\.jsp|\\.jspf|\\.tag|[^pom]\\.xml|\\.txt)
+      filePattern: (/|\\)(?!pom\.xml$)([a-zA-Z0-9._-]+)\.(java|properties|jsp|jspf|tag|xml|txt)$
       pattern: (\W|\s|^)([a-zA-Z]\:|\\\\(\w+\.?)+)([\\\/][^\n\t]+)+
 - category: mandatory
   customVariables: []
@@ -175,7 +175,7 @@
   ruleID: local-storage-00004
   when:
     builtin.filecontent:
-      filePattern: .*\.(\\\.java|\\\.properties|\\\.jsp|\\\.jspf|\\\.tag|[^pom]\\\.xml|\\\.txt)
+      filePattern: (/|\\)(?!pom\.xml$)([a-zA-Z0-9._-]+)\.(java|properties|jsp|jspf|tag|xml|txt)$
       pattern: file://
 - category: mandatory
   customVariables: []
