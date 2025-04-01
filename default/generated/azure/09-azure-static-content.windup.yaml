@@ -50,4 +50,4 @@
   ruleID: azure-static-content-01000
   when:
     builtin.file:
-      pattern: ([^/\\]+)\.(htm|html)$
+      pattern: ([a-zA-Z0-9._-]+)\.(htm|html)$

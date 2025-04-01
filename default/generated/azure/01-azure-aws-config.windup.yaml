@@ -112,6 +112,7 @@
         name: io.awspring.cloud.spring-cloud-aws-starter-s3
     - builtin.filecontent:
         filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
+        # currently no support multi-lines regex matching for yaml, so only match "s3:"
         pattern: (aws.s3|s3:\s*)
     - java.referenced:
         location: PACKAGE

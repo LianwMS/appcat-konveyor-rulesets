@@ -234,7 +234,7 @@
         lowerbound: 0.0.0
         name: org.springframework.amqp.spring-rabbit
     - builtin.filecontent:
-        filePattern: build\.gradle
+        filePattern: ^build\.gradle$
         pattern: spring-boot-starter-amqp
     - builtin.file:
         pattern: .*amqp.*
