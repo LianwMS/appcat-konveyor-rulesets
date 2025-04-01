@@ -9,7 +9,7 @@
   - Embedded HSQLDB Driver
   when:
     builtin.file:
-      pattern: .*hsqldb.*\.jar
+      pattern: ^([a-zA-Z0-9._-]*)hsqldb([a-zA-Z0-9._-]*)\.jar$
 - category: potential
   customVariables: []
   description: MySQL database found
@@ -49,12 +49,12 @@
     or:
     - java.dependency:
         lowerbound: 0.0.0
-        nameregex: .*mysql.*
+        nameregex: ([a-zA-Z0-9._-]*)mysql([a-zA-Z0-9._-]*)
     - builtin.filecontent:
-        filePattern: build\.gradle
+        filePattern: build\.gradle$
         pattern: mysql
     - builtin.file:
-        pattern: .*mysql-connector.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)mysql-connector([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
   description: Embedded Derby Driver
   labels:
@@ -66,7 +66,7 @@
   - Embedded Derby Driver
   when:
     builtin.file:
-      pattern: .*derby.*\.jar
+      pattern: ^([a-zA-Z0-9._-]*)derby([a-zA-Z0-9._-]*)\.jar$
 - category: potential
   customVariables: []
   description: PostgreSQL database found
@@ -106,12 +106,12 @@
     or:
     - java.dependency:
         lowerbound: 0.0.0
-        nameregex: .*postgresql.*
+        nameregex: ([a-zA-Z0-9._-]*)postgresql([a-zA-Z0-9._-]*)
     - builtin.filecontent:
-        filePattern: build\.gradle
-        pattern: postgresql
+        filePattern: build\.gradle$
+        pattern: ^postgresql
     - builtin.file:
-        pattern: .*postgresql.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)postgresql([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
   description: Embedded H2 Driver
   labels:
@@ -123,7 +123,7 @@
   - Embedded H2 Driver
   when:
     builtin.file:
-      pattern: .*h2.*\.jar
+      pattern: ^([a-zA-Z0-9._-]*)h2([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
   description: Embedded Microsoft SQL Driver
   labels:
@@ -136,9 +136,9 @@
   when:
     or:
     - builtin.file:
-        pattern: sqljdbc.*\.jar
+        pattern: ^sqljdbc([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: mssql-jdbc.*\.jar
+        pattern: ^mssql-jdbc([a-zA-Z0-9._-]*)\.jar$
 - category: potential
   customVariables: []
   description: Microsoft SQL database found
@@ -177,9 +177,9 @@
   when:
     or:
     - builtin.file:
-        pattern: sqljdbc.*\.jar
+        pattern: ^sqljdbc([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: mssql-jdbc.*\.jar
+        pattern: ^mssql-jdbc([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
   description: Embedded Oracle DB Driver
   labels:
@@ -192,9 +192,9 @@
   when:
     or:
     - builtin.file:
-        pattern: .*jodbc.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)jodbc([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*ojdbc.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)ojdbc([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
   description: Embedded Cassandra Client
   labels:
@@ -207,23 +207,23 @@
   when:
     or:
     - builtin.file:
-        pattern: .*sqlite-jdbc.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)sqlite-jdbc([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*cassandra.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)cassandra([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*hector.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)hector([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*astyanax.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)astyanax([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*phantom-dsl.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)phantom-dsl([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*cql.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)cql([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*hecuba-client.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)hecuba-client([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*c-star-path.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)c-star-path([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*scale7-pelops.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)scale7-pelops([a-zA-Z0-9._-]*)\.jar$
 - category: potential
   customVariables: []
   description: Cassandra database found
@@ -260,21 +260,21 @@
   when:
     or:
     - builtin.file:
-        pattern: .*cassandra.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)cassandra([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*hector.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)hector([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*astyanax.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)astyanax([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*phantom-dsl.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)phantom-dsl([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*cql.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)cql([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*hecuba-client.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)hecuba-client([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*c-star-path.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)c-star-path([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*scale7-pelops.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)scale7-pelops([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
   description: Embedded MckoiSQLDB Driver
   labels:
@@ -286,7 +286,7 @@
   - Embedded MckoiSQLDB Driver
   when:
     builtin.file:
-      pattern: .*mckoisqldb.*\.jar
+      pattern: ^([a-zA-Z0-9._-]*)mckoisqldb([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
   description: Embedded MongoDB Client
   labels:
@@ -299,17 +299,17 @@
   when:
     or:
     - builtin.file:
-        pattern: .*mongodb.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)mongodb([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*casbah.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)casbah([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*reactivemongo.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)reactivemongo([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*jongo.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)jongo([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*gmongo.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)gmongo([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*rogue.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)rogue([a-zA-Z0-9._-]*)\.jar$
 - category: potential
   customVariables: []
   description: MongoDB database found
@@ -346,17 +346,17 @@
   when:
     or:
     - builtin.file:
-        pattern: .*mongodb.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)mongodb([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*casbah.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)casbah([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*reactivemongo.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)reactivemongo([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*jongo.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)jongo([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*gmongo.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)gmongo([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: .*rogue.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)rogue([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
   description: Embedded framework - Morphia
   labels:
@@ -368,7 +368,7 @@
   - Embedded framework - Morphia
   when:
     builtin.file:
-      pattern: .*morphia.*\.jar
+      pattern: ^([a-zA-Z0-9._-]*)morphia([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
   description: Embedded LevelDB Client
   labels:
@@ -380,7 +380,7 @@
   - Embedded LevelDB Client
   when:
     builtin.file:
-      pattern: .*leveldb.*\.jar
+      pattern: ^([a-zA-Z0-9._-]*)leveldb([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
   description: Embedded Apache HBase Client
   labels:
@@ -392,7 +392,7 @@
   - Embedded Apache HBase Client
   when:
     builtin.file:
-      pattern: .*hbase.*\.jar
+      pattern: ^([a-zA-Z0-9._-]*)hbase([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
   description: Embedded Apache Accumulo Client
   labels:
@@ -404,7 +404,7 @@
   - Embedded Apache Accumulo Client
   when:
     builtin.file:
-      pattern: .*accumulo.*\.jar
+      pattern: ^([a-zA-Z0-9._-]*)accumulo([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
   description: Embedded Spring Data JPA
   labels:
@@ -437,7 +437,7 @@
   - Embedded MariaDB Driver
   when:
     builtin.file:
-      pattern: .*mariadb.*\.jar
+      pattern: ^([a-zA-Z0-9._-]*)mariadb([a-zA-Z0-9._-]*)\.jar$
 - category: potential
   customVariables: []
   description: MariaDB database found
@@ -475,4 +475,4 @@
   - MariaDB Driver
   when:
     builtin.file:
-      pattern: .*mariadb.*\.jar
+      pattern: ^([a-zA-Z0-9._-]*)mariadb([a-zA-Z0-9._-]*)\.jar$

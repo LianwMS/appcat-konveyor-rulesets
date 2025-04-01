@@ -19,7 +19,7 @@
         xpath: //*[local-name() = 'login-config']/*[local-name() = 'realm-name']
     - as: xmlfiles2
       builtin.file:
-        pattern: .*ejb-jar\.xml
+        pattern: ^([a-zA-Z0-9._-]*)ejb-jar\.xml$
       ignore: true
     - builtin.xml:
         filepaths: '{{xmlfiles2.filepaths}}'

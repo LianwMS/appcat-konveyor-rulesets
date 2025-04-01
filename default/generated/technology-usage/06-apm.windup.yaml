@@ -23,9 +23,9 @@
     or:
     - java.dependency:
         lowerbound: 0.0.0
-        nameregex: com\.microsoft\.azure\..*applicationinsights.*
+        nameregex: com\.microsoft\.azure\.([a-zA-Z0-9._-]*)applicationinsights([a-zA-Z0-9._-]*)
     - builtin.file:
-        pattern: applicationinsights.*\.jar
+        pattern: ^applicationinsights([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Application Performance Management (APM) tool - New Relic
@@ -49,9 +49,9 @@
     or:
     - java.dependency:
         lowerbound: 0.0.0
-        nameregex: .*newrelic.*
+        nameregex: ([a-zA-Z0-9._-]*)newrelic([a-zA-Z0-9._-]*)
     - builtin.file:
-        pattern: newrelic.*\.jar
+        pattern: ^newrelic([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Application Performance Management (APM) tool - Elastic APM
@@ -81,9 +81,9 @@
     or:
     - java.dependency:
         lowerbound: 0.0.0
-        nameregex: .*elastic\.apm.*
+        nameregex: ([a-zA-Z0-9._-]*)elastic\.apm([a-zA-Z0-9._-]*)
     - builtin.file:
-        pattern: elastic-apm.*\.jar
+        pattern: ^elastic-apm([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Application Performance Management (APM) tool - Dynatrace
@@ -108,8 +108,8 @@
   when:
     or:
     - builtin.file:
-        pattern: dynatrace.*\.jar
+        pattern: ^dynatrace([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
-        pattern: liboneagent\.so
+        pattern: ^liboneagent\.so$
     - builtin.file:
-        pattern: dtjavaagent\.jar
+        pattern: ^dtjavaagent\.jar$

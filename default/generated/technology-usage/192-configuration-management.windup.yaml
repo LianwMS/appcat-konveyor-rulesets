@@ -44,7 +44,7 @@
   - Application properties file detected
   when:
     builtin.file:
-      pattern: application.*\.(properties|yml|yaml)
+      pattern: ^application(-[a-zA-Z0-9]+)*?\.(properties|yml|yaml)$
 - customVariables: []
   description: Spring datasource properties detected
   labels:
@@ -57,7 +57,7 @@
   - Spring datasource properties detected
   when:
     builtin.filecontent:
-      filePattern: application.*\.(properties|yml|yaml)
+      filePattern: (/|\\)application(-[a-zA-Z0-9]+)*?\.(properties|yml|yaml)$
       pattern: spring.datasource
 - customVariables: []
   description: Spring logging properties detected
@@ -71,7 +71,7 @@
   - Spring logging properties detected
   when:
     builtin.filecontent:
-      filePattern: application.*\.(properties|yml|yaml)
+      filePattern: (/|\\)application(-[a-zA-Z0-9]+)*?\.(properties|yml|yaml)$
       pattern: logging.level.org.springframework
 - customVariables: []
   description: Spring configuration properties annotation detected
@@ -124,7 +124,7 @@
         lowerbound: 0.0.0
         name: org.springframework.cloud.spring-cloud-vault-config
     - builtin.filecontent:
-        filePattern: .*\.{extensions}
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.{extensions}$
         pattern: spring.cloud.vault
     - builtin.file:
-        pattern: .*spring-cloud-vault.*\.jar
+        pattern: ^([a-zA-Z0-9._-]*)spring-cloud-vault([a-zA-Z0-9._-]*)\.jar$
