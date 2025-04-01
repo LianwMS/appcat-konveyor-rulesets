@@ -204,4 +204,4 @@
   when:
     java.referenced:
       location: IMPORT
-      pattern: ^org.springframework.integration.dsl.IntegrationFlow
+      pattern: org.springframework.integration.dsl.IntegrationFlow

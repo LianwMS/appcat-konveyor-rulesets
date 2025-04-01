@@ -46,7 +46,7 @@
   when:
     java.referenced:
       location: ANNOTATION
-      pattern: ^org.springframework.web.servlet.mvc.Controller
+      pattern: org.springframework.web.servlet.mvc.Controller
 - customVariables: []
   description: Embedded framework - Spring MVC
   labels:
