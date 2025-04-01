@@ -109,7 +109,7 @@
         nameregex: ([a-zA-Z0-9._-]*)postgresql([a-zA-Z0-9._-]*)
     - builtin.filecontent:
         filePattern: build\.gradle$
-        pattern: ^postgresql
+        pattern: postgresql
     - builtin.file:
         pattern: ^([a-zA-Z0-9._-]*)postgresql([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
