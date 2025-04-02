@@ -39,13 +39,13 @@
   when:
     or:
     - builtin.filecontent:
-        filePattern: .*\.xml
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.xml$
         pattern: http://java.sun.com/xml/ns/persistence
     - builtin.filecontent:
-        filePattern: .*\.xml
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.xml$
         pattern: http://xmlns.jcp.org/xml/ns/persistence
     - builtin.filecontent:
-        filePattern: .*\.xml
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.xml$
         pattern: https://jakarta.ee/xml/ns/persistence
 - customVariables: []
   description: JPA Queries
@@ -101,7 +101,7 @@
   - Java EE=Persistence units
   when:
     builtin.file:
-      pattern: persistence\.xml
+      pattern: ^persistence\.xml$
 - customVariables: []
   description: HSQLDB Driver
   labels:

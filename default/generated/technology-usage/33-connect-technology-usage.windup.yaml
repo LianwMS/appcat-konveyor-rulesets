@@ -129,7 +129,7 @@
         namespaces: {}
         xpath: //*[local-name()='jms-jca-provider']
     - builtin.file:
-        pattern: ra\.xml
+        pattern: ^ra\.xml$
 - customVariables: []
   description: Resource Adapter usage
   labels:
