@@ -7,6 +7,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: Java Thread Primitive Deprecation
     url: https://docs.oracle.com/javase/7/docs/technotes/guides/concurrency/threadPrimitiveDeprecation.html
@@ -31,6 +33,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: Example changeset
     url: https://github.com/openjdk/jfx/commit/d647521fa83f0cebe9532642ee97ffc4356c8bb3
@@ -57,6 +61,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: Example changeset
     url: https://github.com/openjdk/jfx/commit/d647521fa83f0cebe9532642ee97ffc4356c8bb3
@@ -83,6 +89,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: Java 10 javax.security.auth.Policy api
     url: https://docs.oracle.com/javase/10/docs/api/javax/security/auth/Policy.html
@@ -109,6 +117,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: Java 11 SecurityManager api
     url: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/SecurityManager.html
@@ -140,6 +150,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: Java 11 SecurityManager api
     url: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/SecurityManager.html
@@ -163,6 +175,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: APIs removed in JDK 9
     url: https://docs.oracle.com/en/java/javase/16/migrate/removed-apis.html#GUID-B96BD00F-12A4-493A-9907-2FFE8DA6748C
@@ -185,6 +199,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: APIs removed in JDK 9
     url: https://docs.oracle.com/en/java/javase/16/migrate/removed-apis.html#GUID-B96BD00F-12A4-493A-9907-2FFE8DA6748C
@@ -207,6 +223,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: java.util.jar.Packer API
     url: https://docs.oracle.com/javase/8/docs/api/java/util/jar/Pack200.Packer.html
@@ -243,6 +261,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: JDK-8054494
     url: https://bugs.openjdk.org/browse/JDK-8054494
@@ -276,6 +296,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: java.util.Base64 - Javadoc
     url: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Base64.html
@@ -308,6 +330,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: JDK 11 removed APIs
     url: https://docs.oracle.com/en/java/javase/11/migrate/index.html#JSMIG-GUID-4B613B7E-B150-4D0A-835C-2393C60BE1F8
@@ -336,6 +360,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: java.awt.peer Not Accessible
     url: https://docs.oracle.com/en/java/javase/11/migrate/index.html#JSMIG-GUID-0C350BAB-F2C8-409E-AD3E-63831C684A55
@@ -364,6 +390,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: JDK11 New Classloader Implementations
     url: https://docs.oracle.com/en/java/javase/11/migrate/index.html#JSMIG-GUID-A868D0B9-026F-4D46-B979-901834343F9E

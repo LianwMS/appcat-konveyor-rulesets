@@ -7,6 +7,8 @@
   - konveyor.io/source=eap
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - domain=azure-readiness
+  - category=eap-migration
   - password
   - security
   links:

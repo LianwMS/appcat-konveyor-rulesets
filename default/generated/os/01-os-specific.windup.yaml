@@ -5,6 +5,8 @@
   labels:
   - konveyor.io/target=linux
   - konveyor.io/source
+  - domain=cloud-native
+  - category=os-compatibility
   - ms-windows
   links:
   - title: Working across Windows and Linux file systems
@@ -34,6 +36,8 @@
   labels:
   - konveyor.io/target=linux
   - konveyor.io/source
+  - domain=cloud-native
+  - category=os-compatibility
   - ms-windows
   links: []
   message: |-

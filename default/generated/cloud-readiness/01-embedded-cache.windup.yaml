@@ -5,6 +5,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds an Ehcache library.\n\n
     \                       An embedded cache library is problematic because state
@@ -24,6 +26,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds a Coherence library.\n\n
     \                       An embedded cache library is problematic because state
@@ -43,6 +47,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds an Apache Commons JCS
     library.\n\n                        An embedded cache library is problematic because
@@ -62,6 +68,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds a Dynacache library.\n\n
     \                       An embedded cache library is problematic because state
@@ -81,6 +89,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds a library that provides
     caching.\n\n                        An embedded cache library is problematic because
@@ -100,6 +110,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds a Hazelcast library.\n\n
     \                       An embedded cache library is problematic because state
@@ -119,6 +131,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds an Apache Ignite library.\n\n
     \                       An embedded cache library is problematic because state
@@ -138,6 +152,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds an Infinispan library.\n\n
     \                       An embedded cache library is problematic because state
@@ -157,6 +173,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embedds a JBoss Cache library.\n\n
     \                       An embedded cache library is problematic because state
@@ -176,6 +194,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds a JCache library.\n\n
     \                       An embedded cache library is problematic because state
@@ -195,6 +215,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds a Memcached client library.\n\n
     \                       An embedded cache library is problematic because state
@@ -214,6 +236,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds an Oscache library.\n\n
     \                       An embedded cache library is problematic because state
@@ -233,6 +257,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds a ShiftOne library (Java
     Object Cache or JOCache).\n\n                        An embedded cache library
@@ -252,6 +278,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds a SwarmCache library.\n\n
     \                       An embedded cache library is problematic because state
@@ -271,6 +299,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds the Spring Boot Cache
     library.\n\n                        An embedded cache library is problematic because
@@ -295,6 +325,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=embedded-cache-management
   links: []
   message: "\n                        The application embeds the Redis client.\n                    \n
     \                       An embedded cache library is problematic because state

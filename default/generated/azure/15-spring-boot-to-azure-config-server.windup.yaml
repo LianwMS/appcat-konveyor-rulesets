@@ -8,6 +8,8 @@
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
+  - domain=azure-readiness
+  - category=spring-migration
   - Spring Cloud Config
   links:
   - title: Remove restricted configurations
@@ -42,6 +44,8 @@
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
+  - domain=azure-readiness
+  - category=spring-migration
   - Spring Cloud Config
   links:
   - title: Prepare the Spring Cloud Config server

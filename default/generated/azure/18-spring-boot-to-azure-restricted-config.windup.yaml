@@ -18,6 +18,8 @@
   labels:
   - konveyor.io/source=springboot
   - konveyor.io/target=azure-spring-apps
+  - domain=azure-readiness
+  - category=spring-migration
   links:
   - title: Remove restricted configurations
     url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-apps?toc=%2Fazure%2Fspring-apps%2Ftoc.json&bc=%2Fazure%2Fspring-apps%2Fbreadcrumb%2Ftoc.json&pivots=sc-standard-tier#remove-restricted-configurations

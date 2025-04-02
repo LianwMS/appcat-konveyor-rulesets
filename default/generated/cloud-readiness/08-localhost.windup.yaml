@@ -5,6 +5,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=local-resource-access
   - localhost
   links: []
   message: The app is trying to access local resource by HTTP, please try to migrate
@@ -21,6 +23,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=local-resource-access
   - localhost
   links: []
   message: The app is trying to access local resource by JDBC, please try to migrate
@@ -37,6 +41,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=local-resource-access
   - localhost
   links: []
   message: The app is trying to access local resource using WebSocket, please try

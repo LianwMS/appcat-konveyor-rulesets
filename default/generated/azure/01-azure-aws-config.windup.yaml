@@ -46,6 +46,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=credential-migration
   - AWS
   links:
   - title: Azure geographies
@@ -78,6 +80,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=region-configuration
   - AWS
   - storage
   links:
@@ -132,6 +136,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=storage-migration
   - AWS
   - storage
   links:
@@ -170,6 +176,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=storage-migration
   - AWS
   - storage
   links:
@@ -216,6 +224,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=storage-migration
   - AWS
   links:
   - title: Azure Service Bus documentation
@@ -241,6 +251,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
   - AWS
   links:
   - title: Azure Service Bus documentation
@@ -272,6 +284,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
   - AWS
   links:
   - title: Azure Service Bus documentation
@@ -297,6 +311,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
   - AWS
   links:
   - title: Azure Service Bus documentation
@@ -328,6 +344,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
   - AWS
   links:
   - title: Azure Service Bus documentation
@@ -353,6 +371,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
   - AWS
   links:
   - title: Azure Key Vault documentation

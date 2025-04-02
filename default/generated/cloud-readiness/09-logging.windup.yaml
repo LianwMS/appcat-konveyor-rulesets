@@ -6,6 +6,8 @@
   - konveyor.io/source=java
   - konveyor.io/source=java-ee
   - konveyor.io/target=cloud-readiness
+  - domain=cloud-native
+  - category=logging-management
   - logging
   links: []
   message: |-
@@ -44,6 +46,8 @@
   - konveyor.io/source=java
   - konveyor.io/source=java-ee
   - konveyor.io/target=cloud-readiness
+  - domain=cloud-native
+  - category=logging-management
   - logging
   links: []
   message: |-
@@ -69,6 +73,8 @@
   - konveyor.io/source=java
   - konveyor.io/source=java-ee
   - konveyor.io/target=cloud-readiness
+  - domain=cloud-native
+  - category=logging-management
   - logging
   links:
   - title: Azure Monitor Logs overview

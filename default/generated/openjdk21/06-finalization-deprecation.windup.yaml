@@ -8,6 +8,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk18+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: 'JEP 421: Deprecate Finalization for Removal'
     url: https://openjdk.org/jeps/421

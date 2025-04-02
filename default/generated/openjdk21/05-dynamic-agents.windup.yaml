@@ -7,6 +7,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk21+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: 'JEP 451: Prepare to Disallow the Dynamic Loading of Agents'
     url: https://openjdk.org/jeps/451

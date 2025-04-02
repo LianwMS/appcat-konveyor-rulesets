@@ -21,6 +21,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=database-migration
   - database
   - jdbc
   links:
@@ -93,6 +95,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=database-migration
   - database
   - mongodb
   links:
@@ -145,6 +149,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=database-migration
   - database
   - r2dbc
   links:
