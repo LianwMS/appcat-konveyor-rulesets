@@ -43,5 +43,5 @@
   ruleID: azure-tas-binding-01000
   when:
     builtin.filecontent:
-      filePattern: .*
+      filePattern: ""
       pattern: \W(VCAP_SERVICES)\W

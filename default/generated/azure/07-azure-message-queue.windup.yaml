@@ -52,7 +52,7 @@
   - Kafka Client
   when:
     builtin.filecontent:
-      filePattern: .*\.(properties|yaml|yml)
+      filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
       pattern: kafka\.(.*\.)?(properties\.)?(bootstrap[\.-]servers|sasl\.jaas\.config|schema\.registry)
 - category: optional
   customVariables: []
@@ -93,7 +93,7 @@
   - RabbitMQ Client
   when:
     builtin.filecontent:
-      filePattern: .*\.(properties|yaml|yml)
+      filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
       pattern: rabbitmq\.(.*\.)?(addresses|host|virtual-host|username|password)
 - category: optional
   customVariables: []
@@ -131,7 +131,7 @@
   - ActiveMQ
   when:
     builtin.filecontent:
-      filePattern: .*\.(properties|yaml|yml)
+      filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
       pattern: artemis\.(broker-url|user|password)
 - category: optional
   customVariables: []
@@ -234,7 +234,7 @@
         lowerbound: 0.0.0
         name: org.springframework.amqp.spring-rabbit
     - builtin.filecontent:
-        filePattern: build\.gradle
+        filePattern: (/|\\)build\.gradle$
         pattern: spring-boot-starter-amqp
     - builtin.file:
         pattern: .*amqp.*
@@ -339,5 +339,5 @@
   when:
     or:
     - builtin.filecontent:
-        filePattern: .*\.(properties|yaml|yml)
+        filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
         pattern: spring.cloud.azure.servicebus.*

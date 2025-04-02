@@ -1,6 +1,6 @@
 - category: optional
   customVariables: []
-  description: External resources found in configuration file
+  description: External resources found in Tomcat configuration file
   effort: 5
   labels:
   - konveyor.io/target=azure-spring-apps

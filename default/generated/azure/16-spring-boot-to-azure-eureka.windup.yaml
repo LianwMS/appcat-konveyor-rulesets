@@ -28,5 +28,5 @@
   - Eureka
   when:
     builtin.filecontent:
-      filePattern: .*\.(properties|yaml|yml)
+      filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
       pattern: eureka\.client\.(service-url|serviceUrl)

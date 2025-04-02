@@ -16,7 +16,7 @@
   - Caching - Ehcache embedded library
   when:
     builtin.file:
-      pattern: .*ehcache.*\.jar$
+      pattern: ^([a-zA-Z0-9._-]*)ehcache([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Caching - Coherence embedded library
@@ -35,7 +35,7 @@
   - Caching - Coherence embedded library
   when:
     builtin.file:
-      pattern: .*coherence.*\.jar$
+      pattern: ^([a-zA-Z0-9._-]*)coherence([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Caching - Apache Commons JCS embedded library
@@ -54,7 +54,7 @@
   - Caching - Apache Commons JCS embedded library
   when:
     builtin.file:
-      pattern: .*commons-jcs.*\.jar$
+      pattern: ^([a-zA-Z0-9._-]*)commons-jcs([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Caching - Dynacache embedded library
@@ -73,7 +73,7 @@
   - Caching - Dynacache embedded library
   when:
     builtin.file:
-      pattern: .*dynacache.*\.jar$
+      pattern: ^([a-zA-Z0-9._-]*)dynacache([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Caching - Embedded library
@@ -92,7 +92,7 @@
   - Caching - Embedded library
   when:
     builtin.file:
-      pattern: .*cache-api.*\.jar$
+      pattern: ^([a-zA-Z0-9._-]*)cache-api([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Caching - Hazelcast embedded library
@@ -111,7 +111,7 @@
   - Caching - Hazelcast embedded library
   when:
     builtin.file:
-      pattern: .*hazelcast.*\.jar$
+      pattern: ^([a-zA-Z0-9._-]*)hazelcast([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Caching - Apache Ignite embedded library
@@ -130,7 +130,7 @@
   - Caching - Apache Ignite embedded library
   when:
     builtin.file:
-      pattern: .*ignite.*\.jar$
+      pattern: ^([a-zA-Z0-9._-]*)ignite([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Caching - Infinispan embedded library
@@ -149,7 +149,7 @@
   - Caching - Infinispan embedded library
   when:
     builtin.file:
-      pattern: .*infinispan.*\.jar$
+      pattern: ^([a-zA-Z0-9._-]*)infinispan([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Caching - JBoss Cache embedded library
@@ -168,7 +168,7 @@
   - Caching - JBoss Cache embedded library
   when:
     builtin.file:
-      pattern: .*jbosscache.*\.jar$
+      pattern: ^([a-zA-Z0-9._-]*)jbosscache([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Caching - JCache embedded library
@@ -187,7 +187,7 @@
   - Caching - JCache embedded library
   when:
     builtin.file:
-      pattern: .*jcache.*\.jar$
+      pattern: ^([a-zA-Z0-9._-]*)jcache([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Caching - Memcached client embedded library
@@ -206,7 +206,7 @@
   - Caching - Memcached client embedded library
   when:
     builtin.file:
-      pattern: .*memcached.*\.jar$
+      pattern: ^([a-zA-Z0-9._-]*)memcached([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Caching - Oscache embedded library
@@ -225,7 +225,7 @@
   - Caching - Oscache embedded library
   when:
     builtin.file:
-      pattern: .*oscache.*\.jar$
+      pattern: ^([a-zA-Z0-9._-]*)oscache([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Caching - ShiftOne (Java Object Cache) embedded library
@@ -244,7 +244,7 @@
   - Caching - ShiftOne (Java Object Cache) embedded library
   when:
     builtin.file:
-      pattern: .*shiftone.*\.jar$
+      pattern: ^([a-zA-Z0-9._-]*)shiftone([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Caching - SwarmCache embedded library
@@ -263,7 +263,7 @@
   - Caching - SwarmCache embedded library
   when:
     builtin.file:
-      pattern: .*swarmcache.*\.jar$
+      pattern: ^([a-zA-Z0-9._-]*)swarmcache([a-zA-Z0-9._-]*)\.jar$
 - category: mandatory
   customVariables: []
   description: Caching - Spring Boot Cache library
@@ -306,4 +306,4 @@
   - Caching - Redis Cache library
   when:
     builtin.file:
-      pattern: .*redis.*\.jar
+      pattern: ^([a-zA-Z0-9._-]*)redis([a-zA-Z0-9._-]*)\.jar$

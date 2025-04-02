@@ -25,7 +25,7 @@
   ruleID: os-specific-00001
   when:
     builtin.filecontent:
-      filePattern: .*\.(java|properties|jsp|jspf|tag|xml|txt)
+      filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(java|properties|jsp|jspf|tag|xml|txt)$
       pattern: (\W|\s|^)([a-zA-Z]\:|\\\\(\w+\.?)+)([\\\/][^\n\t]+)+
 - category: mandatory
   customVariables: []
@@ -46,4 +46,4 @@
   ruleID: os-specific-00002
   when:
     builtin.file:
-      pattern: .*\.dll
+      pattern: ^([a-zA-Z0-9._-]+)\.dll$

@@ -30,7 +30,7 @@
   - Spring Cloud Config
   when:
     builtin.filecontent:
-      filePattern: .*\.(properties|yaml|yml)
+      filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
       pattern: spring\.config\.import|spring\.cloud\.config\.uri
 - category: potential
   customVariables: []
