@@ -1,6 +1,6 @@
 - category: potential
   customVariables: []
-  description: Deprecated method in JDK 18 for removal in future release
+  description: Deprecated signature `doAs` in JDK 18 for removal in future release
   effort: 3
   labels:
   - konveyor.io/source=openjdk18-

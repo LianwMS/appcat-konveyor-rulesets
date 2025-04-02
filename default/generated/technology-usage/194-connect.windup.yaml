@@ -9,7 +9,7 @@
   - Embedded Resource Adapter
   when:
     builtin.file:
-      pattern: .*\.rar
+      pattern: ^([a-zA-Z0-9._-]+)\.rar$
 - category: potential
   customVariables: []
   description: ActiveMQ found
@@ -59,9 +59,9 @@
         name: org.springframework.boot.spring-boot-starter-activemq
     - java.dependency:
         lowerbound: 0.0.0
-        nameregex: org\.apache\.activemq\..*
+        nameregex: org\.apache\.activemq\.([a-zA-Z0-9._-]*)
     - builtin.file:
-        pattern: .*activemq.*
+        pattern: ^([a-zA-Z0-9._-]*)activemq([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - OpenWS
   labels:
@@ -73,7 +73,7 @@
   - Embedded library - OpenWS
   when:
     builtin.file:
-      pattern: .*openws.*
+      pattern: ^([a-zA-Z0-9._-]*)openws([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - WSDL
   labels:
@@ -85,7 +85,7 @@
   - Embedded library - WSDL
   when:
     builtin.file:
-      pattern: .*wsdl.*
+      pattern: ^([a-zA-Z0-9._-]*)wsdl([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - RabbitMQ Client
   labels:
@@ -98,15 +98,15 @@
   when:
     or:
     - builtin.file:
-        pattern: .*amqp-client.*
+        pattern: ^([a-zA-Z0-9._-]*)amqp-client([a-zA-Z0-9._-]*)$
     - builtin.file:
-        pattern: .*rabbitmq.*
+        pattern: ^([a-zA-Z0-9._-]*)rabbitmq([a-zA-Z0-9._-]*)$
     - builtin.file:
-        pattern: .*spring-rabbit.*
+        pattern: ^([a-zA-Z0-9._-]*)spring-rabbit([a-zA-Z0-9._-]*)$
     - builtin.file:
-        pattern: .*lyra.*
+        pattern: ^([a-zA-Z0-9._-]*)lyra([a-zA-Z0-9._-]*)$
     - builtin.file:
-        pattern: .*conduit.*
+        pattern: ^([a-zA-Z0-9._-]*)conduit([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - Spring Messaging Client
   labels:
@@ -119,9 +119,9 @@
   when:
     or:
     - builtin.file:
-        pattern: .*spring-messaging.*
+        pattern: ^([a-zA-Z0-9._-]*)spring-messaging([a-zA-Z0-9._-]*)$
     - builtin.file:
-        pattern: .*spring-jms.*
+        pattern: ^([a-zA-Z0-9._-]*)spring-jms([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - Camel Messaging Client
   labels:
@@ -133,7 +133,7 @@
   - Embedded library - Camel Messaging Client
   when:
     builtin.file:
-      pattern: .*camel-jms.*
+      pattern: ^([a-zA-Z0-9._-]*)camel-jms([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - Amazon SQS Client
   labels:
@@ -145,7 +145,7 @@
   - Embedded library - Amazon SQS Client
   when:
     builtin.file:
-      pattern: .*aws-java-sdk-sqs.*
+      pattern: ^([a-zA-Z0-9._-]*)aws-java-sdk-sqs([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - HornetQ Client
   labels:
@@ -157,7 +157,7 @@
   - Embedded library - HornetQ Client
   when:
     builtin.file:
-      pattern: .*hornetq.*
+      pattern: ^([a-zA-Z0-9._-]*)hornetq([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - AMQP Client
   labels:
@@ -169,7 +169,7 @@
   - Embedded library - AMQP Client
   when:
     builtin.file:
-      pattern: .*amqp.*
+      pattern: ^([a-zA-Z0-9._-]*)amqp([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - RocketMQ Client
   labels:
@@ -181,7 +181,7 @@
   - Embedded library - RocketMQ Client
   when:
     builtin.file:
-      pattern: .*rocketmq-client.*
+      pattern: ^([a-zA-Z0-9._-]*)rocketmq-client([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - 0MQ Client
   labels:
@@ -194,9 +194,9 @@
   when:
     or:
     - builtin.file:
-        pattern: .*jzmq.*
+        pattern: ^([a-zA-Z0-9._-]*)jzmq([a-zA-Z0-9._-]*)$
     - builtin.file:
-        pattern: .*jeromq.*
+        pattern: ^([a-zA-Z0-9._-]*)jeromq([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - JBossMQ Client
   labels:
@@ -208,7 +208,7 @@
   - Embedded library - JBossMQ Client
   when:
     builtin.file:
-      pattern: .*jbossmq-client.*
+      pattern: ^([a-zA-Z0-9._-]*)jbossmq-client([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - Zbus Client
   labels:
@@ -220,7 +220,7 @@
   - Embedded library - Zbus Client
   when:
     builtin.file:
-      pattern: .*zbus-client.*
+      pattern: ^([a-zA-Z0-9._-]*)zbus-client([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - Qpid Client
   labels:
@@ -232,7 +232,7 @@
   - Embedded library - Qpid Client
   when:
     builtin.file:
-      pattern: .*qpid.*
+      pattern: ^([a-zA-Z0-9._-]*)qpid([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - Kafka Client
   labels:
@@ -245,6 +245,6 @@
   when:
     or:
     - builtin.file:
-        pattern: .*kafka-clients.*
+        pattern: ^([a-zA-Z0-9._-]*)kafka-clients([a-zA-Z0-9._-]*)$
     - builtin.file:
-        pattern: .*spring-kafka.*
+        pattern: ^([a-zA-Z0-9._-]*)spring-kafka([a-zA-Z0-9._-]*)$

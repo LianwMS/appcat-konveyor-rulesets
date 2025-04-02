@@ -56,34 +56,34 @@
   when:
     or:
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: 'jdbc:'
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: datasource.url
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: datasource.u-r-l
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: datasource.jdbc-url
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: datasource.username
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: datasource.user
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: datasource.password
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: jdbc.url
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: jdbc.username
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: jdbc.password
 - category: potential
   customVariables: []
@@ -128,16 +128,16 @@
   when:
     or:
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: 'mongodb:'
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: mongodb.uri
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: mongodb.username
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: mongodb.password
 - category: potential
   customVariables: []
@@ -184,14 +184,14 @@
   when:
     or:
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: 'r2dbc:'
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: r2dbc.username
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: r2dbc.password
     - builtin.filecontent:
-        filePattern: .*\.(xml|properties|yaml|yml)
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: r2dbc.url

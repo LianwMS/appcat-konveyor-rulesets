@@ -32,7 +32,7 @@
     or:
     - as: xmlfiles1
       builtin.file:
-        pattern: .*-ds\.xml
+        pattern: ^([a-zA-Z0-9._-]+)-ds\.xml$
       ignore: true
     - builtin.xml:
         filepaths: '{{xmlfiles1.filepaths}}'
@@ -41,7 +41,7 @@
         xpath: /datasources/datasource/connection-url[contains(text(),'jdbc:db2')]
     - as: xmlfiles2
       builtin.file:
-        pattern: .*-ds\.xml
+        pattern: ^([a-zA-Z0-9._-]+)-ds\.xml$
       ignore: true
     - builtin.xml:
         filepaths: '{{xmlfiles2.filepaths}}'
@@ -50,7 +50,7 @@
         xpath: /datasources/drivers/driver/xa-datasource-class[contains(text(),'db2')]
     - as: xmlfiles3
       builtin.file:
-        pattern: .*-ds\.xml
+        pattern: ^([a-zA-Z0-9._-]+)-ds\.xml$
       ignore: true
     - builtin.xml:
         filepaths: '{{xmlfiles3.filepaths}}'
@@ -59,7 +59,7 @@
         xpath: /datasources/datasource/connection-url[contains(text(),'jdbc:mysql')]
     - as: xmlfiles4
       builtin.file:
-        pattern: .*-ds\.xml
+        pattern: ^([a-zA-Z0-9._-]+)-ds\.xml$
       ignore: true
     - builtin.xml:
         filepaths: '{{xmlfiles4.filepaths}}'
@@ -68,7 +68,7 @@
         xpath: /datasources/drivers/driver/xa-datasource-class[contains(text(),'mysql')]
     - as: xmlfiles5
       builtin.file:
-        pattern: .*-ds\.xml
+        pattern: ^([a-zA-Z0-9._-]+)-ds\.xml$
       ignore: true
     - builtin.xml:
         filepaths: '{{xmlfiles5.filepaths}}'
@@ -77,7 +77,7 @@
         xpath: /datasources/datasource/connection-url[contains(text(),'jdbc:oracle')]
     - as: xmlfiles6
       builtin.file:
-        pattern: .*-ds\.xml
+        pattern: ^([a-zA-Z0-9._-]+)-ds\.xml$
       ignore: true
     - builtin.xml:
         filepaths: '{{xmlfiles6.filepaths}}'
@@ -86,7 +86,7 @@
         xpath: /datasources/drivers/driver/xa-datasource-class[contains(text(),'oracle')]
     - as: xmlfiles7
       builtin.file:
-        pattern: .*-ds\.xml
+        pattern: ^([a-zA-Z0-9._-]+)-ds\.xml$
       ignore: true
     - builtin.xml:
         filepaths: '{{xmlfiles7.filepaths}}'
@@ -95,7 +95,7 @@
         xpath: /datasources/datasource/connection-url[contains(text(),'jdbc:postgres')]
     - as: xmlfiles8
       builtin.file:
-        pattern: .*-ds\.xml
+        pattern: ^([a-zA-Z0-9._-]+)-ds\.xml$
       ignore: true
     - builtin.xml:
         filepaths: '{{xmlfiles8.filepaths}}'
@@ -104,7 +104,7 @@
         xpath: /datasources/drivers/driver/xa-datasource-class[contains(text(),'postgres')]
     - as: xmlfiles9
       builtin.file:
-        pattern: .*-ds\.xml
+        pattern: ^([a-zA-Z0-9._-]+)-ds\.xml$
       ignore: true
     - builtin.xml:
         filepaths: '{{xmlfiles9.filepaths}}'
@@ -113,7 +113,7 @@
         xpath: /datasources/datasource/connection-url[contains(text(),'jdbc:microsoft:sqlserver')]
     - as: xmlfiles10
       builtin.file:
-        pattern: .*-ds\.xml
+        pattern: ^([a-zA-Z0-9._-]+)-ds\.xml$
       ignore: true
     - builtin.xml:
         filepaths: '{{xmlfiles10.filepaths}}'
@@ -122,7 +122,7 @@
         xpath: /datasources/drivers/driver/xa-datasource-class[contains(text(),'sqlserver')]
     - as: xmlfiles11
       builtin.file:
-        pattern: .*-ds\.xml
+        pattern: ^([a-zA-Z0-9._-]+)-ds\.xml$
       ignore: true
     - builtin.xml:
         filepaths: '{{xmlfiles11.filepaths}}'
@@ -131,7 +131,7 @@
         xpath: /datasources/datasource/connection-url[contains(text(),'jdbc:sybase')]
     - as: xmlfiles12
       builtin.file:
-        pattern: .*-ds\.xml
+        pattern: ^([a-zA-Z0-9._-]+)-ds\.xml$
       ignore: true
     - builtin.xml:
         filepaths: '{{xmlfiles12.filepaths}}'
