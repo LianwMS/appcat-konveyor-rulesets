@@ -6,6 +6,8 @@
   - konveyor.io/target=openjdk18+
   - konveyor.io/target=openjdk
   - konveyor.io/source
+  - domain=java-modernization
+  - category=deprecated-apis
   links: []
   message: This finalization method has been removed between JDK 18 and 21 and must
     be removed from the code.
@@ -29,6 +31,8 @@
   - konveyor.io/target=openjdk18+
   - konveyor.io/target=openjdk
   - konveyor.io/source
+  - domain=java-modernization
+  - category=deprecated-apis
   links: []
   message: The `java.lang.ThreadGroup.allowThreadSuspension` method has been removed
     and cannot be used anymore.
@@ -45,6 +49,8 @@
   - konveyor.io/target=openjdk18+
   - konveyor.io/target=openjdk
   - konveyor.io/source
+  - domain=java-modernization
+  - category=deprecated-apis
   links: []
   message: The `java.lang.Compiler` method has been removed and cannot be used anymore.
   ruleID: removed-apis-00010
@@ -59,6 +65,8 @@
   - konveyor.io/target=openjdk18+
   - konveyor.io/target=openjdk
   - konveyor.io/source
+  - domain=java-modernization
+  - category=deprecated-apis
   links: []
   message: The `javax.management.remote.rmi.RMIIIOPServerImpl` method has been removed
     and cannot be used anymore.

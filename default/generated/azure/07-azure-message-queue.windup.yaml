@@ -22,6 +22,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
   - message-queue
   - kafka
   links:
@@ -65,6 +67,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
   - message-queue
   - RabbitMQ Client
   links:
@@ -106,6 +110,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
   - message-queue
   - ActiveMQ
   links:
@@ -143,6 +149,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
   - message-queue
   - RabbitMQ Client
   links:
@@ -175,6 +183,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
   - message-queue
   - AMQP Client
   links:
@@ -207,6 +217,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
   - message-queue
   - AMQP Client
   links:
@@ -248,6 +260,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
   - message-queue
   - RabbitMQ Client
   links:
@@ -285,6 +299,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
   - message-queue
   - Azure Service Bus Client
   links:
@@ -318,6 +334,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
   - message-queue
   - Azure Service Bus Client
   links:

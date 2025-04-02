@@ -21,6 +21,8 @@
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
+  - domain=java-modernization
+  - category=framework-upgrade
   - version
   links:
   - title: Azure Spring Apps Spring Boot Version Support
@@ -61,6 +63,8 @@
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
+  - domain=java-modernization
+  - category=framework-upgrade
   - version
   links:
   - title: Azure Spring Apps Spring Boot Version Support
@@ -102,6 +106,8 @@
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
+  - domain=java-modernization
+  - category=framework-upgrade
   - version
   links:
   - title: Azure Spring Apps Spring Boot Version Support

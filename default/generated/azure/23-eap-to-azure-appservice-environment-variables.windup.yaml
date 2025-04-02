@@ -6,6 +6,8 @@
   - konveyor.io/source=eap7
   - konveyor.io/source=eap
   - konveyor.io/target=azure-appservice
+  - domain=azure-readiness
+  - category=eap-migration
   - JBossEAP
   - Azure
   links:

@@ -21,6 +21,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=cloud-native
+  - category=local-resource-access
   - static-content
   links:
   - title: Azure Front Door and CDN documentation

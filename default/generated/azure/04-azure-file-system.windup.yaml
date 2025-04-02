@@ -10,6 +10,8 @@
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
+  - domain=cloud-native
+  - category=file-system-management
   - file-system
   links:
   - title: Relative path found in the application
@@ -58,6 +60,8 @@
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
+  - domain=cloud-native
+  - category=file-system-management
   - file-system
   links:
   - title: Home path found in the application

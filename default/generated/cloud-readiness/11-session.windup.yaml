@@ -6,6 +6,8 @@
   - konveyor.io/source=java
   - konveyor.io/source=java-ee
   - konveyor.io/target=cloud-readiness
+  - domain=cloud-native
+  - category=session-management
   - clustering
   links:
   - title: 'JBoss EAP: Clustering in Web Applications'
@@ -45,6 +47,8 @@
   - konveyor.io/source=java
   - konveyor.io/source=java-ee
   - konveyor.io/target=cloud-readiness
+  - domain=cloud-native
+  - category=session-management
   - clustering
   links:
   - title: Azure Cache for Redis Documentation

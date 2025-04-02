@@ -8,6 +8,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=java-modernization
+  - category=service-binding
   - tomcat
   links:
   - title: Inventory external resources

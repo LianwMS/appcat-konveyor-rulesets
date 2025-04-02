@@ -5,6 +5,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=file-system-management
   - storage
   links:
   - title: Azure Storage documentation
@@ -60,6 +62,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=file-system-management
   - storage
   links:
   - title: Azure Storage documentation
@@ -102,6 +106,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=file-system-management
   - storage
   links:
   - title: Azure Storage documentation
@@ -143,6 +149,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=file-system-management
   - storage
   links:
   - title: Azure Storage documentation
@@ -184,6 +192,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=file-system-management
   - storage
   links: []
   message: "When migrating an application that relies on the file system to Azure,
@@ -224,6 +234,8 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
+  - domain=cloud-native
+  - category=file-system-management
   - storage
   links: []
   message: "When migrating an application that relies on the file system to Azure,

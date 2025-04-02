@@ -7,6 +7,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk17+
   - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
   links:
   - title: Upgrade Lombok version to support Java 17
     url: https://github.com/projectlombok/lombok/issues/2898
