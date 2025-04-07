@@ -3,6 +3,10 @@
 - 10-azure-system-config.windup.yaml：rules with METHOD_CALL locations do not work on calls to static methods https://github.com/konveyor/analyzer-lsp/issues/769
 - 20-spring-boot-to-azure-spring-boot-version.windup.test.yaml: test command could not well handle multiple projects
 - 21-spring-boot-to-azure-spring-cloud-version.windup.test.yaml: test command could not well handle multiple projects
+- 09-azure-static-content.windup.yaml: comment this rule out, and we should improve this rule to make it less noisy:
+    - we could skip the files that are called `index.html and index.html
+    - we could look for HTML pages only located under src/main/resources 
+    - we could look for HTML pages only located under src/main/webapp 
 
 ### cloud-readiness ###
 - 06-jni-native-code.windup.yaml： rules with METHOD_CALL locations do not work on calls to static methods https://github.com/konveyor/analyzer-lsp/issues/769
