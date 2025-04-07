@@ -7,7 +7,7 @@
   - konveyor.io/source=java-ee
   - konveyor.io/target=cloud-readiness
   - domain=cloud-native
-  - category=remote-communication
+  - category=jarkatee-to-azure
   - jca
   links:
   - title: Resource adapter compatibility with JBoss EAP

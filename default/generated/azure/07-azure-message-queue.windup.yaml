@@ -24,6 +24,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=messaging-service-migration
+  - source-category=kafka
   - message-queue
   - kafka
   links:
@@ -69,6 +70,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=messaging-service-migration
+  - source-category=rabbitmq
   - message-queue
   - RabbitMQ Client
   links:
@@ -112,6 +114,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=messaging-service-migration
+  - source-category=activemq-artemis
   - message-queue
   - ActiveMQ
   links:
@@ -151,6 +154,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=messaging-service-migration
+  - source-category=rabbitmq
   - message-queue
   - RabbitMQ Client
   links:
@@ -185,6 +189,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=messaging-service-migration
+  - source-category=spring-amqp
   - message-queue
   - AMQP Client
   links:
@@ -219,6 +224,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=messaging-service-migration
+  - source-category=spring-amqp
   - message-queue
   - AMQP Client
   links:
@@ -262,6 +268,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=messaging-service-migration
+  - source-category=rabbitmq
   - message-queue
   - RabbitMQ Client
   links:
@@ -301,6 +308,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=messaging-service-migration
+  - source-category=azure-service-bus
   - message-queue
   - Azure Service Bus Client
   links:
@@ -336,6 +344,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=messaging-service-migration
+  - source-category=azure-service-bus
   - message-queue
   - Azure Service Bus Client
   links:

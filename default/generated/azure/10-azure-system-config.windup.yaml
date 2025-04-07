@@ -23,6 +23,7 @@
   - konveyor.io/source
   - domain=cloud-native
   - category=configuration-management
+  - source-category=environment-variables
   - config
   links:
   - title: Azure App Configuration documentation

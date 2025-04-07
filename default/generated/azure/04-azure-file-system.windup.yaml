@@ -12,6 +12,7 @@
   - konveyor.io/target=azure-container-apps
   - domain=cloud-native
   - category=file-system-management
+  - source-category=local-file-system
   - file-system
   links:
   - title: Relative path found in the application
@@ -62,6 +63,7 @@
   - konveyor.io/target=azure-container-apps
   - domain=cloud-native
   - category=file-system-management
+  - source-category=local-file-system
   - file-system
   links:
   - title: Home path found in the application

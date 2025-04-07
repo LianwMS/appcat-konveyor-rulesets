@@ -10,6 +10,7 @@
   - konveyor.io/source
   - domain=java-modernization
   - category=service-binding
+  - source-category=tomcat-jndi-resources
   - tomcat
   links:
   - title: Inventory external resources

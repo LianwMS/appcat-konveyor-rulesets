@@ -7,6 +7,7 @@
   - konveyor.io/source
   - domain=cloud-native
   - category=file-system-management
+  - source-category=local-file-system
   - storage
   links:
   - title: Azure Storage documentation
@@ -64,6 +65,7 @@
   - konveyor.io/source
   - domain=cloud-native
   - category=file-system-management
+  - source-category=local-file-system
   - storage
   links:
   - title: Azure Storage documentation
@@ -108,6 +110,7 @@
   - konveyor.io/source
   - domain=cloud-native
   - category=file-system-management
+  - source-category=local-file-system
   - storage
   links:
   - title: Azure Storage documentation
@@ -151,6 +154,7 @@
   - konveyor.io/source
   - domain=cloud-native
   - category=file-system-management
+  - source-category=local-file-system
   - storage
   links:
   - title: Azure Storage documentation
@@ -194,6 +198,7 @@
   - konveyor.io/source
   - domain=cloud-native
   - category=file-system-management
+  - source-category=local-file-system
   - storage
   links: []
   message: "When migrating an application that relies on the file system to Azure,
@@ -236,6 +241,7 @@
   - konveyor.io/source
   - domain=cloud-native
   - category=file-system-management
+  - source-category=local-file-system
   - storage
   links: []
   message: "When migrating an application that relies on the file system to Azure,

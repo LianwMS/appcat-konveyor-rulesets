@@ -23,6 +23,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=service-binding
+  - source-category=jetty-jndi-resources
   - jetty
   links:
   - title: Azure services

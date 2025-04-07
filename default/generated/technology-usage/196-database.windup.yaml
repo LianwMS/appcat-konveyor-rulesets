@@ -16,6 +16,9 @@
   effort: 3
   labels:
   - konveyor.io/include=always
+  - domain=azure-readiness
+  - category=database-migration
+  - source-category=mysql
   - database
   links:
   - title: Azure Database for MySQL documentation
@@ -73,6 +76,9 @@
   effort: 3
   labels:
   - konveyor.io/include=always
+  - domain=azure-readiness
+  - category=database-migration
+  - source-category=postgresql
   - database
   links:
   - title: Azure PostgreSQL Flexible Server documentation
@@ -145,6 +151,9 @@
   effort: 3
   labels:
   - konveyor.io/include=always
+  - domain=azure-readiness
+  - category=database-migration
+  - source-category=microsoft-sql
   - database
   links:
   - title: Azure SQL documentation
@@ -230,6 +239,9 @@
   effort: 3
   labels:
   - konveyor.io/include=always
+  - domain=azure-readiness
+  - category=database-migration
+  - source-category=cassandra
   - database
   links:
   - title: Azure Managed Instance for Apache Cassandra documentation
@@ -316,6 +328,9 @@
   effort: 3
   labels:
   - konveyor.io/include=always
+  - domain=azure-readiness
+  - category=database-migration
+  - source-category=mongodb
   - database
   links:
   - title: Azure Cosmos DB for MongoDB documentation
@@ -444,6 +459,9 @@
   effort: 3
   labels:
   - konveyor.io/include=always
+  - domain=azure-readiness
+  - category=database-migration
+  - source-category=mariadb
   - database
   links:
   - title: Azure Database for MariaDB documentation
