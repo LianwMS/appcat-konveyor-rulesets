@@ -23,6 +23,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=database-migration
+  - source-category=jdbc-databases
   - database
   - jdbc
   links:
@@ -97,6 +98,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=database-migration
+  - source-category=mongodb
   - database
   - mongodb
   links:
@@ -151,6 +153,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=database-migration
+  - source-category=r2dbc-databases
   - database
   - r2dbc
   links:

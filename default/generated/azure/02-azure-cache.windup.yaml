@@ -23,6 +23,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=cache-service-migration
+  - source-category=redis
   - cache
   - redis
   links:

@@ -7,7 +7,7 @@
   - konveyor.io/source=rpc
   - konveyor.io/target=cloud-readiness
   - domain=cloud-native
-  - category=remote-communication
+  - category=jarkatee-to-azure
   - rpc
   links:
   - title: JAX-RPC not supported in JBoss EAP 7

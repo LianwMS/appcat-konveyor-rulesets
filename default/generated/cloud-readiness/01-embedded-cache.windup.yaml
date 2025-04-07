@@ -325,8 +325,9 @@
   labels:
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
-  - domain=cloud-native
-  - category=embedded-cache-management
+  - domain=azure-readiness
+  - category=cache-service-migration
+  - source-category=redis
   links: []
   message: "\n                        The application embeds the Redis client.\n                    \n
     \                       An embedded cache library is problematic because state
