@@ -17,7 +17,6 @@
   effort: 5
   labels:
   - konveyor.io/source=springboot
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-container-apps
@@ -25,8 +24,8 @@
   - category=framework-upgrade
   - version
   links:
-  - title: Azure Spring Apps Spring Boot Version Support
-    url: https://learn.microsoft.com/azure/spring-apps/concept-app-customer-responsibilities#spring-boot-and-spring-cloud-versions
+  - title: Migrate Spring Cloud applications to Azure Container Apps
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-container-apps
   - title: Spring Cloud
     url: https://spring.io/projects/spring-cloud/
   - title: Spring Cloud Supported Versions
@@ -57,7 +56,6 @@
   effort: 2
   labels:
   - konveyor.io/source=springboot
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-container-apps
@@ -65,8 +63,8 @@
   - category=framework-upgrade
   - version
   links:
-  - title: Azure Spring Apps Spring Boot Version Support
-    url: https://learn.microsoft.com/azure/spring-apps/concept-app-customer-responsibilities#spring-boot-and-spring-cloud-versions
+  - title: Migrate Spring Cloud applications to Azure Container Apps
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-container-apps
   - title: Spring Cloud
     url: https://spring.io/projects/spring-cloud/
   - title: Spring Cloud Supported Versions

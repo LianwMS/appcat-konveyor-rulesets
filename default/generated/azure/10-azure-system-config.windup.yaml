@@ -16,7 +16,6 @@
   description: Environment variables/system properties
   effort: 1
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -31,7 +30,7 @@
   - title: Azure Key Vault documentation
     url: https://learn.microsoft.com/azure/key-vault
   - title: Configure per-service secrets and externalized settings
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-apps#configure-per-service-secrets-and-externalized-settings
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-container-apps#configure-per-service-secrets-and-externalized-settings
   message: "The application uses environment variables/system properties.\n To migrate
     a Java application that uses environment variables/system properties to Azure,
     you can follow these recommendations:\n \n * **Identify environment variables

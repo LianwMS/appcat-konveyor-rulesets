@@ -4,7 +4,6 @@
   effort: 7
   labels:
   - konveyor.io/source=springboot
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -22,7 +21,7 @@
     url: https://learn.microsoft.com/azure/container-apps/jobs-get-started-cli
   message: "The application uses Quartz scheduled jobs. Scheduled jobs, such as Quartz
     Scheduler tasks or Unix cron jobs can't be used with cloud service like Azure
-    App Service, Azure Spring Apps, Azure Kubernetes Service.\n These Azure services
+    App Service, Azure Kubernetes Service.\n These Azure services
     won't prevent you from deploying an application containing scheduled tasks internally.\n
     However, if your application is scaled out, the same scheduled job may run more
     than once per scheduled period.\n This situation can lead to unintended consequences.\n

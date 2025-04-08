@@ -4,7 +4,6 @@
   effort: 0
   labels:
   - konveyor.io/source=springboot
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -12,21 +11,21 @@
   - category=spring-migration
   - Spring Cloud Config
   links:
-  - title: Remove restricted configurations
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-apps?pivots=sc-standard-tier#remove-restricted-configurations
-  - title: Prepare the Spring Cloud Config server
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-apps?pivots=sc-standard-tier#prepare-the-spring-cloud-config-server
+  - title: Migrate Spring Boot applications to Azure Container Apps - Remove restricted configurations
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-container-apps#remove-restricted-configurations
+  - title: Connect to a managed Config Server for Spring in Azure Container Apps
+    url: https://learn.microsoft.com/azure/container-apps/java-config-server?tabs=azure-cli
   message: |-
     The application uses a Spring Cloud Config Server connection string.
 
-     If you are migrating to Azure Spring Apps, the connection info of Config Server will be injected automatically upon app start.
+     If you are migrating to Azure Container Apps, the connection info of Config Server can be injected automatically upon app start.
      Find any explicit configurations of config server connection info:
 
-     If configured in **configuration files**: they will be ignored and overrided by Azure Spring Apps.
+     If configured in **configuration files**: they will be ignored and overrided by Azure Container Apps.
 
      If configured in **command line parameters**, **Java system attribute**, **environment variable**: they need to be removed or you might experience conflicts and unexpected behavior.
 
-     Configure the config server after creating an Azure Spring Apps instance.
+     Configure the managed Config Server after creating an Azure Container Apps environment.
   ruleID: spring-boot-to-azure-config-server-01000
   tag:
   - Spring Cloud Config
@@ -40,7 +39,6 @@
   effort: 0
   labels:
   - konveyor.io/source=springboot
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -48,13 +46,12 @@
   - category=spring-migration
   - Spring Cloud Config
   links:
-  - title: Prepare the Spring Cloud Config server
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-apps?pivots=sc-standard-tier#prepare-the-spring-cloud-config-server
+  - title: Connect to a managed Config Server for Spring in Azure Container Apps
+    url: https://learn.microsoft.com/azure/container-apps/java-config-server?tabs=azure-cli
   message: |-
     The application uses Spring Cloud Config Server.
 
-     If you are migrating to Azure Spring Apps, Config Server (Standard Tier) or Application Configuration Service (Enterprise Tier) will be hosted for you.
-     You can just configure the config server after creating an Azure Spring Apps instance
+     If you are migrating to Azure Container Apps, you can just configure the managed Config Server after creating an Azure Container Apps environment
   ruleID: spring-boot-to-azure-config-server-02000
   tag:
   - Spring Cloud Config
