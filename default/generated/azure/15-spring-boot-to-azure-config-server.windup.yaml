@@ -1,7 +1,7 @@
 - category: potential
   customVariables: []
   description: Explicit Config Server connection info found in configuration file
-  effort: 0
+  effort: 1
   labels:
   - konveyor.io/source=springboot
   - konveyor.io/target=azure-spring-apps
@@ -37,7 +37,7 @@
 - category: potential
   customVariables: []
   description: Spring Cloud Config Server found
-  effort: 0
+  effort: 1
   labels:
   - konveyor.io/source=springboot
   - konveyor.io/target=azure-spring-apps

@@ -14,7 +14,7 @@
 - category: potential
   customVariables: []
   description: Restricted configurations found
-  effort: 0
+  effort: 1
   labels:
   - konveyor.io/source=springboot
   - konveyor.io/target=azure-spring-apps

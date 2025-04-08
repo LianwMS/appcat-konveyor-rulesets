@@ -14,7 +14,7 @@
 - category: potential
   customVariables: []
   description: JDBC connection found in configuration file
-  effort: 0
+  effort: 5
   labels:
   - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
@@ -23,7 +23,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=database-migration
-  - source-category=jdbc-databases
+  - source-category=jdbc
   - database
   - jdbc
   links:
@@ -89,7 +89,7 @@
 - category: potential
   customVariables: []
   description: MongoDB connection found in configuration file
-  effort: 0
+  effort: 5
   labels:
   - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
@@ -144,7 +144,7 @@
 - category: potential
   customVariables: []
   description: R2DBC connection found in configuration file
-  effort: 0
+  effort: 5
   labels:
   - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
@@ -153,7 +153,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=database-migration
-  - source-category=r2dbc-databases
+  - source-category=r2dbc
   - database
   - r2dbc
   links:

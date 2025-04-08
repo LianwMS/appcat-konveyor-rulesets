@@ -14,7 +14,7 @@
 - category: potential
   customVariables: []
   description: Redis Cache connection string found
-  effort: 0
+  effort: 5
   labels:
   - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
