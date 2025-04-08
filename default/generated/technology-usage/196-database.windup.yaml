@@ -11,10 +11,11 @@
     builtin.file:
       pattern: ^([a-zA-Z0-9._-]*)hsqldb([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
-  description: MySQL database
+  description: MySQL database found
   labels:
   - konveyor.io/include=always
   links: []
+  message: MySQL database found
   ruleID: database-01500
   tag:
   - MySQL Driver
@@ -41,10 +42,11 @@
     builtin.file:
       pattern: ^([a-zA-Z0-9._-]*)derby([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
-  description: PostgreSQL database
+  description: PostgreSQL database found
   labels:
   - konveyor.io/include=always
   links: []
+  message: PostgreSQL database found
   ruleID: database-01700
   tag:
   - PostgreSQL Driver
@@ -86,10 +88,11 @@
     - builtin.file:
         pattern: ^mssql-jdbc([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
-  description: Microsoft SQL database
+  description: Microsoft SQL database found
   labels:
   - konveyor.io/include=always
   links: []
+  message: Microsoft SQL database found
   ruleID: database-01900
   tag:
   - Microsoft SQL Driver
@@ -144,11 +147,14 @@
     - builtin.file:
         pattern: ^([a-zA-Z0-9._-]*)scale7-pelops([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
-  description: Cassandra database
+  description: Cassandra database found
   labels:
   - konveyor.io/include=always
   links: []
+  message: Cassandra database found
   ruleID: database-02200
+  tag:
+  - Cassandra Client
   when:
     or:
     - builtin.file:
@@ -203,10 +209,11 @@
     - builtin.file:
         pattern: ^([a-zA-Z0-9._-]*)rogue([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
-  description: MongoDB database
+  description: MongoDB database found
   labels:
   - konveyor.io/include=always
   links: []
+  message: MongoDB database found
   ruleID: database-02500
   tag:
   - MongoDB Client
@@ -306,10 +313,11 @@
     builtin.file:
       pattern: ^([a-zA-Z0-9._-]*)mariadb([a-zA-Z0-9._-]*)\.jar$
 - customVariables: []
-  description: MariaDB database
+  description: MariaDB database found
   labels:
   - konveyor.io/include=always
   links: []
+  message: MariaDB database found
   ruleID: database-03200
   tag:
   - MariaDB Driver

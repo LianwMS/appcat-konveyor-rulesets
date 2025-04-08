@@ -267,6 +267,7 @@
   - category=database-migration
   - source-category=mariadb
   - database
+  - mariadb
   links:
   - title: Azure Database for MariaDB documentation
     url: https://learn.microsoft.com/azure/mariadb
@@ -292,7 +293,7 @@
      * Implement **security** measures: Apply security best practices to protect your Java application and the MariaDB database. This includes implementing authentication and authorization mechanisms with passwordless connections and leveraging Microsoft Defender for Cloud for threat detection and vulnerability assessments.
 
      * **Backup** your data: Azure Database for MariaDB provides automated backups by default. You can configure the retention period for backups based on your requirements. You can also enable geo-redundant backups, if needed, to enhance data durability and availability.
-  ruleID: azure-database-microsoft-mariadb-05000
+  ruleID: azure-database-microsoft-mariadb-06000
   when:
     builtin.file:
       pattern: ^([a-zA-Z0-9._-]*)mariadb([a-zA-Z0-9._-]*)\.jar$
