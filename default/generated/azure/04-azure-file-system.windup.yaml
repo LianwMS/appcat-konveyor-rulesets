@@ -6,7 +6,6 @@
   - konveyor.io/source=eap7
   - konveyor.io/source=eap
   - konveyor.io/source=springboot
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -16,7 +15,7 @@
   - file-system
   links:
   - title: Relative path found in the application
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-apps?pivots=sc-standard-tier#determine-whether-and-how-the-file-system-is-used
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-container-apps#determine-whether-and-how-the-file-system-is-used
   - title: Azure Storage documentation
     url: https://learn.microsoft.com/azure/storage
   - title: Create an Azure Files volume mount in Azure Container Apps
@@ -57,7 +56,6 @@
   - konveyor.io/source=eap7
   - konveyor.io/source=eap
   - konveyor.io/source=springboot
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -67,7 +65,7 @@
   - file-system
   links:
   - title: Home path found in the application
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-apps?pivots=sc-standard-tier#determine-whether-and-how-the-file-system-is-used
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-container-apps#determine-whether-and-how-the-file-system-is-used
   - title: Azure Storage documentation
     url: https://learn.microsoft.com/azure/storage
   - title: Create an Azure Files volume mount in Azure Container Apps

@@ -3,7 +3,6 @@
   description: External resources found in Tomcat configuration file
   effort: 5
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -13,8 +12,8 @@
   - source-category=tomcat-jndi-resources
   - tomcat
   links:
-  - title: Inventory external resources
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-spring-apps
+  - title: Migrate Tomcat applications to Azure Container Apps
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-container-apps
   - title: Azure services
     url: https://azure.microsoft.com/products
   message: |-

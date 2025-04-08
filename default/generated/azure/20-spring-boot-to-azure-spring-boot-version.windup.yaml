@@ -17,7 +17,6 @@
   effort: 5
   labels:
   - konveyor.io/source=springboot
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -25,8 +24,6 @@
   - category=framework-upgrade
   - version
   links:
-  - title: Azure Spring Apps Spring Boot Version Support
-    url: https://learn.microsoft.com/azure/spring-apps/concept-app-customer-responsibilities#spring-boot-and-spring-cloud-versions
   - title: Spring Boot Supported Versions
     url: https://spring.io/projects/spring-boot/#support
   - title: Spring Boot Support Policy
@@ -59,7 +56,6 @@
   effort: 2
   labels:
   - konveyor.io/source=springboot
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -67,8 +63,6 @@
   - category=framework-upgrade
   - version
   links:
-  - title: Azure Spring Apps Spring Boot Version Support
-    url: https://learn.microsoft.com/azure/spring-apps/concept-app-customer-responsibilities#spring-boot-and-spring-cloud-versions
   - title: Spring Boot Supported Versions
     url: https://spring.io/projects/spring-boot/#support
   - title: Spring Boot Support Policy
@@ -102,7 +96,6 @@
   effort: 1
   labels:
   - konveyor.io/source=springboot
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -110,11 +103,10 @@
   - category=framework-upgrade
   - version
   links:
-  - title: Azure Spring Apps Spring Boot Version Support
-    url: https://learn.microsoft.com/azure/spring-apps/concept-app-customer-responsibilities#spring-boot-and-spring-cloud-versions
-  - title: 'Azure Spring App Enterprise plan: Unlock Spring’s full potential with
-      Long-Term Support (LTS)'
-    url: https://learn.microsoft.com/azure/spring-apps/overview#unlock-springs-full-potential-with-long-term-support-lts
+  - title: Migrate Spring Boot applications to Azure Container Apps
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-container-apps
+  - title: Launch your first Java microservice application with managed Java components in Azure Container Apps
+    url: https://learn.microsoft.com/azure/container-apps/java-microservice-get-started?tabs=azure-cli
   - title: Spring Boot Supported Versions
     url: https://spring.io/projects/spring-boot/#support
   - title: Spring Boot Support Policy
@@ -124,9 +116,17 @@
   message: |-
     The application is using Spring Boot version out of Open Source Software support. It's recommended to update your plan to commercial support or update the application to open source support version of Spring Boot.
 
-     For commercial support:
+     For commercial support, Azure Container Apps can run any containerized Java application in the cloud while giving flexible options for how you deploy your applications.
 
-     * Migrate to **Azure Spring App Enterprise plan**: The Enterprise plan provides extended commercial support for Spring Boot/Spring Cloud. This support gives you access to Spring experts, enabling you to unlock the full potential of the Spring ecosystem to develop and deploy applications faster with Long-Term Support (LTS).
+     When you use Container Apps for your containerized Java applications, you get:
+     
+     * **Cost effective scaling**: When you use the Consumption plan, your Java apps can scale to zero. Scaling in when there's little demand for your app automatically drives costs down for your projects.
+
+     * **Deployment options**: Azure Container Apps integrates with Buildpacks, which allows you to deploy directly from a Maven build, via artifact files, or with your own Dockerfile.
+
+     * **Automatic memory fitting**: Container Apps optimizes how the Java Virtual Machine (JVM) manages memory, making the most possible memory available to your Java applications.
+
+     * **Build environment variables**: You can configure custom key-value pairs to control the Java image build from source code.
 
      For Spring Boot update, here are some steps you can take:
 

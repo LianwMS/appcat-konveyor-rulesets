@@ -16,7 +16,6 @@
   description: JDBC connection found in configuration file
   effort: 0
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -28,7 +27,7 @@
   - jdbc
   links:
   - title: JDBC connection string found in configuration file
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-apps#databases
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-container-apps#databases
   - title: Use Spring Data JDBC with Azure Database for MySQL
     url: https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-mysql
   - title: Use Spring Data JDBC with Azure Database for PostgreSQL
@@ -91,7 +90,6 @@
   description: MongoDB connection found in configuration file
   effort: 0
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -103,7 +101,7 @@
   - mongodb
   links:
   - title: MongoDB connection string found in configuration file
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-apps#databases
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-container-apps#databases
   - title: Integrate Azure Cosmos DB for MongoDB with Service Connector
     url: https://learn.microsoft.com/azure/service-connector/how-to-integrate-cosmos-db
   - title: Passwordless connections for Azure services
@@ -146,7 +144,6 @@
   description: R2DBC connection found in configuration file
   effort: 0
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -158,7 +155,7 @@
   - r2dbc
   links:
   - title: R2DBC connection string found in configuration file
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-apps#databases
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-container-apps#databases
   - title: Service Connector
     url: https://learn.microsoft.com/azure/service-connector/overview
   - title: Passwordless connections for Azure services

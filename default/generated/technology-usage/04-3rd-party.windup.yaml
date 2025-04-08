@@ -62,7 +62,7 @@
   - konveyor.io/include=always
   links:
   - title: Ensure console logging and configure diagnostic settings
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-apps?pivots=sc-standard-tier#ensure-console-logging-and-configure-diagnostic-settings
+    url: https://learn.microsoft.com/en-us/azure/developer/java/migration/migrate-spring-boot-to-azure-container-apps#ensure-console-logging-and-configure-diagnostic-settings
   - title: Azure Event Hub
     url: https://learn.microsoft.com/azure/event-hubs/event-hubs-about
   - title: Logstash EventHub plugin
@@ -275,7 +275,7 @@
   - konveyor.io/include=always
   links:
   - title: Ensure console logging and configure diagnostic settings
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-apps?pivots=sc-standard-tier#ensure-console-logging-and-configure-diagnostic-settings
+    url: https://learn.microsoft.com/en-us/azure/developer/java/migration/migrate-spring-boot-to-azure-container-apps#ensure-console-logging-and-configure-diagnostic-settings
   - title: Azure Blob Storage
     url: https://learn.microsoft.com/azure/storage/blobs/
   - title: Splunk Add-on for Microsoft Cloud Services

@@ -17,23 +17,22 @@
   effort: 0
   labels:
   - konveyor.io/source=springboot
-  - konveyor.io/target=azure-spring-apps
   - domain=azure-readiness
   - category=spring-migration
   links:
-  - title: Remove restricted configurations
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-spring-apps?toc=%2Fazure%2Fspring-apps%2Ftoc.json&bc=%2Fazure%2Fspring-apps%2Fbreadcrumb%2Ftoc.json&pivots=sc-standard-tier#remove-restricted-configurations
-  - title: Set up a Config server
-    url: https://learn.microsoft.com/azure/spring-apps/how-to-config-server
-  - title: Enable Service Registration
-    url: https://learn.microsoft.com/azure/spring-apps/how-to-service-registration?pivots=programming-language-java
-  message: "The application uses restricted configurations for Azure Spring Apps.\n
-    These properties are automatically injected into your application environment
-    by Azure Spring Apps to access Config Server and Service Discovery.\n Please remove
+  - title: Migrate Spring Boot applications to Azure Container Apps - Remove restricted configurations
+    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-container-apps#remove-restricted-configurations
+  - title: Connect to a managed Config Server for Spring in Azure Container Apps
+    url: https://learn.microsoft.com/azure/container-apps/java-config-server?tabs=azure-cli
+  - title: Connect to a managed Eureka Server for Spring in Azure Container Apps
+    url: https://learn.microsoft.com/azure/container-apps/java-eureka-server?tabs=azure-cli
+  message: "The application uses restricted configurations for Azure Container Apps.\n
+    These properties can be automatically injected into your application environment
+    by Azure Container Apps to access managed Config Server and managed Eureka Server.\n Please remove
     them from your application, including configuration files, config server files,
     command line parameters, Java system attributes, and environment variables.\n\n
     If configured in **configuration files**: they will be ignored and overrided by
-    Azure Spring Apps.\n \n If configured in **Config Server files**, **command line
+    Azure Container Apps.\n \n If configured in **Config Server files**, **command line
     parameters**, **Java system attribute**, **environment variable**: they need to
     be removed or you might experience conflicts and unexpected behavior."
   ruleID: spring-boot-to-azure-restricted-config-01000

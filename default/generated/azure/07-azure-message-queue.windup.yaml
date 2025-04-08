@@ -17,7 +17,6 @@
     file
   effort: 0
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -63,7 +62,6 @@
     file
   effort: 0
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -76,8 +74,8 @@
   links:
   - title: Azure Service Bus documentation
     url: https://learn.microsoft.com/azure/service-bus-messaging
-  - title: Service connection in Azure Spring Apps
-    url: https://learn.microsoft.com/azure/service-connector/quickstart-portal-spring-cloud-connection
+  - title: Service connection in Azure Container Apps
+    url: https://learn.microsoft.com/azure/service-connector/quickstart-portal-container-apps
   - title: Passwordless connections for Azure services
     url: https://learn.microsoft.com/azure/developer/intro/passwordless-overview
   message: "The application uses a RabbitMQ connection string, username, or password.
@@ -107,7 +105,6 @@
     file
   effort: 0
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -123,8 +120,8 @@
   - title: Migrate existing Java Message Service applications from Apache ActiveMQ
       to Azure Service Bus
     url: https://learn.microsoft.com/azure/service-bus-messaging/migrate-jms-activemq-to-servicebus
-  - title: Service connection in Azure Spring Apps
-    url: https://learn.microsoft.com/azure/service-connector/quickstart-portal-spring-cloud-connection
+  - title: Service connection in Azure Container Apps
+    url: https://learn.microsoft.com/azure/service-connector/quickstart-portal-container-apps
   - title: Passwordless connections for Azure services
     url: https://learn.microsoft.com/azure/developer/intro/passwordless-overview
   message: |-
@@ -147,7 +144,6 @@
   description: Spring RabbitMQ usage found in code
   effort: 0
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -182,7 +178,6 @@
   description: Spring AMQP usage found in code
   effort: 0
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -217,7 +212,6 @@
   description: Spring AMQP dependency found
   effort: 0
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -261,7 +255,6 @@
   description: Spring JMS RabbitMQ dependency found
   effort: 0
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -301,7 +294,6 @@
   description: Azure Service Bus Spring dependency found
   effort: 0
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -337,7 +329,6 @@
   description: Azure Service Bus Spring configuration found
   effort: 0
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps

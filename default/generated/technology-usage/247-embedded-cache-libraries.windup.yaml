@@ -34,10 +34,12 @@
     url: https://learn.microsoft.com/azure/azure-cache-for-redis
   - title: Caching guidance
     url: https://learn.microsoft.com/azure/architecture/best-practices/caching
-  - title: Connect Azure Cache for Redis to your application in Azure Spring Apps
-    url: https://learn.microsoft.com/azure/spring-apps/how-to-bind-redis?tabs=Java%2CService-Connector
+  - title: Connect Azure Cache for Redis to your application in Azure Container Apps
+    url: https://learn.microsoft.com/en-us/azure/container-apps/services
+  - title: Create a service connection in Azure Container Apps from the Azure portal
+    url: https://learn.microsoft.com/en-us/azure/service-connector/quickstart-portal-container-apps
   - title: Redis Cache found in the application
-    url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-apps#identify-external-caches
+    url: https://learn.microsoft.com/en-us/azure/developer/java/migration/migrate-spring-boot-to-azure-container-apps#identify-external-caches
   - title: Spring Data Redis
     url: https://spring.io/projects/spring-data-redis/
   - title: Azure Spring Cloud Starter Cache
