@@ -24,6 +24,7 @@
   - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=service-binding
+  - source-category=tanzu-application-service
   links:
   - title: 'Java to Azure migration: resources configured through TAS'
     url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-cloud-to-azure-container-apps#resources-configured-through-vmware-tanzu-application-service-tas-formerly-pivotal-cloud-foundry

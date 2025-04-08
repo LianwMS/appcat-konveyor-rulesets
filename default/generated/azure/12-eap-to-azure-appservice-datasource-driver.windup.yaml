@@ -9,6 +9,7 @@
   - konveyor.io/target=azure-aks
   - domain=azure-readiness
   - category=eap-migration
+  - source-category=jboss-eap
   - password
   - security
   links:

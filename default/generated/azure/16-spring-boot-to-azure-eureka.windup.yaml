@@ -1,7 +1,7 @@
 - category: potential
   customVariables: []
   description: Explicit eureka connection info found in configuration file
-  effort: 0
+  effort: 1
   labels:
   - konveyor.io/source=springboot
   - konveyor.io/target=azure-aks

@@ -64,6 +64,7 @@
   - konveyor.io/source
   - domain=cloud-native
   - category=java-native-code
+  - source-category=jni-native-code
   - jni
   links: []
   message: |-
