@@ -94,7 +94,7 @@
     url: https://www.dynatrace.com/support/help/setup-and-configuration/setup-on-cloud-platforms/microsoft-azure-services/azure-integrations/azure-appservice
   - title: Monitor Azure Container Apps using Dynatrace OneAgent
     url: https://docs.dynatrace.com/docs/ingest-from/microsoft-azure-services/azure-integrations/azure-cloud-services-metrics/monitor-azure-container-app
-  - title:Deploy Dynatrace OneAgent on your Container Apps
+  - title: Deploy Dynatrace OneAgent on your Container Apps
     url: https://techcommunity.microsoft.com/blog/appsonazureblog/deploy-dynatrace-oneagent-on-your-container-apps/4395276
   - title: Integrate Dynatrace on Azure
     url: https://www.dynatrace.com/support/help/setup-and-configuration/setup-on-cloud-platforms/microsoft-azure-services/azure-integrations
