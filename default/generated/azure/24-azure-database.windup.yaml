@@ -40,24 +40,33 @@
      * **Backup** your data: Azure Database for MySQL provides automated backups by default. You can configure the retention period for backups based on your requirements. You can also enable geo-redundant backups, if needed, to enhance data durability and availability.
   ruleID: azure-database-mysql-01000
   when:
-    or:
-    - java.dependency:
-        lowerbound: 0.0.0
-        nameregex: ([a-zA-Z0-9._-]*)mysql([a-zA-Z0-9._-]*)
-    - builtin.filecontent:
-        filePattern: build\.gradle$
-        pattern: mysql
-    - builtin.file:
-        pattern: ^([a-zA-Z0-9._-]*)mysql-connector([a-zA-Z0-9._-]*)\.jar$
-    - builtin.filecontent:
+    and:
+    - or:
+      - java.dependency:
+          lowerbound: 0.0.0
+          nameregex: ([a-zA-Z0-9._-]*)mysql([a-zA-Z0-9._-]*)
+      - builtin.filecontent:
+          filePattern: build\.gradle$
+          pattern: mysql
+      - builtin.file:
+          pattern: ^([a-zA-Z0-9._-]*)mysql-connector([a-zA-Z0-9._-]*)\.jar$
+      - builtin.filecontent:
         filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: '(?i)jdbc:mysql'
-    - builtin.filecontent:
-        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
-        pattern: '(?i)r2dbc:mysql'
-    - builtin.filecontent:
-        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
-        pattern: '(?i)r2dbc:pool:mysql'
+      - builtin.filecontent:
+          filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+          pattern: '(?i)r2dbc:mysql'
+      - builtin.filecontent:
+          filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+          pattern: '(?i)r2dbc:pool:mysql'
+    - not: true
+      or:
+      - builtin.filecontent:
+          filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
+          pattern: ([a-zA-Z0-9-]+)\.mysql\.database\.azure\.com$
+      - java.dependency:
+          lowerbound: 0.0.0
+          nameregex: ([a-zA-Z0-9._-]*)spring-cloud-azure-starter-jdbc-mysql([a-zA-Z0-9._-]*)
 - category: potential
   customVariables: []
   description: PostgreSQL database found
@@ -100,24 +109,33 @@
      * **Backup** your data: Azure Database for PostgreSQL provides automated backups by default. You can configure the retention period for backups based on your requirements. You can also enable geo-redundant backups, if needed, to enhance data durability and availability.
   ruleID: azure-database-postgresql-02000
   when:
-    or:
-    - java.dependency:
-        lowerbound: 0.0.0
-        nameregex: ([a-zA-Z0-9._-]*)postgresql([a-zA-Z0-9._-]*)
-    - builtin.filecontent:
-        filePattern: build\.gradle$
-        pattern: postgresql
-    - builtin.file:
-        pattern: ^([a-zA-Z0-9._-]*)postgresql([a-zA-Z0-9._-]*)\.jar$
-    - builtin.filecontent:
+    and:
+    - or:
+      - java.dependency:
+          lowerbound: 0.0.0
+          nameregex: ([a-zA-Z0-9._-]*)postgresql([a-zA-Z0-9._-]*)
+      - builtin.filecontent:
+          filePattern: build\.gradle$
+          pattern: postgresql
+      - builtin.file:
+          pattern: ^([a-zA-Z0-9._-]*)postgresql([a-zA-Z0-9._-]*)\.jar$
+      - builtin.filecontent:
         filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
         pattern: '(?i)jdbc:postgresql'
-    - builtin.filecontent:
-        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
-        pattern: '(?i)r2dbc:postgresql'
-    - builtin.filecontent:
-        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
-        pattern: '(?i)r2dbc:pool:postgresql'
+      - builtin.filecontent:
+          filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+          pattern: '(?i)r2dbc:postgresql'
+      - builtin.filecontent:
+          filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+          pattern: '(?i)r2dbc:pool:postgresql'
+    - not: true
+      or:
+      - builtin.filecontent:
+          filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
+          pattern: ([a-zA-Z0-9-]+)\.postgres\.database\.azure\.com$
+      - java.dependency:
+          lowerbound: 0.0.0
+          nameregex: ([a-zA-Z0-9._-]*)spring-cloud-azure-starter-jdbc-postgresql([a-zA-Z0-9._-]*)
 - category: potential
   customVariables: []
   description: Microsoft SQL database found
