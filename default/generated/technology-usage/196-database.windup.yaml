@@ -20,15 +20,24 @@
   tag:
   - MySQL Driver
   when:
-    or:
-    - java.dependency:
-        lowerbound: 0.0.0
-        nameregex: ([a-zA-Z0-9._-]*)mysql([a-zA-Z0-9._-]*)
-    - builtin.filecontent:
-        filePattern: build\.gradle$
-        pattern: mysql
-    - builtin.file:
-        pattern: ^([a-zA-Z0-9._-]*)mysql-connector([a-zA-Z0-9._-]*)\.jar$
+    and:
+    - or:
+      - java.dependency:
+          lowerbound: 0.0.0
+          nameregex: ([a-zA-Z0-9._-]*)mysql([a-zA-Z0-9._-]*)
+      - builtin.filecontent:
+          filePattern: build\.gradle$
+          pattern: mysql
+      - builtin.file:
+          pattern: ^([a-zA-Z0-9._-]*)mysql-connector([a-zA-Z0-9._-]*)\.jar$
+    - not: true
+      or:
+      - builtin.filecontent:
+          filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
+          pattern: ([a-zA-Z0-9-]+)\.mysql\.database\.azure\.com$
+      - java.dependency:
+          lowerbound: 0.0.0
+          nameregex: ([a-zA-Z0-9._-]*)spring-cloud-azure-starter-jdbc-mysql([a-zA-Z0-9._-]*)
 - customVariables: []
   description: Embedded Derby Driver
   labels:
@@ -51,15 +60,24 @@
   tag:
   - PostgreSQL Driver
   when:
-    or:
-    - java.dependency:
-        lowerbound: 0.0.0
-        nameregex: ([a-zA-Z0-9._-]*)postgresql([a-zA-Z0-9._-]*)
-    - builtin.filecontent:
-        filePattern: build\.gradle$
-        pattern: postgresql
-    - builtin.file:
-        pattern: ^([a-zA-Z0-9._-]*)postgresql([a-zA-Z0-9._-]*)\.jar$
+    and:
+    - or:
+      - java.dependency:
+          lowerbound: 0.0.0
+          nameregex: ([a-zA-Z0-9._-]*)postgresql([a-zA-Z0-9._-]*)
+      - builtin.filecontent:
+          filePattern: build\.gradle$
+          pattern: postgresql
+      - builtin.file:
+          pattern: ^([a-zA-Z0-9._-]*)postgresql([a-zA-Z0-9._-]*)\.jar$
+    - not: true
+      or:
+      - builtin.filecontent:
+          filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
+          pattern: ([a-zA-Z0-9-]+)\.postgres\.database\.azure\.com$
+      - java.dependency:
+          lowerbound: 0.0.0
+          nameregex: ([a-zA-Z0-9._-]*)spring-cloud-azure-starter-jdbc-postgresql([a-zA-Z0-9._-]*)
 - customVariables: []
   description: Embedded H2 Driver
   labels:
