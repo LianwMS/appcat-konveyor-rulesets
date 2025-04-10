@@ -46,7 +46,21 @@
     * **Connect to Azure Cache for Redis**: Connect your app to Azure Cache for Redis on azure by **Service Connector**. Instead of manually configuring connection string in your applications, you can automatically connect Azure Cache for Redis to your applications. 
   ruleID: azure-cache-redis-01000
   when:
-    or:
+    and:
     - builtin.filecontent:
         filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
         pattern: (redis|jedis|lettuce)\.(.*\.)?(url|host|nodes|username|password)
+    - or:
+      - builtin.filecontent:
+          filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
+          pattern: ([a-zA-Z0-9-]+\.redis\.cache\.windows\.net)$
+      - builtin.filecontent:
+          filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
+          pattern: ([a-zA-Z0-9-]+\.redis\.cache\.chinacloudapi\.cn)$
+      - builtin.filecontent:
+          filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
+          pattern: ([a-zA-Z0-9-]+\.[a-z]+\.redis\.azure\.net)$
+      - builtin.filecontent:
+          filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
+          pattern: ([a-zA-Z0-9-]+\.[a-z]+\.redisenterprise\.cache\.azure\.net)$
+      not: true
