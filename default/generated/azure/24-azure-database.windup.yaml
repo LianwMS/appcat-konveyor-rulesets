@@ -49,6 +49,15 @@
         pattern: mysql
     - builtin.file:
         pattern: ^([a-zA-Z0-9._-]*)mysql-connector([a-zA-Z0-9._-]*)\.jar$
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+        pattern: '(?i)jdbc:mysql'
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+        pattern: '(?i)r2dbc:mysql'
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+        pattern: '(?i)r2dbc:pool:mysql'
 - category: potential
   customVariables: []
   description: PostgreSQL database found
@@ -100,6 +109,15 @@
         pattern: postgresql
     - builtin.file:
         pattern: ^([a-zA-Z0-9._-]*)postgresql([a-zA-Z0-9._-]*)\.jar$
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+        pattern: '(?i)jdbc:postgresql'
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+        pattern: '(?i)r2dbc:postgresql'
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+        pattern: '(?i)r2dbc:pool:postgresql'
 - category: potential
   customVariables: []
   description: Microsoft SQL database found
@@ -146,6 +164,15 @@
         pattern: ^sqljdbc([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
         pattern: ^mssql-jdbc([a-zA-Z0-9._-]*)\.jar$
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+        pattern: '(?i)jdbc:sqlserver'
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+        pattern: '(?i)r2dbc:mssql'
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+        pattern: '(?i)r2dbc:pool:mssql'
 - category: potential
   customVariables: []
   description: Cassandra database found
@@ -295,5 +322,15 @@
      * **Backup** your data: Azure Database for MariaDB provides automated backups by default. You can configure the retention period for backups based on your requirements. You can also enable geo-redundant backups, if needed, to enhance data durability and availability.
   ruleID: azure-database-microsoft-mariadb-06000
   when:
-    builtin.file:
-      pattern: ^([a-zA-Z0-9._-]*)mariadb([a-zA-Z0-9._-]*)\.jar$
+    or:
+    - builtin.file:
+        pattern: ^([a-zA-Z0-9._-]*)mariadb([a-zA-Z0-9._-]*)\.jar$
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+        pattern: '(?i)jdbc:mariadb'
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+        pattern: '(?i)r2dbc:mariadb'
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+        pattern: '(?i)r2dbc:pool:mariadb'
