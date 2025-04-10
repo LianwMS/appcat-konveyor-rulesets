@@ -175,40 +175,6 @@
       pattern: org.springframework.amqp.rabbit*
 - category: optional
   customVariables: []
-  description: Spring AMQP usage found in code
-  effort: 5
-  labels:
-  - konveyor.io/target=azure-appservice
-  - konveyor.io/target=azure-aks
-  - konveyor.io/target=azure-container-apps
-  - konveyor.io/source
-  - domain=azure-readiness
-  - category=messaging-service-migration
-  - source-category=spring-amqp
-  - message-queue
-  - AMQP Client
-  links:
-  - title: Azure Service Bus documentation
-    url: https://learn.microsoft.com/azure/service-bus-messaging
-  - title: Use Azure Service Bus in Spring applications
-    url: https://learn.microsoft.com/azure/developer/java/spring-framework/using-service-bus-in-spring-applications
-  message: |-
-    The application uses Spring AMQP in code. To migrate a Java application that uses Spring AMQP to Azure, you can follow these recommendations:
-
-     * Provision **Azure Service Bus**: Use Azure Service Bus, a fully managed messaging service that offers reliable message queuing and publish/subscribe capabilities.
-
-     * Update the application's **messaging connection** details: Modify the Java application's configuration updating the connection information and message queues/topics.
-
-     * Configure Azure Service Bus **queues/topics**: Create appropriate queues or topics in Azure Service Bus to align with your application's messaging requirements. Configure access control and security settings as needed.
-  ruleID: azure-message-queue-amqp-01000
-  tag:
-  - AMQP Client
-  when:
-    java.referenced:
-      location: PACKAGE
-      pattern: org.springframework.amqp*
-- category: optional
-  customVariables: []
   description: Spring AMQP dependency found
   effort: 5
   labels:

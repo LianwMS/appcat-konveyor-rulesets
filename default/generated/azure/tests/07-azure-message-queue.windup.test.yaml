@@ -32,12 +32,6 @@ tests:
       atLeast: 1
       messageMatches: The application uses Spring RabbitMQ based on Spring AMQP in
         code.
-- ruleID: azure-message-queue-amqp-01000
-  testCases:
-  - name: tc-1
-    hasIncidents:
-      atLeast: 1
-      messageMatches: The application uses Spring AMQP in code.
 - ruleID: azure-message-queue-amqp-02000
   testCases:
   - name: tc-1
