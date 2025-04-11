@@ -51,8 +51,8 @@
       - builtin.file:
           pattern: ^([a-zA-Z0-9._-]*)mysql-connector([a-zA-Z0-9._-]*)\.jar$
       - builtin.filecontent:
-        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
-        pattern: '(?i)jdbc:mysql'
+          filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+          pattern: '(?i)jdbc:mysql'
       - builtin.filecontent:
           filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
           pattern: '(?i)r2dbc:mysql'
@@ -120,8 +120,8 @@
       - builtin.file:
           pattern: ^([a-zA-Z0-9._-]*)postgresql([a-zA-Z0-9._-]*)\.jar$
       - builtin.filecontent:
-        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
-        pattern: '(?i)jdbc:postgresql'
+          filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
+          pattern: '(?i)jdbc:postgresql'
       - builtin.filecontent:
           filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(xml|properties|yaml|yml)$
           pattern: '(?i)r2dbc:postgresql'
