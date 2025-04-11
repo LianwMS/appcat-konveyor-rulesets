@@ -7,7 +7,7 @@
   - konveyor.io/source=rmi
   - konveyor.io/target=cloud-readiness
   - domain=cloud-native
-  - category=jarkatee-to-azure
+  - category=jakartaee-to-azure
   - cloud-readiness
   - rmi
   links:
@@ -41,7 +41,7 @@
   - konveyor.io/source=rmi
   - konveyor.io/target=cloud-readiness
   - domain=cloud-native
-  - category=jarkatee-to-azure
+  - category=jakartaee-to-azure
   - cloud-readiness
   - rmi
   links: []
