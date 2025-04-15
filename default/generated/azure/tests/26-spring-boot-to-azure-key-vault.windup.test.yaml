@@ -1,4 +1,4 @@
-rulesPath: ../26-spring-boot-to-azure-key-vault.yaml
+rulesPath: ../26-spring-boot-to-azure-key-vault.windup.yaml
 providers:
 - name: java
   dataPath: ./data/26-spring-boot-to-azure-key-vault

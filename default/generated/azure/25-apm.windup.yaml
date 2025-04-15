@@ -3,7 +3,11 @@
   description: Application Performance Management (APM) tool - Application Insights
   effort: 1
   labels:
-  - konveyor.io/include=always
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
+  - konveyor.io/source
   - apm
   links:
   - title: Configure Application Insights to connect with Azure App Service
@@ -31,7 +35,11 @@
   description: Application Performance Management (APM) tool - New Relic
   effort: 1
   labels:
-  - konveyor.io/include=always
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
+  - konveyor.io/source
   - apm
   links:
   - title: Configure New Relic for Azure App Service
@@ -53,7 +61,11 @@
   description: Application Performance Management (APM) tool - Elastic APM
   effort: 3
   labels:
-  - konveyor.io/include=always
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
+  - konveyor.io/source
   - apm
   links:
   - title: Deploy and manage Elastic on Azure
@@ -81,7 +93,11 @@
   description: Application Performance Management (APM) tool - Dynatrace
   effort: 3
   labels:
-  - konveyor.io/include=always
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
+  - konveyor.io/source
   - apm
   links:
   - title: Monitor Azure App Service using Dynatrace OneAgent

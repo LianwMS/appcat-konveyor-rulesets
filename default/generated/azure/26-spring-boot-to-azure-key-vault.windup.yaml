@@ -3,7 +3,12 @@
   description: Embedded library - Spring Cloud Vault
   effort: 1
   labels:
-  - konveyor.io/include=always
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
+  - konveyor.io/source
+  - vault
   links:
   - title: Load a secret from Azure Key Vault in a Spring Boot application
     url: https://learn.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-key-vault

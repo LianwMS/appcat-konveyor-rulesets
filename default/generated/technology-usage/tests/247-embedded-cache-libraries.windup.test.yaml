@@ -96,7 +96,7 @@ tests:
   testCases:
   - name: tc-1
     hasTags:
-    - ShiftOne (Java Object Cache) embedded library
+    - Caching - ShiftOne (Java Object Cache) embedded library
   - name: tc-2
     hasTags:
     - ShiftOne
