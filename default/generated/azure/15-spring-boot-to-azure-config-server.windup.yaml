@@ -27,8 +27,6 @@
 
      Configure the managed Config Server after creating an Azure Container Apps environment.
   ruleID: spring-boot-to-azure-config-server-01000
-  tag:
-  - Spring Cloud Config
   when:
     builtin.filecontent:
       filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
@@ -53,8 +51,6 @@
 
      If you are migrating to Azure Container Apps, you can just configure the managed Config Server after creating an Azure Container Apps environment
   ruleID: spring-boot-to-azure-config-server-02000
-  tag:
-  - Spring Cloud Config
   when:
     or:
     - java.dependency:

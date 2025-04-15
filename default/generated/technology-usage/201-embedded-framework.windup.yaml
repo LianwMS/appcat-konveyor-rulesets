@@ -824,6 +824,9 @@
         nameregex: ([a-zA-Z0-9._-]*)eureka-client([a-zA-Z0-9._-]*)
     - builtin.file:
         pattern: ^([a-zA-Z0-9._-]*)eureka-client([a-zA-Z0-9._-]*)\.jar$
+    - builtin.filecontent:
+        filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
+        pattern: eureka\.client\.(service-url|serviceUrl)
 - customVariables: []
   description: Embedded framework - Eureka Server
   labels:

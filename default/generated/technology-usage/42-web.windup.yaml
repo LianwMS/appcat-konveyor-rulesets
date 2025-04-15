@@ -203,3 +203,30 @@
         pattern: ^([a-zA-Z0-9._-]*)eclipse([a-zA-Z0-9._-]*)runtime([a-zA-Z0-9._-]*)\.jar$
     - builtin.file:
         pattern: ^([a-zA-Z0-9._-]*)eclipse\.ui([a-zA-Z0-9._-]*)\.jar$
+- customVariables: []
+  description: Embedded technology - Java Remote Method Invocation (RMI) service
+  labels:
+  - konveyor.io/include=always
+  links: []
+  message: The application uses Java Remote Method Invocation (RMI) service
+  ruleID: technology-usage-web-02500
+  tag:
+  - Java Remote Method Invocation (RMI) service
+  when:
+    java.referenced:
+      location: INHERITANCE
+      pattern: java.rmi.Remote
+- customVariables: []
+  description: Embedded technology - Java Remote Method Invocation (RMI) API
+  labels:
+  - konveyor.io/include=always
+  links: []
+  message: The application uses Java Remote Method Invocation (RMI) API
+  ruleID: technology-usage-web-02600
+  tag:
+  - rmi
+  - Java Remote Method Invocation (RMI) API
+  when:
+    java.referenced:
+        location: PACKAGE
+        pattern: java.rmi*

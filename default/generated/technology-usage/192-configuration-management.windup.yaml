@@ -18,6 +18,15 @@
     - java.dependency:
         lowerbound: 0.0.0
         name: org.springframework.cloud.spring-cloud-config-client
+    - java.dependency:
+        lowerbound: 0.0.0
+        name: org.springframework.cloud.spring-cloud-config-server
+    - java.referenced:
+        location: IMPORT
+        pattern: org.springframework.cloud.config.server.EnableConfigServer.EnableConfigServer
+    - builtin.filecontent:
+        filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
+        pattern: spring\.config\.import|spring\.cloud\.config\.uri
 - customVariables: []
   description: Application properties file detected
   labels:
