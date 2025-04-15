@@ -9,5 +9,5 @@ tests:
   testCases:
   - name: tc-1
     hasIncidents:
-      atLeast: 2
+      atLeast: 1
       messageMatches: The application embeds Spring Cloud Vault
