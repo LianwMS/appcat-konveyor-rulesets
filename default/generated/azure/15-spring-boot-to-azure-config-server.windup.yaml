@@ -63,3 +63,35 @@
     - java.referenced:
         location: IMPORT
         pattern: org.springframework.cloud.config.server.EnableConfigServer.EnableConfigServer
+- category: potential
+  customVariables: []
+  description: Embedded library - Spring Cloud Config
+  effort: 1
+  labels:
+  - konveyor.io/include=always
+  links:
+  - title: Connect to a managed Config Server for Spring in Azure Container Apps
+    url: https://learn.microsoft.com/en-us/azure/container-apps/java-config-server?tabs=azure-cli
+  message: |-
+    The application embeds Spring Cloud Config.
+
+     If you are migrating to Azure Container Apps, the connection info of Config Server can be injected automatically upon app start.
+     Find any explicit configurations of config server connection info:
+
+     If configured in **configuration files**: they will be ignored and overrided by Azure Container Apps.
+
+     If configured in **command line parameters**, **Java system attribute**, **environment variable**: they need to be removed or you might experience conflicts and unexpected behavior.
+
+     Configure the managed Config Server after creating an Azure Container Apps environment.
+  ruleID: spring-boot-to-azure-config-server-03000
+  when:
+    or:
+    - java.dependency:
+        lowerbound: 0.0.0
+        name: org.springframework.cloud.spring-cloud-config-client
+    - java.dependency:
+        lowerbound: 0.0.0
+        name: org.springframework.cloud.spring-cloud-starter-config
+    - java.dependency:
+        lowerbound: 0.0.0
+        name: org.springframework.cloud.spring-cloud-config-client
