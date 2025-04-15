@@ -4,12 +4,11 @@ providers:
   dataPath: ./data/10-azure-system-config
 - name: builtin
   dataPath: ./data/10-azure-system-config
-tests: []
-# https://github.com/konveyor/analyzer-lsp/issues/769
-# tests:
-# - ruleID: azure-system-config-01000
-#   testCases:
-#   - name: tc-1
-#     hasIncidents:
-#       atLeast: 2
-#       messageMatches: The application uses environment variables/system properties
+# https://github.com/konveyor/analyzer-lsp/issues/736#issuecomment-2504302330
+tests:
+- ruleID: azure-system-config-01000
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 2
+      messageMatches: The application uses environment variables/system properties
