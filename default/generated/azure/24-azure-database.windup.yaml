@@ -3,7 +3,6 @@
   description: MySQL database found
   effort: 3
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -72,7 +71,6 @@
   description: PostgreSQL database found
   effort: 3
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -141,7 +139,6 @@
   description: Microsoft SQL database found
   effort: 3
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -196,7 +193,6 @@
   description: Cassandra database found
   effort: 3
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -252,7 +248,6 @@
   description: MongoDB database found
   effort: 3
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
@@ -304,7 +299,6 @@
   description: MariaDB database found
   effort: 3
   labels:
-  - konveyor.io/target=azure-spring-apps
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
