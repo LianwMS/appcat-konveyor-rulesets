@@ -3,7 +3,10 @@
   description: Embedded library - Logstash
   effort: 3
   labels:
-  - konveyor.io/target=cloud-readiness
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - konveyor.io/source
   links:
   - title: Ensure console logging and configure diagnostic settings
@@ -33,7 +36,10 @@
   description: Embedded library - Splunk
   effort: 3
   labels:
-  - konveyor.io/target=cloud-readiness
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - konveyor.io/source
   links:
   - title: Ensure console logging and configure diagnostic settings
@@ -63,7 +69,10 @@
   description: Embedded framework - Feign
   effort: 1
   labels:
-  - konveyor.io/target=cloud-readiness
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - konveyor.io/source
   links:
   - title: Migrate clients bypassing the service registry
@@ -90,7 +99,10 @@
   description: Embedded framework - Zipkin
   effort: 1
   labels:
-  - konveyor.io/target=cloud-readiness
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - konveyor.io/source
   links:
   - title: Azure Monitor
@@ -121,7 +133,10 @@
   description: Embedded framework - Eureka Client
   effort: 1
   labels:
-  - konveyor.io/target=cloud-readiness
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - konveyor.io/source
   links:
   - title: Connect to a managed Eureka Server for Spring in Azure Container Apps
@@ -153,7 +168,10 @@
   description: Embedded framework - Eureka Server
   effort: 1
   labels:
-  - konveyor.io/target=cloud-readiness
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - konveyor.io/source
   links:
   - title: Connect to a managed Eureka Server for Spring in Azure Container Apps

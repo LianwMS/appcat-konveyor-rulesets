@@ -3,7 +3,10 @@
   description: Embedded library - SAML
   effort: 1
   labels:
-  - konveyor.io/target=cloud-readiness
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - konveyor.io/source
   links:
   - title: SAML authentication with Azure Active Directory
@@ -27,7 +30,10 @@
   description: Embedded library - OpenSAML
   effort: 1
   labels:
-  - konveyor.io/target=cloud-readiness
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - konveyor.io/source
   links:
   - title: SAML authentication with Azure Active Directory
@@ -51,7 +57,10 @@
   description: Embedded framework - Spring Security
   effort: 1
   labels:
-  - konveyor.io/target=cloud-readiness
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - konveyor.io/source
   links:
   - title: Spring Security-related dependencies found in the project
@@ -83,7 +92,10 @@
   description: Embedded library - OAuth 2.0
   effort: 1
   labels:
-  - konveyor.io/target=cloud-readiness
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - konveyor.io/source
   links:
   - title: OAuth 2.0 authentication with Azure Active Directory
@@ -114,7 +126,10 @@
   description: Embedded library - OpenID
   effort: 1
   labels:
-  - konveyor.io/target=cloud-readiness
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - konveyor.io/source
   links:
   - title: OpenID Connect authentication with Azure Active Directory
