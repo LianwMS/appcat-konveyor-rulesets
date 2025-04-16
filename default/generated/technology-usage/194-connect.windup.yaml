@@ -163,7 +163,7 @@
     - builtin.file:
         pattern: .*amqp.*
     - builtin.file:
-      pattern: ^([a-zA-Z0-9._-]*)amqp([a-zA-Z0-9._-]*)$
+        pattern: ^([a-zA-Z0-9._-]*)amqp([a-zA-Z0-9._-]*)$
 - customVariables: []
   description: Embedded library - RocketMQ Client
   labels:
