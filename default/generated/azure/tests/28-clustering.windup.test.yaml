@@ -1,9 +1,9 @@
-rulesPath: ../14-clustering.windup.yaml
+rulesPath: ../28-clustering.windup.yaml
 providers:
 - name: java
-  dataPath: ./data/14-clustering
+  dataPath: ./data/28-clustering
 - name: builtin
-  dataPath: ./data/14-clustering
+  dataPath: ./data/28-clustering
 tests:
 - ruleID: clustering-00000
   testCases:

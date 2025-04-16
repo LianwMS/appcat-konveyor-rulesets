@@ -1,9 +1,9 @@
-rulesPath: ../15-web.windup.yaml
+rulesPath: ../13-web.windup.yaml
 providers:
 - name: java
-  dataPath: ./data/15-web
+  dataPath: ./data/13-web
 - name: builtin
-  dataPath: ./data/15-web
+  dataPath: ./data/13-web
 tests:
 - ruleID: web-10000
   testCases:

@@ -1,9 +1,9 @@
-rulesPath: ../13-3rd-party-framework.windup.yaml
+rulesPath: ../27-3rd-party-framework.windup.yaml
 providers:
 - name: java
-  dataPath: ./data/13-3rd-party-framework
+  dataPath: ./data/27-3rd-party-framework
 - name: builtin
-  dataPath: ./data/13-3rd-party-framework
+  dataPath: ./data/27-3rd-party-framework
 tests:
 - ruleID: 3rd-party-framework-00000
   testCases:
