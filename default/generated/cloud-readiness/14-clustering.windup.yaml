@@ -3,7 +3,8 @@
   description: Distributed Environments found
   effort: 5
   labels:
-  - konveyor.io/include=always
+  - konveyor.io/target=cloud-readiness
+  - konveyor.io/source
   links:
   - title: Azure Cache for Redis Documentation
     url: https://learn.microsoft.com/azure/azure-cache-for-redis

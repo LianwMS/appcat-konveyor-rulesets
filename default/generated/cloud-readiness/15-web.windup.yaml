@@ -3,7 +3,8 @@
   description: Java Swing usage
   effort: 3
   labels:
-  - konveyor.io/include=always
+  - konveyor.io/target=cloud-readiness
+  - konveyor.io/source
   links:
   - title: Azure Container Registry documentation
     url: https://learn.microsoft.com/azure/container-registry
@@ -33,7 +34,8 @@
   description: JavaFX usage
   effort: 3
   labels:
-  - konveyor.io/include=always
+  - konveyor.io/target=cloud-readiness
+  - konveyor.io/source
   links:
   - title: Azure Container Registry documentation
     url: https://learn.microsoft.com/azure/container-registry

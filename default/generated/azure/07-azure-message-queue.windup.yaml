@@ -248,8 +248,15 @@
   description: ActiveMQ found
   effort: 3
   labels:
-  - konveyor.io/include=always
-  - connect
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
+  - konveyor.io/source
+  - domain=azure-readiness
+  - category=messaging-service-migration
+  - source-category=activemq
+  - message-queue
+  - ActiveMQ
   links:
   - title: Spring Boot application using an Active MQ Broker
     url: https://learn.microsoft.com/en-us/azure/developer/java/migration/migrate-spring-boot-to-azure-container-apps#jms-message-brokers
