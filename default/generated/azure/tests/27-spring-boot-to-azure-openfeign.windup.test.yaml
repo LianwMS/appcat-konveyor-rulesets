@@ -1,0 +1,13 @@
+rulesPath: ../27-3rd-party-framework.windup.yaml
+providers:
+- name: java
+  dataPath: ./data/27-3rd-party-framework
+- name: builtin
+  dataPath: ./data/27-3rd-party-framework
+tests:
+- ruleID: spring-boot-to-azure-openfeign-01000
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: The application embeds the Feign framework.

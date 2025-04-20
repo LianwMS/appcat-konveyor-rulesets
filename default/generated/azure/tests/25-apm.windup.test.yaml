@@ -5,12 +5,6 @@ providers:
 - name: builtin
   dataPath: ./data/25-apm
 tests:
-- ruleID: apm-00000
-  testCases:
-  - name: tc-1
-    hasIncidents:
-      atLeast: 2
-      messageMatches: To migrate a Java application that uses Application Insights
 - ruleID: apm-00001
   testCases:
   - name: tc-1

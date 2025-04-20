@@ -27,3 +27,72 @@
     builtin.filecontent:
       filePattern: (/|\\)(application|bootstrap)(-[a-zA-Z0-9]+)*?\.(properties|yaml|yml)$
       pattern: eureka\.client\.(service-url|serviceUrl)
+- category: potential
+  customVariables: []
+  description: Embedded framework - Eureka Client
+  effort: 1
+  labels:
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
+  - konveyor.io/source
+  - domain=cloud-native
+  - category=spring-migration
+  links:
+  - title: Connect to a managed Eureka Server for Spring in Azure Container Apps
+    url: https://learn.microsoft.com/en-us/azure/container-apps/java-eureka-server?tabs=azure-cli
+  - title: Create a highly available Eureka server component cluster in Azure Container Apps
+    url: https://learn.microsoft.com/en-us/azure/container-apps/java-eureka-server-highly-available
+  - title: Integrate Admin for Spring with Eureka Server for Spring in Azure Container Apps
+    url: https://learn.microsoft.com/en-us/azure/container-apps/java-admin-eureka-integration
+  - title: Remove restricted configurations
+    url: https://learn.microsoft.com/en-us/azure/developer/java/migration/migrate-spring-cloud-to-azure-container-apps#remove-restricted-configurations
+  message: |-
+    The application embeds the Eureka client. If you are migrating to Azure Container Apps, the connection info of Eureka can be injected upon app start.
+
+     Find any explicit configurations of config server connection info:
+
+     If configured in **configuration files**: they will be ignored and overrided by Azure Container Apps.
+
+     If configured in **command line parameters**, **Java system attribute**, **environment variable**: they need to be removed or you might experience conflicts and unexpected behavior.
+  ruleID: spring-boot-to-azure-eureka-02000
+  when:
+    or:
+    - java.dependency:
+        lowerbound: 0.0.0
+        nameregex: ([a-zA-Z0-9._-]*)eureka-client([a-zA-Z0-9._-]*)
+    - builtin.file:
+        pattern: ^([a-zA-Z0-9._-]*)eureka-client([a-zA-Z0-9._-]*)\.jar$
+- category: potential
+  customVariables: []
+  description: Embedded framework - Eureka Server
+  effort: 1
+  labels:
+  - konveyor.io/target=azure-spring-apps
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
+  - konveyor.io/source
+  - domain=cloud-native
+  - category=spring-migration
+  links:
+  - title: Connect to a managed Eureka Server for Spring in Azure Container Apps
+    url: https://learn.microsoft.com/en-us/azure/container-apps/java-eureka-server?tabs=azure-cli
+  - title: Create a highly available Eureka server component cluster in Azure Container Apps
+    url: https://learn.microsoft.com/en-us/azure/container-apps/java-eureka-server-highly-available
+  - title: Integrate Admin for Spring with Eureka Server for Spring in Azure Container Apps
+    url: https://learn.microsoft.com/en-us/azure/container-apps/java-admin-eureka-integration
+  - title: Remove restricted configurations
+    url: https://learn.microsoft.com/en-us/azure/developer/java/migration/migrate-spring-cloud-to-azure-container-apps#remove-restricted-configurations
+  message: The application embeds the Eureka server. If you are migrating to Azure
+    Container Apps, the managed Eureka Server can be used. The managed Eureka Server is a fully managed service that can
+    be hosted for you.
+  ruleID: spring-boot-to-azure-eureka-03000
+  when:
+    or:
+    - java.dependency:
+        lowerbound: 0.0.0
+        nameregex: ([a-zA-Z0-9._-]*)eureka-server([a-zA-Z0-9._-]*)
+    - builtin.file:
+        pattern: ^([a-zA-Z0-9._-]*)eureka-server([a-zA-Z0-9._-]*)\.jar$

@@ -1,9 +1,9 @@
-rulesPath: ../29-auth.windup.yaml
+rulesPath: ../28-auth.windup.yaml
 providers:
 - name: java
-  dataPath: ./data/29-auth
+  dataPath: ./data/28-auth
 - name: builtin
-  dataPath: ./data/29-auth
+  dataPath: ./data/28-auth
 tests:
 - ruleID: auth-00000
   testCases:

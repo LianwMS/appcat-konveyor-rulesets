@@ -1,37 +1,5 @@
 - category: mandatory
   customVariables: []
-  description: Application Performance Management (APM) tool - Application Insights
-  effort: 1
-  labels:
-  - konveyor.io/target=azure-spring-apps
-  - konveyor.io/target=azure-appservice
-  - konveyor.io/target=azure-aks
-  - konveyor.io/target=azure-container-apps
-  - konveyor.io/source
-  - apm
-  links:
-  - title: Configure Application Insights to connect with Azure App Service
-    url: https://learn.microsoft.com/azure/app-service/configure-language-java#configure-application-insights
-  - title: Configure application performance management (APM) integrations with Azure Container Apps
-    url: https://learn.microsoft.com/en-us/azure/developer/java/migration/migrate-spring-boot-to-azure-container-apps#configure-application-performance-management-apm-integrations
-  - title: Configure the Application Performance Management (APM) Java agent with init containers in Azure Container Apps
-    url: https://learn.microsoft.com/en-us/azure/container-apps/java-application-performance-management-config?tabs=bash
-  - title: Application Insights
-    url: https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview
-  message: |-
-    To migrate a Java application that uses Application Insights to Azure, you can follow this recommendation:
-
-     * **Configure Application Insights**: To connect Application Insights with Java applications deployed on Azure, you can turn on Application Insights in the portal page of your app or configure it through Azure CLI. For a detailed guide, please refer to the following documentation links.
-  ruleID: apm-00000
-  when:
-    or:
-    - java.dependency:
-        lowerbound: 0.0.0
-        nameregex: com\.microsoft\.azure\.([a-zA-Z0-9._-]*)applicationinsights([a-zA-Z0-9._-]*)
-    - builtin.file:
-        pattern: ^applicationinsights([a-zA-Z0-9._-]*)\.jar$
-- category: mandatory
-  customVariables: []
   description: Application Performance Management (APM) tool - New Relic
   effort: 1
   labels:
@@ -40,6 +8,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=apm-migration
   - apm
   links:
   - title: Configure New Relic for Azure App Service
@@ -66,6 +36,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=apm-migration
   - apm
   links:
   - title: Deploy and manage Elastic on Azure
@@ -98,6 +70,8 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=apm-migration
   - apm
   links:
   - title: Monitor Azure App Service using Dynatrace OneAgent
