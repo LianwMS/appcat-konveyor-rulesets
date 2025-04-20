@@ -1,9 +1,9 @@
-rulesPath: ../27-3rd-party-framework.windup.yaml
+rulesPath: ../27-spring-boot-to-azure-openfeign.windup.yaml
 providers:
 - name: java
-  dataPath: ./data/27-3rd-party-framework
+  dataPath: ./data/27-spring-boot-to-azure-openfeign
 - name: builtin
-  dataPath: ./data/27-3rd-party-framework
+  dataPath: ./data/27-spring-boot-to-azure-openfeign
 tests:
 - ruleID: spring-boot-to-azure-openfeign-01000
   testCases:

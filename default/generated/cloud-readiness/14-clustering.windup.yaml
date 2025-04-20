@@ -6,7 +6,7 @@
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
   - domain=cloud-native
-  - category=clustering
+  - category=session-management
   links:
   - title: Azure Cache for Redis Documentation
     url: https://learn.microsoft.com/azure/azure-cache-for-redis
