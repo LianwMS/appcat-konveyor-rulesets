@@ -24,3 +24,21 @@ tests:
     hasIncidents:
       atLeast: 1
       messageMatches: Found a logging configuration that logs to the file system
+- ruleID: logging-0003
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: The application embeds the Logstash framework.
+- ruleID: logging-0004
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: The application embeds the Splunk framework.
+- ruleID: logging-0005
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: The application embeds the Zipkin framework.
