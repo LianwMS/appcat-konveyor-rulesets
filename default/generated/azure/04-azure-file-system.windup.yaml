@@ -45,9 +45,13 @@
      * **Configuration**: Store configuration in Azure App Configuration instead of using the file system. Also store configuration settings in environment variables so that they can be updated without code changes.
   ruleID: azure-file-system-02000
   when:
-    builtin.filecontent:
-      filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(java|properties|yaml|yml|xml)$
-      pattern: \.\/.
+    or:
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.java$
+        pattern: \b(?:var|let|const|String\s+)?\w+\s*=\s*["'](\.{1,2}\/[-\w\/.]*)["']\s*;
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(properties|yaml|yml|xml)$
+        pattern: ^(?!.*(^\s*-?\s*(run|init|command|cmd|script|exec)\s*:.*\.\/|<!--.*\.\/|\.\/.*-->|#.*\.\/)).*\.\/\S+
 - category: optional
   customVariables: []
   description: Home path found
@@ -97,4 +101,4 @@
   when:
     builtin.filecontent:
       filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(java|properties|yaml|yml|xml)$
-      pattern: \/home
+      pattern: (?i)(["'=]\s*|\s|^)\/home[\p{L}0-9_/-]*(?=\/|$|\s|["'])
