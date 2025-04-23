@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: The SecurityManager.checkMemberAccess method is deprecated.
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk8-
   - konveyor.io/source=openjdk
@@ -25,7 +25,7 @@
 - category: mandatory
   customVariables: []
   description: The checkTopLevelWindow, checkSystemClipboardAccess, and checkAwtEventQueueAccess methods under SecurityManager class are deprecated.
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk8-
   - konveyor.io/source=openjdk

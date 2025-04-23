@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: The addPropertyChangeListener and removePropertyChangeListener methods under LogManager are deprecated.
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk8-
   - konveyor.io/source=openjdk

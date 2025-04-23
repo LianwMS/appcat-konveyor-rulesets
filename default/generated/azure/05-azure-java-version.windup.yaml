@@ -1,6 +1,6 @@
 - category: mandatory
   customVariables: []
-  description: Non-LTS version Java found
+  description: Non-LTS version Java
   effort: 3
   labels:
   - konveyor.io/target=azure-appservice

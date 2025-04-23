@@ -1,14 +1,14 @@
-- category: mandatory
+- category: potential
   customVariables: []
   description: NullPointerException for Null Arguments in Collection.removeAll() and retainAll()
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk8-
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk8+
   - konveyor.io/target=openjdk
   - domain=java-modernization
-  - category=deprecated-apis
+  - category=java-version-upgrade
   links:
   - title: Compatibility Guide for JDK 8
     url: https://www.oracle.com/java/technologies/javase/8-compatibility-guide.html

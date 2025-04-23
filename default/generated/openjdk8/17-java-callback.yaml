@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: The class com.sun.security.auth.callback.DialogCallbackHandler has been deprecated
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk8-
   - konveyor.io/source=openjdk

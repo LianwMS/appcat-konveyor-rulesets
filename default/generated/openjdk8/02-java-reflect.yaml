@@ -1,7 +1,7 @@
 - category: potential
   customVariables: []
   description: The java.lang.reflect.Proxy class that implements non-public interface will be non-public, final, and not abstract.
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk8-
   - konveyor.io/source=openjdk
@@ -30,7 +30,7 @@
 - category: potential
   customVariables: []
   description: The `java.lang.reflect.Proxy(InvocationHandler h)` constructor throws a `NullPointerException` if null `InvocationHandler` parameter.
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk8-
   - konveyor.io/source=openjdk
@@ -54,14 +54,14 @@
 - category: potential
   customVariables: []
   description: Default methods affect the result of Class.getMethod and Class.getMethods
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk8-
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk8+
   - konveyor.io/target=openjdk
   - domain=java-modernization
-  - category=deprecated-apis
+  - category=java-version-upgrade
   links:
   - title: Compatibility Guide for JDK 8
     url: https://www.oracle.com/java/technologies/javase/8-compatibility-guide.html
