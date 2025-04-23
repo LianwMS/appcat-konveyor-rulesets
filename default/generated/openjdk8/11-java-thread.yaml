@@ -10,7 +10,7 @@
   - domain=java-modernization
   - category=deprecated-apis
   links:
-  - title: Features Removed from Java SE 8
+  - title: Compatibility Guide for JDK 8
     url: https://www.oracle.com/java/technologies/javase/8-compatibility-guide.html
   message: |-
     The Thread.stop method has been deprecated since release 1.2. This method now throws an UnsupportedOperationException.

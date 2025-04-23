@@ -20,4 +20,3 @@
     - builtin.filecontent:
         filePattern: (/|\\).*\.java$
         pattern: javafx.scene.*Builder
-    

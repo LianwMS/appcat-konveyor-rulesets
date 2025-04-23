@@ -19,8 +19,3 @@
     or:
     - builtin.filecontent:
         pattern: jdbc\:odbc|jdbc\.odbc|JdbcOdbcDriver
-
-
-
-
-
