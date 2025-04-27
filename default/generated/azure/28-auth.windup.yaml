@@ -8,6 +8,9 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=auth-migration
+  - source-category=saml
   links:
   - title: SAML authentication with Azure Active Directory
     url: https://learn.microsoft.com/azure/active-directory/fundamentals/auth-saml
@@ -35,6 +38,9 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=auth-migration
+  - source-category=opensaml
   links:
   - title: SAML authentication with Azure Active Directory
     url: https://learn.microsoft.com/azure/active-directory/fundamentals/auth-saml
@@ -62,6 +68,9 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=auth-migration
+  - source-category=spring-security
   links:
   - title: Spring Security-related dependencies found in the project
     url: https://learn.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-app-service#identity-providers
@@ -97,6 +106,9 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=auth-migration
+  - source-category=oauth2
   links:
   - title: OAuth 2.0 authentication with Azure Active Directory
     url: https://learn.microsoft.com/azure/active-directory/architecture/auth-oauth2
@@ -131,6 +143,9 @@
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps
   - konveyor.io/source
+  - domain=azure-readiness
+  - category=auth-migration
+  - source-category=openid
   links:
   - title: OpenID Connect authentication with Azure Active Directory
     url: https://learn.microsoft.com/azure/active-directory/architecture/auth-oidc

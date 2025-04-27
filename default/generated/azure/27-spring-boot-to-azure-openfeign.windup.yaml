@@ -10,6 +10,7 @@
   - konveyor.io/source
   - domain=cloud-native
   - category=spring-migration
+  - source-category=spring-cloud
   links:
   - title: Migrate clients bypassing the service registry
     url: https://learn.microsoft.com/en-us/azure/developer/java/migration/migrate-spring-cloud-to-azure-container-apps
