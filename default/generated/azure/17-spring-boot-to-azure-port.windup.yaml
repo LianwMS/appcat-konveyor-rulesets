@@ -9,6 +9,7 @@
   - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=spring-migration
+  - source-category=spring-cloud
   - port
   - server port
   links:

@@ -104,6 +104,7 @@
   - konveyor.io/target=cloud-readiness
   - domain=cloud-native
   - category=logging-management
+  - source-category=logstash
   - logging
   links:
   - title: Ensure console logging and configure diagnostic settings
@@ -138,6 +139,7 @@
   - konveyor.io/target=cloud-readiness
   - domain=cloud-native
   - category=logging-management
+  - source-category=splunk
   - logging
   links:
   - title: Ensure console logging and configure diagnostic settings
@@ -172,6 +174,7 @@
   - konveyor.io/target=cloud-readiness
   - domain=cloud-native
   - category=logging-management
+  - source-category=zipkin
   - logging
   links:
   - title: Azure Monitor
