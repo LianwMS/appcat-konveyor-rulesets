@@ -66,7 +66,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=messaging-service-migration
-  - source-category=rabbitmq
+  - source-category=spring-amqp-rabbitmq
   - message-queue
   - RabbitMQ Client
   links:
@@ -144,7 +144,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=messaging-service-migration
-  - source-category=rabbitmq
+  - source-category=spring-amqp-rabbitmq
   - message-queue
   - RabbitMQ Client
   links:
@@ -176,7 +176,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=messaging-service-migration
-  - source-category=spring-amqp
+  - source-category=spring-amqp-rabbitmq
   - message-queue
   - AMQP Client
   links:
@@ -217,7 +217,7 @@
   - konveyor.io/source
   - domain=azure-readiness
   - category=messaging-service-migration
-  - source-category=rabbitmq
+  - source-category=spring-jms-rabbitmq
   - message-queue
   - RabbitMQ Client
   links:
