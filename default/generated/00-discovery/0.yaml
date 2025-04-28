@@ -30,6 +30,9 @@
   description: "Hardcoded IP Address"
   labels:
   - konveyor.io/target=cloud-readiness
+  - domain=cloud-native
+  - category=remote-communication
+  - source-category=hardcode-ip
   when:
     builtin.filecontent:
       pattern: ([0-9]{1,3}\.){3}[0-9]{1,3}
