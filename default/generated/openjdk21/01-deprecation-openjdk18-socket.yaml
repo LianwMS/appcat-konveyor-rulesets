@@ -1,0 +1,115 @@
+- category: mandatory
+  customVariables: []
+  description: Removal of Legacy PlainSocketImpl and PlainDatagramSocketImpl Implementations
+  effort: 3
+  labels:
+  - konveyor.io/source=openjdk18-
+  - konveyor.io/source=openjdk
+  - konveyor.io/target=openjdk18+
+  - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
+  links:
+  - title: Removal of Legacy PlainSocketImpl and PlainDatagramSocketImpl Implementations
+    url: https://www.oracle.com/java/technologies/javase/18all-relnotes.html#JDK-8253119
+  message: |-
+    Legacy implementations of `java.net.SocketImpl` and `java.net.DatagramSocketImpl` have been removed from the JDK. The legacy implementation of `SocketImpl` has not been used by default since JDK 13, while the legacy implementation of `DatagramSocketImpl` has not been used by default since JDK 15.
+    Support for system properties `jdk.net.usePlainSocketImpl` and `jdk.net.usePlainDatagramSocketImpl` used to select these implementations has also been removed. Setting these properties now has no effect.
+  ruleID: java-18-socket-00000
+  when:
+    or:
+    - java.referenced:
+        location: PACKAGE
+        pattern: java.net.SocketImpl*    
+    - java.referenced:
+        location: PACKAGE
+        pattern: java.net.DatagramSocketImpl*
+    - builtin.filecontent:
+        pattern: jdk.net.usePlainSocketImpl
+    - builtin.filecontent:
+        pattern: jdk.net.usePlainDatagramSocketImpl
+
+
+# import java.awt.color.ICC_Profile;
+# import java.awt.image.ColorModel;
+# import java.awt.image.IndexColorModel;
+# import java.lang.reflect.Method;
+
+# public class FinalizeDemo {
+
+#     // 1. Demonstrate calling the no-op finalize() in ICC_Profile
+#     private static void callIccProfileFinalize() throws Exception {
+#         // Obtain an ICC_Profile instance (using a well-known tag)
+#         ICC_Profile profile = ICC_Profile.getInstance(ICC_Profile.icSigMediaWhitePointTag);
+#         // Access the protected finalize() method
+#         Method finalizeMethod = ICC_Profile.class.getDeclaredMethod("finalize");
+#         finalizeMethod.setAccessible(true);
+#         // Invoke it (it does nothing)
+#         finalizeMethod.invoke(profile);
+#         System.out.println("Called ICC_Profile.finalize() reflectively");
+#     }
+
+#     // 2. Subclass of ColorModel overriding the deprecated empty finalize()
+#     static class MyColorModel extends ColorModel {
+#         MyColorModel() {
+#             super(8);  // 8 bits per pixel placeholder
+#         }
+
+#         /**
+#          * @deprecated Deprecated since Java 9, forRemoval=true.
+#          *             This no-op finalize was removed in JDK 18 (JDK-8273103).
+#          */
+#         @Deprecated(since = "9", forRemoval = true)
+#         @Override
+#         @SuppressWarnings("removal")
+#         protected void finalize() {
+#             System.out.println("MyColorModel.finalize() called");
+#             try {
+#                 super.finalize();  // was no-op in java.desktop
+#             } catch (Throwable t) {
+#                 // ignore
+#             }
+#         }
+#     }
+
+#     // 3. Subclass of IndexColorModel overriding the deprecated empty finalize()
+#     static class MyIndexColorModel extends IndexColorModel {
+#         MyIndexColorModel(int bits, int size, byte[] r, byte[] g, byte[] b) {
+#             super(bits, size, r, g, b);
+#         }
+
+#         /**
+#          * @deprecated Deprecated since Java 9, forRemoval=true.
+#          *             This no-op finalize was removed in JDK 18 (JDK-8273103).
+#          */
+#         @Deprecated(since = "9", forRemoval = true)
+#         @Override
+#         @SuppressWarnings("removal")
+#         public void finalize() {
+#             System.out.println("MyIndexColorModel.finalize() called");
+#             try {
+#                 super.finalize();  // was no-op in java.desktop
+#             } catch (Throwable t) {
+#                 // ignore
+#             }
+#         }
+#     }
+
+#     public static void main(String[] args) throws Exception {
+#         // 1. Reflective call to ICC_Profile.finalize()
+#         callIccProfileFinalize();                                                
+
+#         // 2. Trigger finalize on MyColorModel via GC
+#         MyColorModel cm = new MyColorModel();
+#         cm = null;
+#         System.gc();
+#         Thread.sleep(500);  // give GC a moment
+
+#         // 3. Trigger finalize on MyIndexColorModel via GC
+#         byte[] r = new byte[]{(byte)255}, g = new byte[]{0}, b = new byte[]{0};
+#         MyIndexColorModel icm = new MyIndexColorModel(8, 1, r, g, b);
+#         icm = null;
+#         System.gc();
+#         Thread.sleep(500);  // give GC a moment
+#     }
+# }
