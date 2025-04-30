@@ -100,5 +100,5 @@
   ruleID: azure-file-system-03000
   when:
     builtin.filecontent:
-      filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(java|properties|yaml|yml|xml)$
-      pattern: (?i)(["'=]\s*|\s|^)\/home[\p{L}0-9_/-]*(?=\/|$|\s|["'])
+      filePattern: (/|\\)([a-zA-Z0-9._-]+)\.(properties|yaml|yml|xml)$
+      pattern: (?i)(["'=]\s*|\s|^)\/home[\p{L}0-9_\/-]*(?=\/|$|\s|["'])
