@@ -1,6 +1,6 @@
 - category: mandatory
   customVariables: []
-  description: Non-LTS version Java
+  description: Non-LTS Java version
   effort: 3
   labels:
   - konveyor.io/target=azure-appservice
@@ -25,7 +25,7 @@
       xpath: //m:java.version[matches(text(), '(9|10|12|13|14|15|16|19|20).*')]
 - category: mandatory
   customVariables: []
-  description: Java version found to be lower than JAVA_8
+  description: Legacy Java version
   effort: 3
   labels:
   - konveyor.io/target=azure-appservice
@@ -47,4 +47,4 @@
       - pom.xml
       namespaces:
         m: http://maven.apache.org/POM/4.0.0
-      xpath: //m:java.version[matches(text(), '[0-9]|10|11')]
+      xpath: //m:java.version[matches(text(), '^(0|[1-9]|10|11)$')]
