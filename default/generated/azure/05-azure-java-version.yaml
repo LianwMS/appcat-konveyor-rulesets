@@ -47,4 +47,4 @@
       - pom.xml
       namespaces:
         m: http://maven.apache.org/POM/4.0.0
-      xpath: //m:java.version[matches(text(), '[0-11]')]
+      xpath: //m:java.version[matches(text(), '[0-9]|10|11')]
