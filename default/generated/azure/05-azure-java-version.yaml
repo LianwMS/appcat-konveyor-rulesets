@@ -22,7 +22,8 @@
       - pom.xml
       namespaces:
         m: http://maven.apache.org/POM/4.0.0
-      xpath: //m:java.version[matches(text(), '(9|10|12|13|14|15|16|19|20).*')]
+      # match: 1.0 to 1.10, and 9, 10, 12, 13, 14, 15, 16, 19, 20, optional any suffix
+      xpath: //m:java.version[matches(text(), '^(1\.(10|[0-9])|9|10|12|13|14|15|16|19|20).*')]
 - category: mandatory
   customVariables: []
   description: Legacy Java version
@@ -47,4 +48,5 @@
       - pom.xml
       namespaces:
         m: http://maven.apache.org/POM/4.0.0
-      xpath: //m:java.version[matches(text(), '^(0|[1-9]|10|11)$')]
+      # match: 1.0 to 1.10, and 1 to 11
+      xpath: //m:java.version[matches(text(), '^(1(\.([0-9]|10))?|[2-9]|10|11)$')]
