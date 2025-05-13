@@ -9,7 +9,7 @@ tests:
   testCases:
   - name: tc-1
     hasIncidents:
-      exactly: 2
+      exactly: 1
       messageMatches: The application is using non-LTS Java version.
 - ruleID: azure-java-version-02000
   testCases:
