@@ -1,4 +1,4 @@
-rulesPath: ../28-auth.windup.yaml
+rulesPath: ../28-auth.yaml
 providers:
 - name: java
   dataPath: ./data/28-auth
