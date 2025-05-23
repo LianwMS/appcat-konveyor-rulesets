@@ -1,0 +1,13 @@
+rulesPath: ../01-deprecation-openjdk18-runtime.yaml
+providers:
+- name: java
+  dataPath: ./data/01-deprecation-openjdk18-runtime
+- name: builtin
+  dataPath: ./data/01-deprecation-openjdk18-runtime
+tests:
+- ruleID: java-18-runtime-00000
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      exactly: 1
+      messageMatches: This method is error-prone and should not be used, the corresponding method `ProcessBuilder` should be used instead. 

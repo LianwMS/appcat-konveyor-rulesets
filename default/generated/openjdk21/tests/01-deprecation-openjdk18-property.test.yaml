@@ -1,0 +1,13 @@
+rulesPath: ../01-deprecation-openjdk18-property.yaml
+providers:
+- name: java
+  dataPath: ./data/01-deprecation-openjdk18-property
+- name: builtin
+  dataPath: ./data/01-deprecation-openjdk18-property
+tests:
+- ruleID: java-18-property-00000
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      exactly: 1
+      messageMatches: The system property `impl.prefix` has been removed. 

@@ -13,17 +13,11 @@
   - title: The Runtime.exec(String, ...) method is error-prone and should not be used
     url: https://cr.openjdk.org/~iris/se/18/latestSpec/api/deprecated-list.html
   message: |-
-    This method is error-prone and should not be used, the corresponding method `Runtime.exec(String[], ...)` or `ProcessBuilder` should be used instead. 
+    This method is error-prone and should not be used, the corresponding method `ProcessBuilder` should be used instead. 
     The command string is broken into tokens using only whitespace characters. For an argument with an embedded space, such as a filename, this can cause problems as the token does not include the full filename.
   ruleID: java-18-runtime-00000
   when:
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Runtime.exec(String)
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.Runtime.exec(String, String[])
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.Runtime.exec(String, String[], File)
+        pattern: java.lang.Runtime.exec*
