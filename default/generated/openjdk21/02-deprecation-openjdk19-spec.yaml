@@ -19,9 +19,9 @@
     or:
     - java.referenced:
         location: CONSTRUCTOR_CALL
-        pattern: java.security.spec.PSSParameterSpec(int)
-    - java.referenced:
-        pattern: java.security.spec.PSSParameterSpec.DEFAULT
+        pattern: java.security.spec.PSSParameterSpec*
+    - builtin.filecontent:
+        pattern: PSSParameterSpec\.DEFAULT
 - category: mandatory
   customVariables: []
   description: OAEPParameterSpec.DEFAULT Static Constant Is Deprecated
@@ -37,9 +37,9 @@
   - title: OAEPParameterSpec.DEFAULT Static Constant Is Deprecated
     url: https://www.oracle.com/java/technologies/javase/19-relnote-issues.html#JDK-8284553
   message: |-
-    IIt is recommended to construct `OAEPParameterSpec` explicitly with desired values instead of using the DEFAULT static constant. The DEFAULT static constant uses the default values in the initial version of the PKCS#1 standard and some of these values are no longer recommended due to advances in cryptanalysis.
+    It is recommended to construct `OAEPParameterSpec` explicitly with desired values instead of using the DEFAULT static constant. The DEFAULT static constant uses the default values in the initial version of the PKCS#1 standard and some of these values are no longer recommended due to advances in cryptanalysis.
   ruleID: java-19-param-spec-00001
   when:
     or:
-    - java.referenced:
-        pattern: javax.crypto.spec.OAEPParameterSpec.DEFAULT
+    - builtin.filecontent:
+        pattern: OAEPParameterSpec\.DEFAULT

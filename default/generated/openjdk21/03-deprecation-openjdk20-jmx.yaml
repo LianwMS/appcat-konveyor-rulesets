@@ -20,10 +20,14 @@
   when:
     or:
     - java.referenced:
+        location: IMPORT
         pattern: javax.management.loading.MLet
     - java.referenced:
+        location: IMPORT
         pattern: javax.management.loading.MLetContent
     - java.referenced:
+        location: IMPORT
         pattern: javax.management.loading.MLetMBean
     - java.referenced:
+        location: IMPORT
         pattern: javax.management.loading.PrivateMLet

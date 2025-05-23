@@ -28,8 +28,26 @@
   when:
     or:
     - java.referenced:
-        location: PACKAGE
-        pattern: java.lang.ThreadGroup*
+        location: METHOD_CALL
+        pattern: java.lang.ThreadGroup.destroy*
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: java.lang.ThreadGroup.isDestroyed*
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: java.lang.ThreadGroup.setDaemon*
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: java.lang.ThreadGroup.isDaemon*
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: java.lang.ThreadGroup.suspend*
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: java.lang.ThreadGroup.resume*
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: java.lang.ThreadGroup.stop*
 - category: mandatory
   customVariables: []
   description: This method is not final and may be overridden to return a value that is not the thread ID. Use Thread.threadId() instead.
@@ -68,9 +86,9 @@
     url: https://www.oracle.com/java/technologies/javase/19-relnote-issues.html#JDK-8282676
   message: |-
     The `jdk.security.auth.subject.useTL` system property and the alternate `ThreadLocal` implementation of the `Subject::current` and `Subject::callAs` APIs have been removed. The default implementation of these APIs is still supported.
-  ruleID: java-19-thread-00001
+  ruleID: java-19-thread-00002
   when:
-    or:
+    or: 
     - java.referenced:
         location: METHOD_CALL
         pattern: javax.security.auth.Subject.current*
@@ -78,4 +96,4 @@
         location: METHOD_CALL
         pattern: javax.security.auth.Subject.callAs*
     - builtin.filecontent:
-        pattern: jdk.security.auth.subject.useTL
+        pattern: getProperty\("jdk\.security\.auth\.subject\.useTL"\)
