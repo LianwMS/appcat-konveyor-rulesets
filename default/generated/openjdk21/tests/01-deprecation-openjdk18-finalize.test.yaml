@@ -15,5 +15,5 @@ tests:
   testCases:
   - name: tc-1
     hasIncidents:
-      exactly: 4
+      exactly: 3
       messageMatches: The finalization mechanism has been deprecated for removal in a future release.

@@ -42,4 +42,4 @@
     or:
     - java.referenced:
         location: IMPORT
-        pattern: java.lang.Compiler
+        pattern: java.lang.Compiler*
