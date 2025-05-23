@@ -19,10 +19,10 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Thread.suspend
+        pattern: java.lang.Thread.suspend*
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Thread.resume
+        pattern: java.lang.Thread.resume*
 - category: mandatory
   customVariables: []
   description: Thread.stop Changed to Throw UnsupportedOperationException
@@ -44,7 +44,7 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Thread.stop
+        pattern: java.lang.Thread.stop*
 - category: mandatory
   customVariables: []
   description: ThreadDeath is deprecated for removal
@@ -65,4 +65,5 @@
   when:
     or:
     - java.referenced:
+        location: IMPORT
         pattern: java.lang.ThreadDeath
