@@ -1,0 +1,55 @@
+rulesPath: ../openliberty-jms.yaml
+providers:
+- name: java
+  dataPath: ./data/openliberty-jms
+- name: builtin
+  dataPath: ./data/openliberty-jms
+tests:
+- ruleID: aks-liberty-jms-connectionfactory-00050
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected OpenLiberty JMS ConnectionFactory configurations that need to be migrated
+
+# - ruleID: aks-jms-resource-injection-00052
+#   testCases:
+#   - name: tc-1
+#     hasIncidents:
+#       atLeast: 1
+#       messageMatches: Detected JMS resource injections that need to be updated
+
+- ruleID: aks-jms-mdb-00053
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected Message-Driven Beans
+
+- ruleID: aks-jms-resource-ref-00054
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected JMS resource references in deployment descriptors
+
+# - ruleID: aks-jms-jndi-lookup-00055
+#   testCases:
+#   - name: tc-1
+#     hasIncidents:
+#       atLeast: 1
+#       messageMatches: Detected manual JNDI lookups for JMS resources
+
+- ruleID: aks-jms-api-usage-00056
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected JMS API usage that needs to be updated
+
+- ruleID: aks-jms-optimization-00058
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: For high-throughput JMS applications 

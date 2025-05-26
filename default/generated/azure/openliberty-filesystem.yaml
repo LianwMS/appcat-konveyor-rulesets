@@ -1,0 +1,316 @@
+- category: mandatory
+  description: Detect OpenLiberty Server File Path Configurations
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected file path configurations in OpenLiberty server that need to be migrated to Azure storage solutions.
+    
+    **Migration Steps:**
+    - Replace local file paths with Azure Storage solutions (Blob Storage, File Share, Disk)
+    - For transient storage, use emptyDir volume in Kubernetes pods
+    - For persistent storage, use Azure Files or Azure Managed Disks as PersistentVolumes
+    - For shared content, use Azure Blob Storage with appropriate SDKs
+    
+    Example configuration in Kubernetes:
+    ```yaml
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: azure-files-pvc
+    spec:
+      accessModes:
+        - ReadWriteMany
+      storageClassName: azurefile
+      resources:
+        requests:
+          storage: 10Gi
+    ```
+    
+    Kubernetes deployment:
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
+    spec:
+      template:
+        spec:
+          containers:
+          - name: app
+            volumeMounts:
+            - name: storage
+              mountPath: /mnt/data
+          volumes:
+          - name: storage
+            persistentVolumeClaim:
+              claimName: azure-files-pvc
+    ```
+  ruleID: aks-liberty-filesystem-00060
+  when:
+    builtin.xml:
+      filepaths:
+      - server.xml
+      namespaces: {}
+      xpath: "//*[@dir] | //*[@directory] | //*[@path] | //*[@location][not(contains(@location, '.war') or contains(@location, '.ear') or contains(@location, '.jar'))]"
+
+- category: mandatory
+  description: Detect Web.xml File Path Environment Entries
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected environment entries in web.xml defining file paths that need to be updated for Azure storage solutions.
+    
+    **Migration Recommendations:**
+    - Use Kubernetes ConfigMaps or Secrets to externalize path configurations
+    - Reference Azure storage endpoints instead of local file paths
+    - Mount Azure storage solutions to container paths through Kubernetes volumes
+    
+    Example of ConfigMap for file paths:
+    ```yaml
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: storage-paths
+    data:
+      uploadPath: "/mnt/azurefiles/uploads"
+      tempPath: "/mnt/azurefiles/temp"
+    ```
+    
+    Inject through environment variables:
+    ```yaml
+    env:
+    - name: UPLOAD_PATH
+      valueFrom:
+        configMapKeyRef:
+          name: storage-paths
+          key: uploadPath
+    ```
+  ruleID: aks-webapp-filepath-env-00061
+  when:
+    builtin.xml:
+      filepaths:
+      - web.xml
+      namespaces:
+        jee: http://xmlns.jcp.org/xml/ns/javaee
+        j2ee: http://java.sun.com/xml/ns/j2ee
+        jakarta: https://jakarta.ee/xml/ns/jakartaee
+      xpath: "//jee:env-entry[jee:env-entry-name[contains(text(), 'path') or contains(text(), 'dir') or contains(text(), 'directory') or contains(text(), 'folder') or contains(text(), 'file')]] | //j2ee:env-entry[j2ee:env-entry-name[contains(text(), 'path') or contains(text(), 'dir') or contains(text(), 'directory') or contains(text(), 'folder') or contains(text(), 'file')]] | //jakarta:env-entry[jakarta:env-entry-name[contains(text(), 'path') or contains(text(), 'dir') or contains(text(), 'directory') or contains(text(), 'folder') or contains(text(), 'file')]]"
+
+- category: mandatory
+  description: Detect File Path Resource Injections
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected @Resource annotations for file path injections that need to be updated for Azure storage.
+    
+    **Migration Recommendations:**
+    - Replace direct file path injections with Azure Storage SDK clients
+    - Configure application to use mounted Azure storage paths in Kubernetes
+    - Consider using Azure Blob Storage client for file-like operations
+    
+    Example code update:
+    ```java
+    // Before:
+    @Resource(name = "uploadPath")
+    private String uploadDir;
+    
+    // After:
+    @Value("${UPLOAD_PATH}")
+    private String uploadPath;
+    
+    // Or with Azure Blob Storage SDK:
+    @Autowired
+    private BlobServiceClient blobServiceClient;
+    ```
+  ruleID: aks-file-resource-injection-00062
+  when:
+    java.referenced:
+      location: ANNOTATION
+      pattern: javax.annotation.Resource
+      referencedBy:
+        pattern: "String.*(path|dir|directory|folder|file).*"
+
+# - category: mandatory
+#   description: Detect Jakarta File Path Resource Injections
+#   effort: 3
+#   labels:
+#   - konveyor.io/source=java-ee
+#   - konveyor.io/target=aks
+#   message: |
+#     Detected Jakarta @Resource annotations for file path injections that need to be updated for Azure storage.
+    
+#     **Migration Recommendations:**
+#     - Replace direct file path injections with Azure Storage SDK clients
+#     - Configure application to use mounted Azure storage paths in Kubernetes
+#     - Consider using Azure Blob Storage client for file-like operations
+    
+#     Example code update:
+#     ```java
+#     // Before:
+#     @Resource(name = "uploadPath")
+#     private String uploadDir;
+    
+#     // After:
+#     @Value("${UPLOAD_PATH}")
+#     private String uploadPath;
+    
+#     // Or with Azure Blob Storage SDK:
+#     @Autowired
+#     private BlobServiceClient blobServiceClient;
+#     ```
+#   ruleID: aks-jakarta-file-injection-00063
+#   when:
+#     java.referenced:
+#       location: ANNOTATION
+#       pattern: jakarta.annotation.Resource
+#       referencedBy:
+#         pattern: "String.*(path|dir|directory|folder|file).*"
+
+- category: mandatory
+  description: Detect ServletContext Path Usage
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected usage of ServletContext.getRealPath() which needs to be reconsidered in containerized environments.
+    
+    **Migration Considerations:**
+    - ServletContext.getRealPath() might not work as expected in containerized environments
+    - Use resource streaming for files packaged within the application
+    - For external files, use Azure Blob Storage or mounted Azure Files
+    
+    Example refactoring:
+    ```java
+    // Before:
+    String path = getServletContext().getRealPath("/WEB-INF/uploads");
+    File file = new File(path, "example.txt");
+    
+    // After (resource streaming):
+    InputStream is = getServletContext().getResourceAsStream("/WEB-INF/uploads/example.txt");
+    
+    // Or for external storage:
+    BlobClient blobClient = containerClient.getBlobClient("example.txt");
+    ```
+  ruleID: aks-servlet-realpath-00064
+  when:
+    or:
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: javax.servlet.ServletContext.getRealPath
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: jakarta.servlet.ServletContext.getRealPath
+
+# - category: mandatory
+#   description: Detect System Properties for File Paths
+#   effort: 3
+#   labels:
+#   - konveyor.io/source=java-ee
+#   - konveyor.io/target=aks
+#   message: |
+#     Detected usage of System Properties for file paths which need to be updated for cloud environments.
+    
+#     **Migration Recommendations:**
+#     - Replace System Properties with environment variables or ConfigMaps
+#     - Use Kubernetes environment variables to inject storage paths
+#     - Consider Azure Storage SDKs for file operations instead of direct file system access
+    
+#     Example code update:
+#     ```java
+#     // Before:
+#     String uploadDir = System.getProperty("app.upload.dir", "/tmp/default");
+    
+#     // After (environment variable):
+#     String uploadDir = System.getenv().getOrDefault("UPLOAD_PATH", "/mnt/azurefiles/uploads");
+    
+#     // Or with Spring Boot:
+#     @Value("${upload.path:/mnt/azurefiles/uploads}")
+#     private String uploadDir;
+#     ```
+#   ruleID: aks-system-properties-file-00065
+#   when:
+#     java.referenced:
+#       pattern: "System.getProperty"
+#       referencedBy:
+#         pattern: ".*(path|dir|directory|folder|file).*"
+
+- category: mandatory
+  description: Detect Direct File I/O Operations
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected direct file I/O operations that need to be reconsidered for cloud storage on Azure.
+    
+    **Migration Options:**
+    - For temporary files: Use emptyDir volume in Kubernetes
+    - For shared files: Use Azure Blob Storage with SDK
+    - For persistent files: Use Azure Files mounted via Kubernetes PersistentVolumes
+    - For structured data: Consider migrating to Azure Cosmos DB or other database services
+    
+    Example using Azure Blob Storage:
+    ```java
+    // Before:
+    File file = new File(uploadDir, filename);
+    try (FileOutputStream out = new FileOutputStream(file)) {
+        out.write(content);
+    }
+    
+    // After with Azure Blob Storage:
+    BlobClient blobClient = containerClient.getBlobClient(filename);
+    try (ByteArrayInputStream dataStream = new ByteArrayInputStream(content)) {
+        blobClient.upload(dataStream, content.length);
+    }
+    ```
+  ruleID: aks-file-io-operations-00066
+  when:
+    java.referenced:
+      pattern: "java.io.File|java.io.FileInputStream|java.io.FileOutputStream|java.io.FileReader|java.io.FileWriter|java.nio.file.Files|java.nio.file.Paths|java.nio.file.Path"
+
+- category: recommended
+  description: Best Practices for Azure Storage Integration
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Best practices for migrating file system operations to Azure:
+    
+    1. **Choose the right Azure Storage service:**
+       - Azure Blob Storage: For unstructured data like images, videos, etc.
+       - Azure Files: For SMB file shares that need to be mounted in containers
+       - Azure Managed Disks: For high-performance block storage needs
+       - Azure NetApp Files: For high-performance file storage with advanced features
+       
+    2. **Security considerations:**
+       - Use Managed Identities for authentication to Azure Storage
+       - Apply appropriate RBAC permissions at the storage account level
+       - Encrypt data at rest and in transit
+       
+    3. **Performance optimizations:**
+       - Use appropriate storage tier (Premium for performance-critical workloads)
+       - Implement caching strategies for frequently accessed files
+       - Use CDN for static content delivery
+       
+    4. **Resiliency patterns:**
+       - Implement retry logic for transient failures
+       - Use geo-redundant storage for critical data
+       - Monitor storage metrics and set up alerts
+  ruleID: aks-azure-storage-best-practices-00067
+  when:
+    or:
+    - java.referenced:
+        location: IMPORT
+        pattern: java.io.File
+    - java.referenced:
+        location: IMPORT
+        pattern: java.io.FileInputStream
+    - java.referenced:
+        location: IMPORT
+        pattern: java.io.FileOutputStream

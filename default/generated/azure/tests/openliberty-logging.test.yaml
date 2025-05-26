@@ -1,0 +1,34 @@
+rulesPath: ../openliberty-logging.yaml
+providers:
+- name: java
+  dataPath: ./data/openliberty-logging
+- name: builtin
+  dataPath: ./data/openliberty-logging
+tests:
+- ruleID: aks-liberty-logging-00050
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected OpenLiberty server logging configurations that need to be migrated
+
+- ruleID: aks-liberty-logfile-00051
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected custom log file location configurations that need reconsideration
+
+- ruleID: aks-java-logging-frameworks-00060
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected code using Java logging frameworks
+
+- ruleID: aks-log4j-config-00053
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected Log4j configuration files that need updates

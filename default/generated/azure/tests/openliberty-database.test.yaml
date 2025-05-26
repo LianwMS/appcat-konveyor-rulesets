@@ -1,0 +1,62 @@
+rulesPath: ../openliberty-database.yaml
+providers:
+- name: java
+  dataPath: ./data/openliberty-database
+- name: builtin
+  dataPath: ./data/openliberty-database
+tests:
+- ruleID: aks-liberty-datasource-00032
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected OpenLiberty data source configurations that need to be migrated to Azure database services
+
+- ruleID: aks-db-driver-00033
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected database driver configurations that need to be included in your container image
+
+- ruleID: aks-app-datasource-ref-00034
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected application-level data source references that need updating for Azure database services
+
+# - ruleID: aks-db-resource-injection-00038
+#   testCases:
+#   - name: tc-1
+#     hasIncidents:
+#       atLeast: 1
+#       messageMatches: Detected @Resource annotations for database injection that need configuration updates
+
+# - ruleID: aks-db-jndi-lookup-00039
+#   testCases:
+#   - name: tc-1
+#     hasIncidents:
+#       atLeast: 1
+#       messageMatches: Detected manual JNDI lookups for database connections that need updates
+
+# - ruleID: aks-db-web-resource-ref-00040
+#   testCases:
+#   - name: tc-1
+#     hasIncidents:
+#       atLeast: 1
+#       messageMatches: Detected web.xml database resource references that need updates
+
+- ruleID: aks-db-persistence-xml-00041
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected JPA persistence.xml configurations with database references that need updates
+
+- ruleID: aks-jpa-entity-manager-00042
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected EntityManager usage in application code

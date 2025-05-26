@@ -1,0 +1,386 @@
+# 1. 容器化配置规则
+- category: mandatory
+  description: 环境变量依赖需要转换为Kubernetes ConfigMap和Secret
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "识别到多个环境变量依赖，如${env.KEYSTORE_LOCATION}、${env.OSAP_DB_URL}等。这些需要转换为Kubernetes ConfigMap和Secret资源。"
+  ruleID: aks-env-vars-to-configmap-00001
+  when:
+    builtin.xml:
+      xpath: "//*[contains(@*, '${env.')]"
+
+- category: mandatory
+  description: 生成Dockerfile以容器化应用
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "需要为应用创建Dockerfile。建议使用Open Liberty官方容器镜像作为基础镜像，并添加应用EAR文件和配置。"
+  ruleID: aks-dockerfile-creation-00002
+  when:
+    builtin.xml:
+      xpath: "//server/enterpriseApplication"
+
+# 2. AKS特定资源规则
+- category: mandatory
+  description: 需要创建Kubernetes Deployment资源
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "需要创建Kubernetes Deployment资源来部署应用。确保设置适当的资源请求和限制，并配置健康检查。"
+  ruleID: aks-k8s-deployment-00003
+  when:
+    builtin.xml:
+      xpath: "//server/enterpriseApplication"
+
+- category: mandatory
+  description: 需要创建Kubernetes Service资源
+  effort: 2
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "需要创建Kubernetes Service资源来暴露应用。根据httpEndpoint配置，应暴露端口9086(HTTP)和9446(HTTPS)。"
+  ruleID: aks-k8s-service-00004
+  when:
+    builtin.xml:
+      xpath: "//server/httpEndpoint"
+
+- category: mandatory
+  description: 需要创建Ingress资源或配置Azure Application Gateway
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "需要创建Kubernetes Ingress资源或配置Azure Application Gateway来路由外部流量到应用。考虑使用Azure提供的注解进行TLS终止和路径路由。"
+  ruleID: aks-ingress-00005
+  when:
+    builtin.xml:
+      xpath: "//server/httpEndpoint"
+
+# 3. 持久化存储规则
+- category: mandatory
+  description: 文件系统依赖需要迁移到持久卷
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "识别到对文件系统的依赖，如${SEAL_FRAMEWORK_ROOT_FOLDER}。需要使用Kubernetes PersistentVolume或迁移到Azure存储服务。"
+  ruleID: aks-filesystem-to-pv-00006
+  when:
+    builtin.xml:
+      xpath: "//*[contains(@*, '${SEAL_FRAMEWORK_ROOT_FOLDER}')]"
+
+- category: recommended
+  description: 考虑使用Azure Files作为共享存储
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "对于需要在多个Pod之间共享的文件，如库文件和配置文件，建议使用Azure Files创建持久卷。"
+  ruleID: aks-azure-files-00007
+  when:
+    builtin.xml:
+      xpath: "//server/library/fileset"
+
+# 4. 网络和安全规则
+- category: mandatory
+  description: TLS/SSL证书需要迁移到Kubernetes Secret或Azure Key Vault
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "识别到对keyStore和trustStore的使用。建议将证书存储迁移到Kubernetes Secret或Azure Key Vault，并使用CSI驱动挂载。"
+  ruleID: aks-ssl-cert-migration-00008
+  when:
+    builtin.xml:
+      xpath: "//server/keyStore"
+
+- category: mandatory
+  description: 网络端口配置需要映射到Kubernetes Service
+  effort: 2
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "httpEndpoint配置了端口9086(HTTP)和9446(HTTPS)，需要在Kubernetes Service中正确映射这些端口。"
+  ruleID: aks-port-mapping-00009
+  when:
+    builtin.xml:
+      xpath: "//server/httpEndpoint[@httpPort or @httpsPort]"
+
+- category: recommended
+  description: 使用Azure网络策略增强安全性
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "建议使用Kubernetes NetworkPolicy或Azure网络策略来限制Pod之间的通信，增强应用安全性。"
+  ruleID: aks-network-policy-00010
+  when:
+    builtin.xml:
+      xpath: "//server/httpDispatcher/trustedHeaderOrigin[text()='*']"
+
+# 5. 数据库连接规则
+- category: mandatory
+  description: Oracle数据库连接需要适配AKS环境
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "识别到Oracle数据库连接配置。需要确保从AKS环境可以访问数据库，并考虑使用Azure数据库服务或在AKS中运行Oracle数据库。"
+  ruleID: aks-oracle-db-connection-00011
+  when:
+    builtin.xml:
+      xpath: "//server/dataSource/properties.oracle"
+
+- category: recommended
+  description: 使用Azure托管身份进行数据库认证
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "建议使用Azure托管身份进行数据库认证，而不是在配置中存储数据库凭据。这需要修改应用代码和配置。"
+  ruleID: aks-managed-identity-db-auth-00012
+  when:
+    builtin.xml:
+      xpath: "//server/dataSource/properties.oracle[@password]"
+
+- category: recommended
+  description: 优化数据库连接池配置
+  effort: 2
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "数据库连接池配置(maxPoolSize=200)需要根据AKS环境中的Pod副本数进行优化，以避免数据库连接过载。"
+  ruleID: aks-db-connection-pool-00013
+  when:
+    builtin.xml:
+      xpath: "//server/dataSource/connectionManager[@maxPoolSize]"
+
+# 6. 会话管理规则
+- category: mandatory
+  description: 会话管理需要适配Kubernetes环境
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "识别到httpSession配置，包括cloneId和maxInMemorySessionCount。在Kubernetes环境中，建议使用分布式会话存储或实现无状态设计。"
+  ruleID: aks-session-management-00014
+  when:
+    builtin.xml:
+      xpath: "//server/httpSession"
+
+- category: recommended
+  description: 考虑使用Azure Redis Cache存储会话
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "对于需要保持会话状态的应用，建议使用Azure Redis Cache作为分布式会话存储，确保会话在Pod重启或扩展时不会丢失。"
+  ruleID: aks-redis-session-store-00015
+  when:
+    builtin.xml:
+      xpath: "//server/httpSession[@invalidationTimeout]"
+
+# 7. 日志和监控规则
+- category: mandatory
+  description: 日志配置需要适配容器环境
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "识别到日志配置(maxFileSize='100', maxFiles='10')。在容器环境中，应将日志输出到标准输出/错误流，而不是文件系统。"
+  ruleID: aks-logging-stdout-00016
+  when:
+    builtin.xml:
+      xpath: "//server/logging[@maxFileSize or @maxFiles]"
+
+- category: recommended
+  description: 集成Azure Monitor和Application Insights
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "建议集成Azure Monitor和Application Insights以监控应用性能和健康状况。需要添加适当的代理或SDK到应用中。"
+  ruleID: aks-azure-monitor-00017
+  when:
+    builtin.xml:
+      xpath: "//server"
+
+# 8. 邮件服务规则
+- category: mandatory
+  description: 邮件服务配置需要适配AKS环境
+  effort: 2
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "识别到SendGrid邮件服务配置。需要确保从AKS环境可以访问SMTP服务器，并将凭据存储在Kubernetes Secret中。"
+  ruleID: aks-mail-service-00018
+  when:
+    builtin.xml:
+      xpath: "//server/mailSession"
+
+- category: recommended
+  description: 考虑使用Azure Communication Services
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "考虑使用Azure Communication Services替代SendGrid，以获得更好的Azure集成体验。这需要修改应用代码。"
+  ruleID: aks-azure-communication-00019
+  when:
+    builtin.xml:
+      xpath: "//server/mailSession[@host='smtp.sendgrid.net']"
+
+# 9. 扩展性规则
+- category: mandatory
+  description: 配置Kubernetes资源请求和限制
+  effort: 2
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "需要为Deployment配置适当的CPU和内存资源请求和限制，以确保应用在AKS中有足够资源运行。"
+  ruleID: aks-resource-limits-00020
+  when:
+    builtin.xml:
+      xpath: "//server/enterpriseApplication"
+
+- category: recommended
+  description: 实现水平Pod自动缩放
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "建议配置Horizontal Pod Autoscaler，根据CPU使用率或自定义指标自动扩展应用实例数量。"
+  ruleID: aks-hpa-00021
+  when:
+    builtin.xml:
+      xpath: "//server/enterpriseApplication"
+
+# 10. 灾难恢复和高可用性规则
+- category: recommended
+  description: 配置多区域AKS部署
+  effort: 5
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "建议在多个Azure区域部署AKS集群，并使用Azure Traffic Manager或Azure Front Door进行流量路由，以提高可用性和灾难恢复能力。"
+  ruleID: aks-multi-region-00022
+  when:
+    builtin.xml:
+      xpath: "//server"
+
+- category: recommended
+  description: 实现备份和恢复策略
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "建议实现定期备份数据库和应用状态的策略，并测试恢复流程，以确保在发生故障时能够快速恢复。"
+  ruleID: aks-backup-recovery-00023
+  when:
+    builtin.xml:
+      xpath: "//server/dataSource"
+
+# 11. CI/CD集成规则
+- category: recommended
+  description: 实现CI/CD管道
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "建议使用Azure DevOps或GitHub Actions实现CI/CD管道，自动构建容器镜像并部署到AKS。包括代码扫描、测试和安全检查。"
+  ruleID: aks-cicd-pipeline-00024
+  when:
+    builtin.xml:
+      xpath: "//server/enterpriseApplication"
+
+- category: recommended
+  description: 实现蓝绿部署或金丝雀发布
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "建议在AKS中实现蓝绿部署或金丝雀发布策略，以减少部署风险并提高可用性。"
+  ruleID: aks-deployment-strategy-00025
+  when:
+    builtin.xml:
+      xpath: "//server/enterpriseApplication"
+
+# 12. 成本优化规则
+- category: recommended
+  description: 优化AKS节点池配置
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "建议根据应用资源需求优化AKS节点池配置，考虑使用虚拟节点或Spot实例降低成本。"
+  ruleID: aks-node-pool-optimization-00026
+  when:
+    builtin.xml:
+      xpath: "//server"
+
+- category: recommended
+  description: 实现AKS集群自动缩放
+  effort: 2
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "建议启用AKS集群自动缩放，根据工作负载需求自动调整节点数量，优化资源使用和成本。"
+  ruleID: aks-cluster-autoscaler-00027
+  when:
+    builtin.xml:
+      xpath: "//server"
+
+# 13. 特定于Liberty的迁移规则
+- category: mandatory
+  description: Liberty特性需要在容器镜像中配置
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "识别到多个Liberty特性(servlet-4.0, jsp-2.3等)。需要确保这些特性在容器镜像中正确配置。"
+  ruleID: aks-liberty-features-00028
+  when:
+    builtin.xml:
+      xpath: "//server/featureManager/feature"
+
+- category: mandatory
+  description: Liberty自定义库需要包含在容器镜像中
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "识别到多个自定义库(V13-5, lib_ext等)。需要确保这些库文件包含在容器镜像中或通过持久卷挂载。"
+  ruleID: aks-liberty-libraries-00029
+  when:
+    builtin.xml:
+      xpath: "//server/library[@id]"
+
+# 14. 应用现代化建议
+- category: optional
+  description: 考虑将EAR应用拆分为微服务
+  effort: 5
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "长期来看，建议将EAR应用拆分为多个独立的微服务，以更好地利用Kubernetes的优势。这需要重构应用架构。"
+  ruleID: aks-microservices-refactoring-00030
+  when:
+    builtin.xml:
+      xpath: "//server/enterpriseApplication"
+
+- category: optional
+  description: 考虑迁移到Quarkus或Spring Boot
+  effort: 5
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: "长期来看，考虑将应用迁移到更现代的框架如Quarkus或Spring Boot，以获得更好的云原生特性和更低的资源消耗。"
+  ruleID: aks-modern-framework-00031
+  when:
+    builtin.xml:
+      xpath: "//server/enterpriseApplication"
+      

@@ -1,0 +1,173 @@
+- category: mandatory
+  description: Detect OpenLiberty Server Logging Configurations
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected OpenLiberty server logging configurations that need to be migrated to Azure environment.
+    
+    **Migration Steps:**
+    - Adjust logging configurations to follow containerized environment best practices
+    - Configure logs to output to stdout/stderr for container platform collection
+    - Use Azure Monitor or other cloud-native logging solutions for log aggregation
+    - Consider using Azure Application Insights for advanced monitoring
+    
+    Example configuration in Kubernetes environment:
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: openliberty-app
+    spec:
+      template:
+        spec:
+          containers:
+          - name: app
+            env:
+            - name: WLP_LOGGING_CONSOLE_FORMAT
+              value: json
+            - name: WLP_LOGGING_CONSOLE_SOURCE
+              value: message,trace,accessLog,ffdc
+            - name: WLP_LOGGING_CONSOLE_LOGLEVEL
+              value: info
+    ```
+  ruleID: aks-liberty-logging-00050
+  when:
+    builtin.xml:
+      filepaths:
+      - server.xml
+      namespaces: {}
+      xpath: "//server/logging"
+
+- category: mandatory
+  description: Detect OpenLiberty Log File Location Configurations
+  effort: 2
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected custom log file location configurations that need reconsideration in containerized environments.
+    
+    **Migration Considerations:**
+    - Logs in containers should output to stdout/stderr rather than the filesystem
+    - For persistent logs, consider using Azure Blob Storage or managed logging solutions
+    - Modify bootstrap.properties or server.xml to support containerized logging configurations
+    
+    Example configuration:
+    ```
+    # Console output configuration
+    com.ibm.ws.logging.console.format=json
+    com.ibm.ws.logging.console.source=message,trace,accessLog,ffdc
+    ```
+  ruleID: aks-liberty-logfile-00051
+  when:
+    builtin.xml:
+      filepaths:
+      - server.xml
+      namespaces: {}
+      xpath: "//server/logging[@logDirectory]"
+
+- category: mandatory
+  description: Detect Java Logging Frameworks Usage
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected code using Java logging frameworks that require considerations when migrating to Azure:
+    
+    **Migration Recommendations:**
+    - Configure all logging implementations to output to console in containerized environments
+    - Consider using SLF4J as a unified logging facade for more flexibility
+    - Ensure appropriate log levels for cloud environments to avoid performance issues
+    - Use structured logging formats (JSON) for better integration with Azure monitoring
+    - Update to the latest versions of logging libraries to address security vulnerabilities
+    
+    **Framework-specific guidance:**
+    
+    1. Java Util Logging (JUL):
+       - Configure handlers to output to console instead of files
+       - Consider using a bridge to redirect JUL to SLF4J for unified logging
+    
+    2. Log4j:
+       - Ensure using Log4j 2.x (2.17.0+) to address security vulnerabilities
+       - Configure JSON layout for better Azure integration
+       - Remove file appenders in favor of console output
+    
+    3. SLF4J:
+       - Configure the underlying implementation (Logback, Log4j) appropriately
+       - Use MDC (Mapped Diagnostic Context) for structured contextual logging
+       - Consider using logback-appender-ai for direct Azure Monitor integration
+    
+    Example Azure-friendly logging configuration:
+    ```xml
+    <!-- Logback example with JSON output -->
+    <configuration>
+      <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+          <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+            <timestampFormat>yyyy-MM-dd'T'HH:mm:ss.SSSX</timestampFormat>
+            <appendLineSeparator>true</appendLineSeparator>
+          </layout>
+        </encoder>
+      </appender>
+      
+      <root level="INFO">
+        <appender-ref ref="STDOUT" />
+      </root>
+    </configuration>
+    ```
+  ruleID: aks-java-logging-frameworks-00060
+  when:
+    or:
+    - java.referenced:
+        pattern: java.util.logging.Logger
+    - java.referenced:
+        pattern: org.apache.log4j.Logger
+    - java.referenced:
+        pattern: org.slf4j.Logger
+
+- category: mandatory
+  description: Detect Log4j Configuration Files
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected Log4j configuration files that need updates for Azure migration:
+    
+    **Migration Steps:**
+    - Update configuration to adapt to containerized environments (output to console instead of files)
+    - Ensure using the latest Log4j version (2.17.0+) to avoid security vulnerabilities
+    - Consider using JSON format output for easier parsing by Azure logging services
+    - Adjust logging configuration for microservices architecture
+    
+    Example updated configuration:
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Configuration status="WARN">
+      <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+          <JsonLayout compact="true" eventEol="true"/>
+        </Console>
+      </Appenders>
+      <Loggers>
+        <Root level="info">
+          <AppenderRef ref="Console"/>
+        </Root>
+      </Loggers>
+    </Configuration>
+    ```
+  ruleID: aks-log4j-config-00053
+  when:
+    builtin.filecontent:
+      filepaths:
+      - log4j.properties
+      - log4j.xml
+      - log4j2.properties
+      - log4j2.xml
+      - logback.xml
+      - logback-spring.xml
+      pattern: "log4j"
+

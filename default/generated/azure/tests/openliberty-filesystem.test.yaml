@@ -1,0 +1,62 @@
+rulesPath: ../openliberty-filesystem.yaml
+providers:
+- name: java
+  dataPath: ./data/openliberty-filesystem
+- name: builtin
+  dataPath: ./data/openliberty-filesystem
+tests:
+- ruleID: aks-liberty-filesystem-00060
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected file path configurations in OpenLiberty server
+
+- ruleID: aks-webapp-filepath-env-00061
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected environment entries in web.xml defining file paths
+
+- ruleID: aks-file-resource-injection-00062
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected @Resource annotations for file path injections
+
+# - ruleID: aks-jakarta-file-injection-00063
+#   testCases:
+#   - name: tc-1
+#     hasIncidents:
+#       atLeast: 1
+#       messageMatches: Detected Jakarta @Resource annotations for file path injections
+
+- ruleID: aks-servlet-realpath-00064
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected usage of ServletContext.getRealPath()
+
+# - ruleID: aks-system-properties-file-00065
+#   testCases:
+#   - name: tc-1
+#     hasIncidents:
+#       atLeast: 1
+#       messageMatches: Detected usage of System Properties for file paths
+
+- ruleID: aks-file-io-operations-00066
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected direct file I/O operations
+
+- ruleID: aks-azure-storage-best-practices-00067
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Best practices for migrating file system operations to Azure 

@@ -1,0 +1,185 @@
+- category: mandatory
+  description: Detect OpenLiberty Data Source configurations
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected OpenLiberty data source configurations that need to be migrated to Azure database services.
+    
+    **Migration steps:**
+    - Use Azure Database for MySQL, PostgreSQL, or SQL Server based on your current database type
+    - Update connection strings to use Azure database endpoints
+    - Store credentials in Kubernetes Secrets or Azure Key Vault
+    - Configure database high availability using features like geo-replication
+    
+    Example configuration in Kubernetes:
+    ```yaml
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: db-credentials
+    type: Opaque
+    data:
+      username: <base64-encoded-username>
+      password: <base64-encoded-password>
+    ```
+  ruleID: aks-liberty-datasource-00032
+  when:
+    builtin.xml:
+      filepaths:
+      - server.xml
+      namespaces: {}
+      xpath: "//server/dataSource"
+- category: mandatory
+  description: Detect EntityManager usage in application code
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected JPA EntityManager usage that will require configuration updates when migrating to Azure.
+    
+    **Migration considerations:**
+    - Ensure your persistence.xml is properly configured for Azure database services
+    - Consider using connection pooling optimized for cloud environments
+    - Implement resilience patterns for database operations (retry logic, circuit breakers)
+    - For high-availability scenarios, consider using read replicas with appropriate transaction isolation
+    
+    Example of updated persistence context with custom properties for Azure:
+    ```java
+    @PersistenceContext(unitName = "myPU", properties = {
+        "hibernate.connection.provider_class=org.hibernate.hikaricp.internal.HikariCPConnectionProvider",
+        "hibernate.hikari.maximumPoolSize=20"
+    })
+    private EntityManager em;
+    ```
+  ruleID: aks-jpa-entity-manager-00042
+  when:
+    java.referenced:
+      location: IMPORT
+      pattern: javax.persistence.EntityManager
+- category: mandatory
+  description: Detect database driver configurations
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected database driver configurations that need to be included in your container image when migrating to AKS.
+    
+    **Migration considerations:**
+    - Include appropriate JDBC drivers in your container image
+    - Verify driver compatibility with Azure managed database services
+    - Update any driver-specific configuration for cloud environments
+  ruleID: aks-db-driver-00033
+  when:
+    builtin.xml:
+      filepaths:
+      - server.xml
+      namespaces: {}
+      xpath: "//server/library/fileset[contains(@includes, 'jdbc') or contains(@includes, 'sql') or contains(@includes, 'db') or contains(@includes, 'oracle')]"
+- category: mandatory
+  description: Detect application-level data source references
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected application-level data source references that need updating for Azure database services.
+    **Required changes:**
+    - Update JNDI lookup references to match your Kubernetes deployment
+    - Optimize connection pool settings for containerized environments
+    - Consider using connection pooling libraries designed for cloud environments
+  ruleID: aks-app-datasource-ref-00034
+  when:
+    builtin.xml:
+      filepaths:
+        - web.xml
+      namespaces:
+        jee: http://xmlns.jcp.org/xml/ns/javaee
+      xpath: "//jee:resource-ref/jee:res-type[contains(text(), 'javax.sql.DataSource')] | //jee:env-entry[contains(jee:env-entry-value, 'jdbc')]"
+  # when:
+  #   or:
+  #   - builtin.xml:
+  #       filepaths:
+  #        - web.xml
+  #       namespaces:
+  #         jee: http://xmlns.jcp.org/xml/ns/javaee
+  #       xpath: "//jee:resource-ref/jee:res-type[contains(text(), 'javax.sql.DataSource')] | //jee:env-entry[contains(jee:env-entry-value, 'jdbc')]"
+  #   - builtin.xml:
+  #       xpath: "//resource-ref/res-type[contains(text(), 'javax.sql.DataSource') or contains(text(), 'jakarta.sql.DataSource')]"
+# - category: mandatory
+#   description: Detect Resource annotations for database injection
+#   effort: 4
+#   labels:
+#   - konveyor.io/source=java-ee
+#   - konveyor.io/target=aks
+#   message: |
+#     Detected @Resource annotations for database injection that need configuration updates for Azure.
+#     **Required changes:**
+#     - Update JNDI names to match your Kubernetes configuration
+#     - Review connection pooling settings for containerized environments
+#     - Consider implementing retry logic for connection failures
+#   ruleID: aks-db-resource-injection-00038
+#   when:
+#     java.referenced:
+#       location: ANNOTATION
+#       pattern: javax.annotation.Resource
+    # java.referenced:
+    #   location: VARIABLE_DECLARATION
+    #   annotated:
+    #     pattern: javax.annotation.Resource
+    #     elements:
+    #     - name: name
+    #       value: "jdbc/mydb"
+# - category: mandatory
+#   description: Detect JNDI lookup patterns for databases
+#   effort: 4
+#   labels:
+#   - konveyor.io/source=java-ee
+#   - konveyor.io/target=aks
+#   message: |
+#     Detected manual JNDI lookups for database connections that need updates for Azure.
+    
+#     **Required changes:**
+#     - Update JNDI references to match your Kubernetes configuration
+#   ruleID: aks-db-jndi-lookup-00039
+#   when:
+#     builtin.filecontent:
+#       pattern: "(?:ctx|context|initialContext)\\s*\\.\\s*lookup\\s*\\(\\s*[\"'](?:java:comp/env/)?jdbc/[^\"']+[\"']\\s*\\)"
+- category: mandatory
+  description: Detect persistence.xml configurations
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected JPA persistence.xml configurations with database references that need updates for Azure.
+    
+    **Required changes:**
+    - Update database connection properties for cloud environments
+    - Configure suitable connection pool settings
+    - Consider using environment-specific properties for different deployment environments
+    
+    Example persistence.xml update:
+    ```xml
+    <persistence-unit name="myPU" transaction-type="JTA">
+        <jta-data-source>java:comp/env/jdbc/myAzureDB</jta-data-source>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect"/>
+            <property name="hibernate.connection.provider_class" value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>
+            <property name="hibernate.hikari.connectionTimeout" value="10000"/>
+            <property name="hibernate.hikari.minimumIdle" value="5"/>
+            <property name="hibernate.hikari.maximumPoolSize" value="10"/>
+            <property name="hibernate.hikari.idleTimeout" value="30000"/>
+        </properties>
+    </persistence-unit>
+    ```
+  ruleID: aks-db-persistence-xml-00041
+  when:
+    builtin.xml:
+      filepaths:
+      - persistence.xml
+      namespaces: {}
+      xpath: "//persistence-unit/jta-data-source[contains(text(), 'jdbc/')] | //persistence-unit/non-jta-data-source[contains(text(), 'jdbc/')]"
