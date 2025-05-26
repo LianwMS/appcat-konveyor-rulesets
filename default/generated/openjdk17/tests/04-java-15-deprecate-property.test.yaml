@@ -1,0 +1,13 @@
+rulesPath: ../04-java-15-deprecate-property.yaml
+providers:
+- name: java
+  dataPath: ./data/04-java-15-deprecate-property
+- name: builtin
+  dataPath: ./data/04-java-15-deprecate-property
+tests:
+- ruleID: java-15-deprecate-property-00000
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      exactly: 1
+      messageMatches: The terminally deprecated constant `javax.management.remote.rmi.RMIConnectorServer.CREDENTIAL_TYPE` has been removed.
