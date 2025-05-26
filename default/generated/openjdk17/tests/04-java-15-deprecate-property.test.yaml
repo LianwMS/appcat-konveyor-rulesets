@@ -9,5 +9,5 @@ tests:
   testCases:
   - name: tc-1
     hasIncidents:
-      exactly: 1
+      exactly: 2
       messageMatches: The terminally deprecated constant `javax.management.remote.rmi.RMIConnectorServer.CREDENTIAL_TYPE` has been removed.

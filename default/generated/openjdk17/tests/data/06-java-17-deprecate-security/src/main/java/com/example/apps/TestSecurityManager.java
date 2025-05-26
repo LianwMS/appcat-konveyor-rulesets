@@ -27,7 +27,8 @@ public class TestSecurityManager implements runnable
           TestSecurityManager tg = new TestSecurityManager();
           tg.func();
 
-          java.util.logging.LogManager.getLogManager().checkAccess();
+         LogManager lg = java.util.logging.LogManager.getLogManager();
+         lg.checkAccess();
           
     }
     public void func() {

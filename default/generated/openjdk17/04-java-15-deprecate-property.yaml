@@ -16,7 +16,9 @@
     The terminally deprecated constant `javax.management.remote.rmi.RMIConnectorServer.CREDENTIAL_TYPE` has been removed. A filter pattern can be specified instead by using `RMIConnectorServer.CREDENTIALS_FILTER_PATTERN`.
   ruleID: java-15-deprecate-property-00000
   when:
-    or:
+    and:
     - java.referenced:
-        location: FIELD_REFERENCE
-        pattern: javax.management.remote.rmi.RMIConnectorServer.CREDENTIAL_TYPE
+        location: IMPORT
+        pattern: javax.management.remote.rmi.RMIConnectorServer*
+    - builtin.filecontent:
+        pattern: CREDENTIAL_TYPE
