@@ -1,0 +1,37 @@
+- category: mandatory
+  customVariables: []
+  description: JEP 320 Remove the Java EE and CORBA Modules
+  effort: 3
+  labels:
+  - konveyor.io/source=openjdk11-
+  - konveyor.io/source=openjdk
+  - konveyor.io/target=openjdk11+
+  - konveyor.io/target=openjdk
+  - domain=java-modernization
+  - category=deprecated-apis
+  links:
+  - title: JEP 320 Remove the Java EE and CORBA Modules
+    url: https://www.oracle.com/java/technologies/javase/11-relnote-issues.html#JDK-8190378
+  message: |-
+    Remove the Java EE and CORBA modules from the Java SE Platform and the JDK. These modules were deprecated in Java SE 9 with the declared intent to remove them in a future releases.
+
+    The following modules have been removed from Java SE 11 and JDK 11:
+
+    * `java.xml.ws` (JAX-WS, plus the related technologies SAAJ and Web Services Metadata)
+    * `java.xml.bind` (JAXB)
+    * `java.activation` (JAF)
+    * `java.xml.ws.annotation` (Common Annotations)
+    * `java.corba` (CORBA)
+    * `java.transaction` (JTA)
+    * `java.se.ee `(Aggregator module for the six modules above)
+    * `jdk.xml.ws` (Tools for JAX-WS)
+    * `jdk.xml.bind` (Tools for JAXB)
+  ruleID: java-11-deprecate-corba-00000
+  when:
+    or:
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: Thread.stop(Throwable)
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: java.lang.Thread.destroy
