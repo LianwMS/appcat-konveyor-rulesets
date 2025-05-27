@@ -19,14 +19,16 @@
     <jmsConnectionFactory jndiName="jms/ConnectionFactory">
         <properties.wasJms
             remoteServerAddress="localhost:7276:BootstrapBasicMessaging"
-            maxConnections="50"/>
+            maxConnections="50"
+            maxPoolSize="20"/>
     </jmsConnectionFactory>
 
     <!-- JMS Queue ConnectionFactory Configuration -->
     <jmsQueueConnectionFactory jndiName="jms/QueueConnectionFactory">
         <properties.wasJms
             remoteServerAddress="localhost:7276:BootstrapBasicMessaging"
-            maxConnections="25"/>
+            maxConnections="25"
+            maxPoolSize="15"/>
     </jmsQueueConnectionFactory>
 
     <!-- JMS Topic ConnectionFactory Configuration -->

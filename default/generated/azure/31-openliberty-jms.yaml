@@ -28,48 +28,59 @@
       filepaths:
       - server.xml
       namespaces: {}
-      xpath: "//server/jmsConnectionFactory | //server/jmsQueueConnectionFactory | //server/jmsTopicConnectionFactory | //server/jmsQueue | //server/jmsTopic | //server/jmsActivationSpec"
+      xpath: //server/jmsConnectionFactory | //server/jmsQueueConnectionFactory | //server/jmsTopicConnectionFactory | //server/jmsQueue | //server/jmsTopic | //server/jmsActivationSpec
 
-# - category: mandatory
-#   description: Detect JMS Resource injection in application code
-#   effort: 4
-#   labels:
-#   - konveyor.io/source=java-ee
-#   - konveyor.io/target=aks
-#   message: |
-#     Detected JMS resource injections that need to be updated for Azure Service Bus.
+- category: mandatory
+  description: Detect JMS Resource injection in application code
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected JMS resource injections that need to be updated for Azure Service Bus.
     
-#     **Required changes:**
-#     - Replace JMS ConnectionFactory and Queue/Topic injections with Azure Service Bus clients
-#     - Update message sending and receiving logic to use Azure SDK
+    **Required changes:**
+    - Replace JMS ConnectionFactory and Queue/Topic injections with Azure Service Bus clients
+    - Update message sending and receiving logic to use Azure SDK
     
-#     Example Azure Service Bus implementation:
-#     ```java
-#     // Before: JMS injection
-#     @Resource(lookup = "java:/jms/queue/MyQueue")
-#     private Queue queue;
+    Example Azure Service Bus implementation:
+    ```java
+    // Before: JMS injection
+    @Resource(lookup = "java:/jms/queue/MyQueue")
+    private Queue queue;
     
-#     @Resource(lookup = "java:/ConnectionFactory")
-#     private ConnectionFactory connectionFactory;
+    @Resource(lookup = "java:/ConnectionFactory")
+    private ConnectionFactory connectionFactory;
     
-#     // After: Azure Service Bus
-#     private ServiceBusClient serviceBusClient;
-#     private ServiceBusSenderClient sender;
+    // After: Azure Service Bus
+    private ServiceBusClient serviceBusClient;
+    private ServiceBusSenderClient sender;
     
-#     @PostConstruct
-#     public void init() {
-#         serviceBusClient = new ServiceBusClientBuilder()
-#             .connectionString(connectionString)
-#             .buildClient();
-#         sender = serviceBusClient.createSender("myqueue");
-#     }
-#     ```
-#   ruleID: aks-jms-resource-injection-00052
-#   when:
-#     java.referenced:
-#       location: ANNOTATION
-#       reference: javax.annotation.Resource
-#       pattern: "lookup\\s*=\\s*[\"'][^\"']*jms[^\"']*[\"']|name\\s*=\\s*[\"'][^\"']*jms[^\"']*[\"']"
+    @PostConstruct
+    public void init() {
+        serviceBusClient = new ServiceBusClientBuilder()
+            .connectionString(connectionString)
+            .buildClient();
+        sender = serviceBusClient.createSender("myqueue");
+    }
+    ```
+  ruleID: aks-jms-resource-injection-00052
+  when:
+    or:
+    - java.referenced:
+        location: ANNOTATION
+        pattern: javax.annotation.Resource
+        annotated:
+          elements:
+            - name: name
+              value: jms/[a-zA-Z0-9_-]+
+    - java.referenced:
+        location: ANNOTATION
+        pattern: javax.annotation.Resource
+        annotated:
+          elements:
+            - name: lookup
+              value: jms/[a-zA-Z0-9_-]+
 
 - category: mandatory
   description: Detect Message-Driven Bean implementations
@@ -160,7 +171,7 @@
       namespaces:
         jee: http://xmlns.jcp.org/xml/ns/javaee
         j2ee: http://java.sun.com/xml/ns/j2ee
-      xpath: "//jee:resource-ref/jee:res-type[contains(text(), 'javax.jms')] | //jee:message-driven-destination | //j2ee:resource-ref/j2ee:res-type[contains(text(), 'javax.jms')] | //j2ee:message-driven-destination"
+      xpath: //jee:resource-ref/jee:res-type[contains(text(), 'javax.jms')] | //jee:message-driven-destination | //j2ee:resource-ref/j2ee:res-type[contains(text(), 'javax.jms')] | //j2ee:message-driven-destination
 
 # - category: mandatory
 #   description: Detect JMS JNDI lookups in code
@@ -228,48 +239,3 @@
     java.referenced:
       location: PACKAGE
       pattern: javax.jms*
-
-- category: recommended
-  description: Optimize Azure Service Bus for high throughput
-  effort: 3
-  labels:
-  - konveyor.io/source=java-ee
-  - konveyor.io/target=aks
-  message: |
-    For high-throughput JMS applications migrating to Azure Service Bus, consider these optimizations:
-    
-    1. **Use the Premium tier** for dedicated resources and higher throughput
-    2. **Implement partitioning** for better scalability 
-    3. **Use batch sending** for higher message throughput
-    4. **Configure prefetch** for faster message retrieval
-    5. **Implement concurrent processing** for better scalability
-    
-    **Example batch sending with Azure Service Bus:**
-    ```java
-    // Create a list of messages and send them in a single batch
-    List<ServiceBusMessage> messages = new ArrayList<>();
-    for (int i = 0; i < 10; i++) {
-        messages.add(new ServiceBusMessage("Message " + i));
-    }
-    
-    sender.sendMessages(messages);
-    ```
-    
-    **Example configuring prefetch:**
-    ```java
-    ServiceBusProcessorClient processorClient = new ServiceBusClientBuilder()
-        .connectionString(connectionString)
-        .processor()
-        .queueName("myqueue")
-        .prefetchCount(100)
-        .processMessage(this::processMessage)
-        .processError(this::processError)
-        .buildProcessorClient();
-    ```
-  ruleID: aks-jms-optimization-00058
-  when:
-    builtin.xml:
-      filepaths:
-      - server.xml
-      namespaces: {}
-      xpath: "//server/jmsConnectionFactory/properties[@maxPoolSize > 10] | //server/jmsQueue | //server/jmsTopic" 

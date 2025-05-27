@@ -30,7 +30,7 @@
       filepaths:
       - server.xml
       namespaces: {}
-      xpath: "//server/dataSource"
+      xpath: //server/dataSource
 - category: mandatory
   description: Detect EntityManager usage in application code
   effort: 4
@@ -78,7 +78,7 @@
       filepaths:
       - server.xml
       namespaces: {}
-      xpath: "//server/library/fileset[contains(@includes, 'jdbc') or contains(@includes, 'sql') or contains(@includes, 'db') or contains(@includes, 'oracle')]"
+      xpath: //server/library/fileset[contains(@includes, 'jdbc') or contains(@includes, 'sql') or contains(@includes, 'db') or contains(@includes, 'oracle')]
 - category: mandatory
   description: Detect application-level data source references
   effort: 4
@@ -98,41 +98,28 @@
         - web.xml
       namespaces:
         jee: http://xmlns.jcp.org/xml/ns/javaee
-      xpath: "//jee:resource-ref/jee:res-type[contains(text(), 'javax.sql.DataSource')] | //jee:env-entry[contains(jee:env-entry-value, 'jdbc')]"
-  # when:
-  #   or:
-  #   - builtin.xml:
-  #       filepaths:
-  #        - web.xml
-  #       namespaces:
-  #         jee: http://xmlns.jcp.org/xml/ns/javaee
-  #       xpath: "//jee:resource-ref/jee:res-type[contains(text(), 'javax.sql.DataSource')] | //jee:env-entry[contains(jee:env-entry-value, 'jdbc')]"
-  #   - builtin.xml:
-  #       xpath: "//resource-ref/res-type[contains(text(), 'javax.sql.DataSource') or contains(text(), 'jakarta.sql.DataSource')]"
-# - category: mandatory
-#   description: Detect Resource annotations for database injection
-#   effort: 4
-#   labels:
-#   - konveyor.io/source=java-ee
-#   - konveyor.io/target=aks
-#   message: |
-#     Detected @Resource annotations for database injection that need configuration updates for Azure.
-#     **Required changes:**
-#     - Update JNDI names to match your Kubernetes configuration
-#     - Review connection pooling settings for containerized environments
-#     - Consider implementing retry logic for connection failures
-#   ruleID: aks-db-resource-injection-00038
-#   when:
-#     java.referenced:
-#       location: ANNOTATION
-#       pattern: javax.annotation.Resource
-    # java.referenced:
-    #   location: VARIABLE_DECLARATION
-    #   annotated:
-    #     pattern: javax.annotation.Resource
-    #     elements:
-    #     - name: name
-    #       value: "jdbc/mydb"
+      xpath: //jee:resource-ref/jee:res-type[contains(text(), 'javax.sql.DataSource')] | //jee:env-entry[contains(jee:env-entry-value, 'jdbc')]
+- category: mandatory
+  description: Detect Resource annotations for database injection
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=aks
+  message: |
+    Detected @Resource annotations for database injection that need configuration updates for Azure.
+    **Required changes:**
+    - Update JNDI names to match your Kubernetes configuration
+    - Review connection pooling settings for containerized environments
+    - Consider implementing retry logic for connection failures
+  ruleID: aks-db-resource-injection-00038
+  when:
+    java.referenced:
+      location: ANNOTATION
+      pattern: javax.annotation.Resource
+      annotated:
+        elements:
+          - name: name
+            value: jdbc/[a-zA-Z0-9_-]+
 # - category: mandatory
 #   description: Detect JNDI lookup patterns for databases
 #   effort: 4
@@ -182,4 +169,4 @@
       filepaths:
       - persistence.xml
       namespaces: {}
-      xpath: "//persistence-unit/jta-data-source[contains(text(), 'jdbc/')] | //persistence-unit/non-jta-data-source[contains(text(), 'jdbc/')]"
+      xpath: //persistence-unit/jta-data-source[contains(text(), 'jdbc/')] | //persistence-unit/non-jta-data-source[contains(text(), 'jdbc/')]

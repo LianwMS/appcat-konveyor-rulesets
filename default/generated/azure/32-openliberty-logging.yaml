@@ -38,7 +38,7 @@
       filepaths:
       - server.xml
       namespaces: {}
-      xpath: "//server/logging"
+      xpath: //server/logging
 
 - category: mandatory
   description: Detect OpenLiberty Log File Location Configurations
@@ -66,7 +66,7 @@
       filepaths:
       - server.xml
       namespaces: {}
-      xpath: "//server/logging[@logDirectory]"
+      xpath: //server/logging[@logDirectory]
 
 - category: mandatory
   description: Detect Java Logging Frameworks Usage

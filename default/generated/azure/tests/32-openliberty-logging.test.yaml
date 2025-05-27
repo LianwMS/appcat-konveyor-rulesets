@@ -1,9 +1,9 @@
 rulesPath: ../openliberty-logging.yaml
 providers:
 - name: java
-  dataPath: ./data/openliberty-logging
+  dataPath: ./data/32-openliberty-logging
 - name: builtin
-  dataPath: ./data/openliberty-logging
+  dataPath: ./data/32-openliberty-logging
 tests:
 - ruleID: aks-liberty-logging-00050
   testCases:

@@ -51,7 +51,7 @@
       filepaths:
       - server.xml
       namespaces: {}
-      xpath: "//*[@dir] | //*[@directory] | //*[@path] | //*[@location][not(contains(@location, '.war') or contains(@location, '.ear') or contains(@location, '.jar'))]"
+      xpath: //*[@dir] | //*[@directory] | //*[@path] | //*[@location][not(contains(@location, '.war') or contains(@location, '.ear') or contains(@location, '.jar'))]
 
 - category: mandatory
   description: Detect Web.xml File Path Environment Entries
@@ -88,15 +88,46 @@
           key: uploadPath
     ```
   ruleID: aks-webapp-filepath-env-00061
+  # when:
+  #   or:
+  #   - builtin.xml:
+  #       filepaths:
+  #       - web.xml
+  #       namespaces:
+  #         jee: http://xmlns.jcp.org/xml/ns/javaee
+  #         xpath: //jee:env-entry[jee:env-entry-name[contains(lower-case(text()), 'path') or contains(lower-case(text()), 'dir') or contains(lower-case(text()), 'folder') or contains(lower-case(text()), 'file')]]
+  #   - builtin.xml:
+  #       filepaths:
+  #       - web.xml
+  #       namespaces:
+  #         j2ee: http://java.sun.com/xml/ns/j2ee
+  #       xpath: //j2ee:env-entry[j2ee:env-entry-name[contains(lower-case(text()), 'path') or contains(lower-case(text()), 'dir') or contains(lower-case(text()), 'folder') or contains(lower-case(text()), 'file')]]
+  #   - builtin.xml:
+  #       filepaths:
+  #       - web.xml
+  #       namespaces:
+  #         jakarta: https://jakarta.ee/xml/ns/jakartaee
+  #       xpath: //jakarta:env-entry[jakarta:env-entry-name[contains(lower-case(text()), 'path') or contains(lower-case(text()), 'dir') or contains(lower-case(text()), 'folder') or contains(lower-case(text()), 'file')]]
   when:
-    builtin.xml:
-      filepaths:
-      - web.xml
-      namespaces:
-        jee: http://xmlns.jcp.org/xml/ns/javaee
-        j2ee: http://java.sun.com/xml/ns/j2ee
-        jakarta: https://jakarta.ee/xml/ns/jakartaee
-      xpath: "//jee:env-entry[jee:env-entry-name[contains(text(), 'path') or contains(text(), 'dir') or contains(text(), 'directory') or contains(text(), 'folder') or contains(text(), 'file')]] | //j2ee:env-entry[j2ee:env-entry-name[contains(text(), 'path') or contains(text(), 'dir') or contains(text(), 'directory') or contains(text(), 'folder') or contains(text(), 'file')]] | //jakarta:env-entry[jakarta:env-entry-name[contains(text(), 'path') or contains(text(), 'dir') or contains(text(), 'directory') or contains(text(), 'folder') or contains(text(), 'file')]]"
+    or:
+    - builtin.xml:
+        filepaths:
+        - web.xml
+        namespaces:
+          jee: http://xmlns.jcp.org/xml/ns/javaee
+        xpath: //jee:env-entry[jee:env-entry-name[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'path') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'dir') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'folder') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'file')]]
+    - builtin.xml:
+        filepaths:
+        - web.xml
+        namespaces:
+          j2ee: http://java.sun.com/xml/ns/j2ee
+        xpath: //j2ee:env-entry[j2ee:env-entry-name[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'path') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'dir') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'folder') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'file')]]
+    - builtin.xml:
+        filepaths:
+        - web.xml
+        namespaces:
+          jakarta: https://jakarta.ee/xml/ns/jakartaee
+        xpath: //jakarta:env-entry[jakarta:env-entry-name[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'path') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'dir') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'folder') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'file')]]
 
 - category: mandatory
   description: Detect File Path Resource Injections
@@ -128,47 +159,21 @@
     ```
   ruleID: aks-file-resource-injection-00062
   when:
-    java.referenced:
-      location: ANNOTATION
-      pattern: javax.annotation.Resource
-      referencedBy:
-        pattern: "String.*(path|dir|directory|folder|file).*"
-
-# - category: mandatory
-#   description: Detect Jakarta File Path Resource Injections
-#   effort: 3
-#   labels:
-#   - konveyor.io/source=java-ee
-#   - konveyor.io/target=aks
-#   message: |
-#     Detected Jakarta @Resource annotations for file path injections that need to be updated for Azure storage.
-    
-#     **Migration Recommendations:**
-#     - Replace direct file path injections with Azure Storage SDK clients
-#     - Configure application to use mounted Azure storage paths in Kubernetes
-#     - Consider using Azure Blob Storage client for file-like operations
-    
-#     Example code update:
-#     ```java
-#     // Before:
-#     @Resource(name = "uploadPath")
-#     private String uploadDir;
-    
-#     // After:
-#     @Value("${UPLOAD_PATH}")
-#     private String uploadPath;
-    
-#     // Or with Azure Blob Storage SDK:
-#     @Autowired
-#     private BlobServiceClient blobServiceClient;
-#     ```
-#   ruleID: aks-jakarta-file-injection-00063
-#   when:
-#     java.referenced:
-#       location: ANNOTATION
-#       pattern: jakarta.annotation.Resource
-#       referencedBy:
-#         pattern: "String.*(path|dir|directory|folder|file).*"
+    or:
+    - java.referenced:
+        location: ANNOTATION
+        pattern: javax.annotation.Resource
+        annotated:
+          elements:
+            - name: name
+              value: ".*(?i)(path|dir|directory|folder|file|store|upload|download|temp|cache|log|data|config).*"
+    - java.referenced:
+        location: ANNOTATION
+        pattern: jakarta.annotation.Resource
+        annotated:
+          elements:
+            - name: name
+              value: ".*(?i)(path|dir|directory|folder|file|store|upload|download|temp|cache|log|data|config).*" 
 
 - category: mandatory
   description: Detect ServletContext Path Usage
@@ -238,79 +243,3 @@
 #       pattern: "System.getProperty"
 #       referencedBy:
 #         pattern: ".*(path|dir|directory|folder|file).*"
-
-- category: mandatory
-  description: Detect Direct File I/O Operations
-  effort: 4
-  labels:
-  - konveyor.io/source=java-ee
-  - konveyor.io/target=aks
-  message: |
-    Detected direct file I/O operations that need to be reconsidered for cloud storage on Azure.
-    
-    **Migration Options:**
-    - For temporary files: Use emptyDir volume in Kubernetes
-    - For shared files: Use Azure Blob Storage with SDK
-    - For persistent files: Use Azure Files mounted via Kubernetes PersistentVolumes
-    - For structured data: Consider migrating to Azure Cosmos DB or other database services
-    
-    Example using Azure Blob Storage:
-    ```java
-    // Before:
-    File file = new File(uploadDir, filename);
-    try (FileOutputStream out = new FileOutputStream(file)) {
-        out.write(content);
-    }
-    
-    // After with Azure Blob Storage:
-    BlobClient blobClient = containerClient.getBlobClient(filename);
-    try (ByteArrayInputStream dataStream = new ByteArrayInputStream(content)) {
-        blobClient.upload(dataStream, content.length);
-    }
-    ```
-  ruleID: aks-file-io-operations-00066
-  when:
-    java.referenced:
-      pattern: "java.io.File|java.io.FileInputStream|java.io.FileOutputStream|java.io.FileReader|java.io.FileWriter|java.nio.file.Files|java.nio.file.Paths|java.nio.file.Path"
-
-- category: recommended
-  description: Best Practices for Azure Storage Integration
-  effort: 4
-  labels:
-  - konveyor.io/source=java-ee
-  - konveyor.io/target=aks
-  message: |
-    Best practices for migrating file system operations to Azure:
-    
-    1. **Choose the right Azure Storage service:**
-       - Azure Blob Storage: For unstructured data like images, videos, etc.
-       - Azure Files: For SMB file shares that need to be mounted in containers
-       - Azure Managed Disks: For high-performance block storage needs
-       - Azure NetApp Files: For high-performance file storage with advanced features
-       
-    2. **Security considerations:**
-       - Use Managed Identities for authentication to Azure Storage
-       - Apply appropriate RBAC permissions at the storage account level
-       - Encrypt data at rest and in transit
-       
-    3. **Performance optimizations:**
-       - Use appropriate storage tier (Premium for performance-critical workloads)
-       - Implement caching strategies for frequently accessed files
-       - Use CDN for static content delivery
-       
-    4. **Resiliency patterns:**
-       - Implement retry logic for transient failures
-       - Use geo-redundant storage for critical data
-       - Monitor storage metrics and set up alerts
-  ruleID: aks-azure-storage-best-practices-00067
-  when:
-    or:
-    - java.referenced:
-        location: IMPORT
-        pattern: java.io.File
-    - java.referenced:
-        location: IMPORT
-        pattern: java.io.FileInputStream
-    - java.referenced:
-        location: IMPORT
-        pattern: java.io.FileOutputStream

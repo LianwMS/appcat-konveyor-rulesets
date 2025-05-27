@@ -1,9 +1,9 @@
 rulesPath: ../openliberty-database.yaml
 providers:
 - name: java
-  dataPath: ./data/openliberty-database
+  dataPath: ./data/29-openliberty-database
 - name: builtin
-  dataPath: ./data/openliberty-database
+  dataPath: ./data/29-openliberty-database
 tests:
 - ruleID: aks-liberty-datasource-00032
   testCases:
@@ -26,12 +26,12 @@ tests:
       atLeast: 1
       messageMatches: Detected application-level data source references that need updating for Azure database services
 
-# - ruleID: aks-db-resource-injection-00038
-#   testCases:
-#   - name: tc-1
-#     hasIncidents:
-#       atLeast: 1
-#       messageMatches: Detected @Resource annotations for database injection that need configuration updates
+- ruleID: aks-db-resource-injection-00038
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected @Resource annotations for database injection that need configuration updates
 
 # - ruleID: aks-db-jndi-lookup-00039
 #   testCases:
