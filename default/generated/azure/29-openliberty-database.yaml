@@ -42,6 +42,68 @@
       xpath: //server/dataSource
 - category: mandatory
   customVariables: []
+  description: Detect OpenLiberty Oracle Data Source configurations
+  effort: 3
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-aks
+  - domain=azure-readiness
+  - category=openliberty-migration
+  - openliberty
+- category: potential
+  customVariables: []
+  description: Oracle database found
+  effort: 5 
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-aks
+  - domain=azure-readiness
+  - category=openliberty-migration
+  - openliberty
+  links:
+  - title: Migration guide Oracle to Azure SQL Database
+    url: https://learn.microsoft.com/en-us/azure/azure-sql/migration-guides/database/oracle-to-sql-database-guide?view=azuresql
+  - title: Migrate Oracle to Azure Database for PostgreSQL
+    url: https://learn.microsoft.com/azure/dms/tutorial-oracle-azure-postgresql-online
+  - title: Oracle workloads on Azure Virtual Machines
+    url: https://learn.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-overview
+  - title: Azure Database Migration Service documentation
+    url: https://learn.microsoft.com/azure/dms
+  - title: Azure Monitor documentation
+    url: https://learn.microsoft.com/azure/azure-monitor
+  - title: Microsoft Defender for Cloud
+    url: https://learn.microsoft.com/azure/defender-for-cloud
+  - title: SQL Server Migration Assistant for Oracle (SSMA)
+    url: https://learn.microsoft.com/sql/ssma/oracle/sql-server-migration-assistant-for-oracle-oracletosql
+  message: |-
+    To migrate a Java application that uses an Oracle database to Azure, you can follow these recommendations:
+
+    * **Choose your Azure target**:
+      * **Azure SQL Database**: A fully managed PaaS service, often the preferred target for modernization. Offers various service tiers including Hyperscale for scalability.
+      * **Azure Database for PostgreSQL**: Another strong PaaS option, especially if considering a move to open-source databases.
+      * **Oracle on Azure VMs**: For maximum compatibility or when PaaS is not feasible, run Oracle databases on Azure IaaS.
+
+    * **Migrate** the existing Oracle database:
+      * Use **Azure Database Migration Service (DMS)** for online or offline migrations to Azure SQL Database or Azure Database for PostgreSQL.
+      * Utilize **SQL Server Migration Assistant (SSMA) for Oracle** to assess and migrate schemas and data to Azure SQL Database.
+      * For Oracle on Azure VMs, standard Oracle migration tools like RMAN or Data Pump can be used.
+
+    * Update the application's **database connection** details: Modify the Java application's configuration to point to the newly provisioned Azure database service. Update the connection string (JDBC URL), hostname, port, username, and password information accordingly.
+
+    * Enable **monitoring and diagnostics**: Utilize Azure Monitor to gain insights into the performance and health of your Java application and the underlying Azure database. Set up metrics, alerts, and log analytics to proactively identify and resolve issues.
+
+    * Implement **security** measures: Apply security best practices to protect your Java application and the database. This includes implementing authentication and authorization mechanisms, potentially with passwordless connections (e.g., Azure AD authentication for Azure SQL), and leveraging Microsoft Defender for Cloud for threat detection and vulnerability assessments.
+
+    * **Backup** your data: Azure managed database services (Azure SQL, Azure Database for PostgreSQL) provide automated backups by default. Configure retention periods and consider geo-redundant backups for enhanced data durability. For Oracle on Azure VMs, you are responsible for configuring and managing backups using Oracle tools or Azure Backup.
+  ruleID: openliberty-database-00008
+  when:
+    builtin.xml:
+      filepaths:
+      - server.xml
+      namespaces: {}
+      xpath: //server/dataSource/properties.oracle
+- category: mandatory
+  customVariables: []
   description: Detect EntityManager usage in application code
   effort: 4
   labels:

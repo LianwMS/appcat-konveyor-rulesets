@@ -53,3 +53,10 @@ tests:
     hasIncidents:
       atLeast: 1
       messageMatches: Detected JPA persistence.xml configurations with database references that need updates
+
+- ruleID: openliberty-database-00008
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: To migrate a Java application that uses an Oracle database to Azure
