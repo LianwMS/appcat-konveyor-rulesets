@@ -172,6 +172,7 @@
       xpath: //jee:resource-ref/jee:res-type[contains(text(), 'javax.jms')] | //jee:message-driven-destination | //j2ee:resource-ref/j2ee:res-type[contains(text(), 'javax.jms')] | //j2ee:message-driven-destination
 
 - category: mandatory
+  customVariables: []
   description: Detect JMS JNDI lookups in code
   effort: 4
   labels:
