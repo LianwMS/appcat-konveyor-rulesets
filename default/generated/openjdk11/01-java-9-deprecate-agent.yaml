@@ -20,9 +20,5 @@
   ruleID: java-9-deprecate-agent-00000
   when:
     or:
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.Thread.destroy
+    - builtin.file:
+        pattern: management\-agent\.jar

@@ -17,12 +17,8 @@
   ruleID: java-9-deprecate-property-00000
   when:
     or:
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.Thread.destroy
+    - builtin.filecontent:
+        pattern: getProperty\("sun\.lang\.ClassLoader\.allowArraySyntax"\)
 - category: mandatory
   customVariables: []
   description: The system property sun.zip.disableMemoryMapping has been removed
@@ -42,9 +38,5 @@
   ruleID: java-9-deprecate-property-00001
   when:
     or:
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.Thread.destroy
+    - builtin.filecontent:
+        pattern: getProperty\("sun\.zip\.disableMemoryMapping"\)
