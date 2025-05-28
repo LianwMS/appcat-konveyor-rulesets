@@ -20,7 +20,7 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
+        pattern: java.lang.Runtime.getLocalizedInputStream*
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Thread.destroy
+        pattern: java.lang.Runtime.getLocalizedOutputStream*

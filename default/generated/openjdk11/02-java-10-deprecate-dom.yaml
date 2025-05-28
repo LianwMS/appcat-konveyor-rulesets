@@ -18,8 +18,8 @@
   when:
     or:
     - java.referenced:
-        location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
+        location: IMPORT
+        pattern: com.sun.java.browser.plugin2.DOM*
     - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.Thread.destroy
+        location: IMPORT
+        pattern: sun.plugin.dom.DOMObject*

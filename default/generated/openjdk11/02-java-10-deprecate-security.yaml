@@ -30,10 +30,25 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
+        pattern: java.lang.SecurityManager.getInCheck
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Thread.destroy
+        pattern: java.lang.SecurityManager.classDepth
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: java.lang.SecurityManager.classLoaderDepth
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: java.lang.SecurityManager.currentClassLoader
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: java.lang.SecurityManager.currentLoadedClass
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: java.lang.SecurityManager.inClass
+    - java.referenced: 
+        location: METHOD_CALL
+        pattern: java.lang.SecurityManager.inClassLoader
 - category: mandatory
   customVariables: []
   description: Removal of Deprecated Classes in com.sun.security.auth.**
@@ -62,11 +77,8 @@
   when:
     or:
     - java.referenced:
-        location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.Thread.destroy
+        location: IMPORT
+        pattern: com.sun.security.auth*
 - category: mandatory
   customVariables: []
   description: java.security.{Certificate,Identity,IdentityScope,Signer} APIs Deprecated forRemoval
@@ -86,11 +98,17 @@
   when:
     or:
     - java.referenced:
-        location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
+        location: IMPORT
+        pattern: java.security.Certificate
     - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.Thread.destroy
+        location: IMPORT
+        pattern: java.security.Identity
+    - java.referenced:
+        location: IMPORT
+        pattern: java.security.IdentityScope
+    - java.referenced:
+        location: IMPORT
+        pattern: java.security.Signer
 - category: mandatory
   customVariables: []
   description: java.security.acl APIs Deprecated forRemoval
@@ -110,11 +128,8 @@
   when:
     or:
     - java.referenced:
-        location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.Thread.destroy
+        location: IMPORT
+        pattern: java.security.acl*
 - category: mandatory
   customVariables: []
   description: javax.security.auth.Policy API Deprecated forRemoval
@@ -134,8 +149,5 @@
   when:
     or:
     - java.referenced:
-        location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.Thread.destroy
+        location: IMPORT
+        pattern: javax.security.auth.Policy*
