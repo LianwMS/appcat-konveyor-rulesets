@@ -1,25 +1,25 @@
-rulesPath: ../openliberty-filesystem.yaml
+rulesPath: ../30-openliberty-filesystem.yaml
 providers:
 - name: java
   dataPath: ./data/30-openliberty-filesystem
 - name: builtin
   dataPath: ./data/30-openliberty-filesystem
 tests:
-- ruleID: aks-liberty-filesystem-00060
+- ruleID: openliberty-filesystem-00001
   testCases:
   - name: tc-1
     hasIncidents:
       atLeast: 1
       messageMatches: Detected file path configurations in OpenLiberty server
 
-- ruleID: aks-webapp-filepath-env-00061
+- ruleID: openliberty-filesystem-00002
   testCases:
   - name: tc-1
     hasIncidents:
       atLeast: 1
       messageMatches: Detected environment entries in web.xml defining file paths
 
-- ruleID: aks-file-resource-injection-00062
+- ruleID: openliberty-filesystem-00003
   testCases:
   - name: tc-1
     hasIncidents:
@@ -33,7 +33,7 @@ tests:
 #       atLeast: 1
 #       messageMatches: Detected Jakarta @Resource annotations for file path injections
 
-- ruleID: aks-servlet-realpath-00064
+- ruleID: openliberty-filesystem-00004
   testCases:
   - name: tc-1
     hasIncidents:

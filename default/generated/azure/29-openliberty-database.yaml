@@ -1,30 +1,39 @@
 - category: mandatory
+  customVariables: []
   description: Detect OpenLiberty Data Source configurations
   effort: 3
   labels:
   - konveyor.io/source=java-ee
-  - konveyor.io/target=aks
+  - konveyor.io/target=azure-aks
+  - domain=azure-readiness
+  - category=openliberty-migration
+  - openliberty
   message: |
     Detected OpenLiberty data source configurations that need to be migrated to Azure database services.
     
-    **Migration steps:**
-    - Use Azure Database for MySQL, PostgreSQL, or SQL Server based on your current database type
-    - Update connection strings to use Azure database endpoints
-    - Store credentials in Kubernetes Secrets or Azure Key Vault
-    - Configure database high availability using features like geo-replication
+    **Migration Options:**
+    * **Azure Database for MySQL/PostgreSQL/SQL Server**: Use fully managed Azure database services for better scalability, security, and maintenance
+    * **Connection String Updates**: Update connection strings to point to Azure database endpoints
+    * **Credential Management**: Store database credentials securely in Azure Key Vault or Kubernetes Secrets
+    * **High Availability**: Configure geo-replication and backup strategies for production workloads
     
-    Example configuration in Kubernetes:
-    ```yaml
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: db-credentials
-    type: Opaque
-    data:
-      username: <base64-encoded-username>
-      password: <base64-encoded-password>
-    ```
-  ruleID: aks-liberty-datasource-00032
+    **Implementation Steps:**
+    1. Create managed Azure database service matching your current database type
+    2. Update server.xml dataSource configuration with new connection details
+    3. Configure connection pooling optimized for cloud environments
+    4. Implement proper security and monitoring practices
+  links:
+  - title: "Azure Database for PostgreSQL documentation"
+    url: "https://learn.microsoft.com/en-us/azure/postgresql/"
+  - title: "Azure Database for MySQL documentation" 
+    url: "https://learn.microsoft.com/en-us/azure/mysql/"
+  - title: "Azure SQL Database documentation"
+    url: "https://learn.microsoft.com/en-us/azure/azure-sql/database/"
+  - title: "Store credentials in Azure Key Vault"
+    url: "https://learn.microsoft.com/en-us/azure/key-vault/general/overview"
+  - title: "OpenLiberty DataSource configuration"
+    url: "https://openliberty.io/docs/latest/data-persistence-jpa.html"
+  ruleID: openliberty-database-00001
   when:
     builtin.xml:
       filepaths:
@@ -32,47 +41,75 @@
       namespaces: {}
       xpath: //server/dataSource
 - category: mandatory
+  customVariables: []
   description: Detect EntityManager usage in application code
   effort: 4
   labels:
   - konveyor.io/source=java-ee
-  - konveyor.io/target=aks
+  - konveyor.io/target=azure-aks
+  - domain=azure-readiness
+  - category=openliberty-migration
+  - openliberty
   message: |
     Detected JPA EntityManager usage that will require configuration updates when migrating to Azure.
     
-    **Migration considerations:**
-    - Ensure your persistence.xml is properly configured for Azure database services
-    - Consider using connection pooling optimized for cloud environments
-    - Implement resilience patterns for database operations (retry logic, circuit breakers)
-    - For high-availability scenarios, consider using read replicas with appropriate transaction isolation
+    **Migration Considerations:**
+    * **Persistence Configuration**: Ensure your persistence.xml is properly configured for Azure database services
+    * **Connection Pooling**: Use cloud-optimized connection pools like HikariCP for better performance
+    * **Resilience Patterns**: Implement retry logic and circuit breakers for database operations
+    * **High Availability**: Consider using read replicas with appropriate transaction isolation levels
+    * **Security**: Use managed identity or Azure Key Vault for database authentication
     
-    Example of updated persistence context with custom properties for Azure:
-    ```java
-    @PersistenceContext(unitName = "myPU", properties = {
-        "hibernate.connection.provider_class=org.hibernate.hikaricp.internal.HikariCPConnectionProvider",
-        "hibernate.hikari.maximumPoolSize=20"
-    })
-    private EntityManager em;
-    ```
-  ruleID: aks-jpa-entity-manager-00042
+    **Implementation Steps:**
+    1. Update persistence.xml with Azure-compatible configurations
+    2. Configure HikariCP connection pooling for optimal cloud performance
+    3. Implement proper exception handling and retry mechanisms
+    4. Set up monitoring and health checks for database connectivity
+  links:
+  - title: "JPA and Hibernate on Azure"
+    url: "https://learn.microsoft.com/en-us/azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server"
+  - title: "HikariCP Connection Pool Configuration"
+    url: "https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby"
+  - title: "Azure SQL Database connectivity best practices"
+    url: "https://learn.microsoft.com/en-us/azure/azure-sql/database/develop-overview"
+  ruleID: openliberty-database-00002
   when:
     java.referenced:
       location: IMPORT
       pattern: javax.persistence.EntityManager
 - category: mandatory
+  customVariables: []
   description: Detect database driver configurations
   effort: 3
   labels:
   - konveyor.io/source=java-ee
-  - konveyor.io/target=aks
+  - konveyor.io/target=azure-aks
+  - domain=azure-readiness
+  - category=openliberty-migration
+  - openliberty
   message: |
     Detected database driver configurations that need to be included in your container image when migrating to AKS.
     
-    **Migration considerations:**
-    - Include appropriate JDBC drivers in your container image
-    - Verify driver compatibility with Azure managed database services
-    - Update any driver-specific configuration for cloud environments
-  ruleID: aks-db-driver-00033
+    **Migration Considerations:**
+    * **Container Image**: Include appropriate JDBC drivers in your application container image
+    * **Driver Compatibility**: Verify driver compatibility with Azure managed database services
+    * **Version Management**: Use latest stable driver versions for security and performance
+    * **Configuration Updates**: Update driver-specific configurations for cloud environments
+    * **Connection Security**: Enable SSL/TLS connections for secure database communication
+    
+    **Implementation Steps:**
+    1. Add JDBC drivers to your Maven/Gradle dependencies
+    2. Configure SSL connections in your connection strings
+    3. Test driver compatibility with Azure database services
+    4. Set up proper connection timeouts and retry policies
+  links:
+  - title: "JDBC driver for SQL Server"
+    url: "https://learn.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server"
+  - title: "Connect to Azure Database for MySQL"
+    url: "https://learn.microsoft.com/en-us/azure/mysql/single-server/how-to-connection-string"
+  - title: "Connect to Azure Database for PostgreSQL"
+    url: "https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/connect-java"
+  ruleID: openliberty-database-00003
   when:
     builtin.xml:
       filepaths:
@@ -80,18 +117,38 @@
       namespaces: {}
       xpath: //server/library/fileset[contains(@includes, 'jdbc') or contains(@includes, 'sql') or contains(@includes, 'db') or contains(@includes, 'oracle')]
 - category: mandatory
+  customVariables: []
   description: Detect application-level data source references
   effort: 4
   labels:
   - konveyor.io/source=java-ee
-  - konveyor.io/target=aks
+  - konveyor.io/target=azure-aks
+  - domain=azure-readiness
+  - category=openliberty-migration
+  - openliberty
   message: |
     Detected application-level data source references that need updating for Azure database services.
-    **Required changes:**
-    - Update JNDI lookup references to match your Kubernetes deployment
-    - Optimize connection pool settings for containerized environments
-    - Consider using connection pooling libraries designed for cloud environments
-  ruleID: aks-app-datasource-ref-00034
+    
+    **Migration Requirements:**
+    * **JNDI Updates**: Update JNDI lookup references to match your Kubernetes deployment configuration
+    * **Connection Pool Optimization**: Configure connection pool settings for containerized environments
+    * **Cloud-Native Libraries**: Consider using cloud-optimized connection pooling libraries
+    * **Environment Variables**: Use environment variables for database connection parameters
+    * **Security Configuration**: Implement secure credential management practices
+    
+    **Implementation Steps:**
+    1. Update web.xml resource references to use environment-specific JNDI names
+    2. Configure external database connection properties
+    3. Set up Kubernetes ConfigMaps and Secrets for database configuration
+    4. Implement health checks for database connectivity
+  links:
+  - title: "Configure data sources in OpenLiberty"
+    url: "https://openliberty.io/docs/latest/data-persistence-jpa.html"
+  - title: "Kubernetes ConfigMaps"
+    url: "https://kubernetes.io/docs/concepts/configuration/configmap/"
+  - title: "Manage sensitive data with Secrets"
+    url: "https://kubernetes.io/docs/concepts/configuration/secret/"
+  ruleID: openliberty-database-00004
   when:
     builtin.xml:
       filepaths:
@@ -100,18 +157,38 @@
         jee: http://xmlns.jcp.org/xml/ns/javaee
       xpath: //jee:resource-ref/jee:res-type[contains(text(), 'javax.sql.DataSource')] | //jee:env-entry[contains(jee:env-entry-value, 'jdbc')]
 - category: mandatory
+  customVariables: []
   description: Detect Resource annotations for database injection
   effort: 4
   labels:
   - konveyor.io/source=java-ee
-  - konveyor.io/target=aks
+  - konveyor.io/target=azure-aks
+  - domain=azure-readiness
+  - category=openliberty-migration
+  - openliberty
   message: |
-    Detected @Resource annotations for database injection that need configuration updates for Azure.
-    **Required changes:**
-    - Update JNDI names to match your Kubernetes configuration
-    - Review connection pooling settings for containerized environments
-    - Consider implementing retry logic for connection failures
-  ruleID: aks-db-resource-injection-00038
+    Detected @Resource annotations for database injection that need configuration updates for Azure migration.
+    
+    **Migration Requirements:**
+    * **JNDI Name Updates**: Update JNDI names to match your Kubernetes/OpenLiberty configuration
+    * **Connection Pool Settings**: Review and optimize connection pooling for containerized environments
+    * **Resilience Patterns**: Implement retry logic and circuit breakers for connection failures
+    * **Monitoring**: Add database connection monitoring and health checks
+    * **Security**: Use managed identities or secure credential storage
+    
+    **Implementation Steps:**
+    1. Update @Resource annotations with new Azure database JNDI names
+    2. Configure OpenLiberty server.xml with Azure database connections
+    3. Set up connection pooling optimized for cloud workloads
+    4. Implement proper error handling and retry mechanisms
+  links:
+  - title: "OpenLiberty database configuration"
+    url: "https://openliberty.io/docs/latest/relational-database-connections-JDBC.html"
+  - title: "Azure SQL Database connection libraries"
+    url: "https://learn.microsoft.com/en-us/azure/azure-sql/database/connect-query-java"
+  - title: "Connection pooling best practices"
+    url: "https://learn.microsoft.com/en-us/azure/azure-sql/database/develop-cplusplus-simple"
+  ruleID: openliberty-database-00005
   when:
     java.referenced:
       location: ANNOTATION
@@ -120,50 +197,66 @@
         elements:
           - name: name
             value: jdbc/[a-zA-Z0-9_-]+
-# - category: mandatory
-#   description: Detect JNDI lookup patterns for databases
-#   effort: 4
-#   labels:
-#   - konveyor.io/source=java-ee
-#   - konveyor.io/target=aks
-#   message: |
-#     Detected manual JNDI lookups for database connections that need updates for Azure.
-    
-#     **Required changes:**
-#     - Update JNDI references to match your Kubernetes configuration
-#   ruleID: aks-db-jndi-lookup-00039
-#   when:
-#     builtin.filecontent:
-#       pattern: "(?:ctx|context|initialContext)\\s*\\.\\s*lookup\\s*\\(\\s*[\"'](?:java:comp/env/)?jdbc/[^\"']+[\"']\\s*\\)"
 - category: mandatory
+  customVariables: []
+  description: Detect JNDI lookup patterns for databases
+  effort: 4
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-aks
+  - domain=azure-readiness
+  - category=openliberty-migration
+  - openliberty
+  message: |
+    Detected manual JNDI lookups for database connections that need updates for Azure.
+    
+    **Required changes:**
+    - Update JNDI references to match your Kubernetes configuration
+    - Consider using CDI injection (@Resource) instead of manual lookups
+    - Configure OpenLiberty server.xml with Azure database connections
+    
+    **Implementation Steps:**
+    1. Update JNDI names to match your container deployment
+    2. Configure proper connection pooling for cloud environments
+    3. Implement proper error handling and retry mechanisms
+  ruleID: openliberty-database-00007
+  when:
+    builtin.filecontent:
+      filePattern: .*\.java
+      pattern: \.lookup\(\s*["'][^"']*jdbc[^"']*["']\s*\)
+- category: mandatory
+  customVariables: []
   description: Detect persistence.xml configurations
   effort: 4
   labels:
   - konveyor.io/source=java-ee
-  - konveyor.io/target=aks
+  - konveyor.io/target=azure-aks
+  - domain=azure-readiness
+  - category=openliberty-migration
+  - openliberty
   message: |
-    Detected JPA persistence.xml configurations with database references that need updates for Azure.
+    Detected JPA persistence.xml configurations with database references that need updates for Azure migration.
     
-    **Required changes:**
-    - Update database connection properties for cloud environments
-    - Configure suitable connection pool settings
-    - Consider using environment-specific properties for different deployment environments
+    **Migration Requirements:**
+    * **Database Properties**: Update database connection properties for Azure cloud environments
+    * **Connection Pooling**: Configure cloud-optimized connection pool settings
+    * **Environment Configuration**: Use environment-specific properties for different deployment stages
+    * **Dialect Updates**: Ensure proper Hibernate dialect for Azure database services
+    * **Performance Tuning**: Optimize JPA settings for cloud database latency and throughput
     
-    Example persistence.xml update:
-    ```xml
-    <persistence-unit name="myPU" transaction-type="JTA">
-        <jta-data-source>java:comp/env/jdbc/myAzureDB</jta-data-source>
-        <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect"/>
-            <property name="hibernate.connection.provider_class" value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider"/>
-            <property name="hibernate.hikari.connectionTimeout" value="10000"/>
-            <property name="hibernate.hikari.minimumIdle" value="5"/>
-            <property name="hibernate.hikari.maximumPoolSize" value="10"/>
-            <property name="hibernate.hikari.idleTimeout" value="30000"/>
-        </properties>
-    </persistence-unit>
-    ```
-  ruleID: aks-db-persistence-xml-00041
+    **Implementation Steps:**
+    1. Update persistence.xml with Azure database connection properties
+    2. Configure HikariCP for optimal cloud performance
+    3. Set up environment-specific configurations using Spring profiles or system properties
+    4. Add monitoring and logging for database performance
+  links:
+  - title: "JPA configuration for Azure SQL"
+    url: "https://learn.microsoft.com/en-us/azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server"
+  - title: "Hibernate performance tuning"
+    url: "https://hibernate.org/orm/documentation/6.0/"
+  - title: "HikariCP configuration guide"
+    url: "https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing"
+  ruleID: openliberty-database-00006
   when:
     builtin.xml:
       filepaths:
