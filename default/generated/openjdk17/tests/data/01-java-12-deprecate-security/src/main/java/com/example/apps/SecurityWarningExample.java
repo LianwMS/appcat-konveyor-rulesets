@@ -1,3 +1,4 @@
+
 import com.sun.awt.SecurityWarning;
 
 public class SecurityWarningExample {

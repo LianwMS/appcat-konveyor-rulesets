@@ -12,7 +12,8 @@
   links:
   - title: Removal of com.sun.awt.SecurityWarning Class
     url: https://www.oracle.com/java/technologies/javase/12all-relnotes.html#JDK-8210692
-  message: The `com.sun.awt.SecurityWarning` class was deprecated as `forRemoval=true` in JDK 11. This class was unused in the JDK and has been removed in this release.
+  message: |-
+    The `com.sun.awt.SecurityWarning` class was deprecated as `forRemoval=true` in JDK 11. This class was unused in the JDK and has been removed in this release.
   ruleID: java-12-deprecate-security-00000
   when:
     or:
