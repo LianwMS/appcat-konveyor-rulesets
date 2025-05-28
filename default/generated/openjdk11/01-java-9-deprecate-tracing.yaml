@@ -21,8 +21,8 @@
   when:
     or:
     - java.referenced:
-        location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
+        location: PACKAGE
+        pattern: com.sun.tracing
     - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.Thread.destroy
+        location: PACKAGE
+        pattern: com.sun.tracing.dtrace

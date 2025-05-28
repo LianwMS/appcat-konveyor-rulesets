@@ -19,7 +19,13 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
+        pattern: sun.misc.Unsafe.monitorEnter*
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: sun.misc.Unsafe.monitorExit*
+    - java.referenced:
+        location: METHOD_CALL
+        pattern: sun.misc.Unsafe.tryMonitorEnter*
 - category: mandatory
   customVariables: []
   description: Deprecate sun.misc.Unsafe.defineClass
@@ -41,4 +47,4 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
+        pattern: sun.misc.Unsafe.defineClass
