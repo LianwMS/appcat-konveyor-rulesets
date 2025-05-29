@@ -30,25 +30,7 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.SecurityManager.getInCheck
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.SecurityManager.classDepth
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.SecurityManager.classLoaderDepth
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.SecurityManager.currentClassLoader
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.SecurityManager.currentLoadedClass
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.SecurityManager.inClass
-    - java.referenced: 
-        location: METHOD_CALL
-        pattern: java.lang.SecurityManager.inClassLoader
+        pattern: java.lang.SecurityManager.(getInCheck|classDepth|classLoaderDepth|currentClassLoader|currentLoadedClass|inClass|inClassLoader)
 - category: mandatory
   customVariables: []
   description: Removal of Deprecated Classes in com.sun.security.auth.**

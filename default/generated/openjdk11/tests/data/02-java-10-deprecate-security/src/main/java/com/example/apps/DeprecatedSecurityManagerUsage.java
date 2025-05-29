@@ -1,3 +1,5 @@
+import java.lang.SecurityManager;
+
 import com.sun.security.auth.PolicyFile;
 import com.sun.security.auth.SolarisNumericGroupPrincipal;
 import com.sun.security.auth.SolarisNumericUserPrincipal;
@@ -6,23 +8,30 @@ import com.sun.security.auth.X500Principal;
 import com.sun.security.auth.module.SolarisLoginModule;
 import com.sun.security.auth.module.SolarisSystem;
 
-import javax.security.auth.Subject;
-import java.util.HashMap;
-import java.util.Map;
-
-import java.security.Certificate;
 import java.security.Identity;
 import java.security.IdentityScope;
 import java.security.Signer;
-import java.security.KeyPairGenerator;
-import java.security.KeyPair;
+import java.security.Certificate;
+import java.security.Principal;
 import java.security.PublicKey;
-import java.security.PrivateKey;
-import java.security.NoSuchAlgorithmException;
 
-import java.lang.SecurityManager;
+import java.security.acl.Acl;
+import java.security.acl.AclEntry;
+import java.security.acl.Group;
+import java.security.acl.NotOwnerException;
+import java.security.acl.Permission;
+import java.security.Principal;
+import java.util.Enumeration;
+import java.util.Vector;
 
-public class DeprecatedSecurityManagerUsage {
+import javax.security.auth.Subject;
+import javax.security.auth.login.LoginContext;
+import javax.security.auth.login.LoginException;
+import javax.security.auth.Policy; // 🚫 Deprecated
+import java.security.PermissionCollection;
+import java.security.Principal;
+
+public class DeprecatedSecurityManagerUsage extends Identity {
 
     public static void main(String[] args) {
         // Get the system security manager
@@ -72,6 +81,7 @@ public class DeprecatedSecurityManagerUsage {
             System.out.println("No SecurityManager installed.");
         }
 
+        // ---
 
         // Example 1: SolarisPrincipal
         SolarisPrincipal principal = new SolarisPrincipal("username");
@@ -106,23 +116,147 @@ public class DeprecatedSecurityManagerUsage {
         PolicyFile policy = new PolicyFile();
         System.out.println("PolicyFile loaded: " + policy);
     
-        LegacySecurityIdentity identity = new LegacySecurityIdentity("legacyUser");
-        System.out.println("Created identity: " + identity.getName());
+        // ---
 
-        LegacySecurityIdentity.LegacyIdentityScope scope = new LegacySecurityIdentity.LegacyIdentityScope("legacyScope");
-        System.out.println("Scope size: " + scope.size());
+        IdentityScope scope = new IdentityScope("TestScope") {
+            @Override
+            public int size() {
+                return 0;
+            }
 
-        identity.addCertificate(cert);
-        System.out.println("Added dummy certificate to identity.");
+            @Override
+            public Identity getIdentity(String name) {
+                return null;
+            }
 
-        Principal owner = new UserPrincipal("admin");
-        LegacyAclManager acl = new LegacyAclManager("TestACL", owner);
+            @Override
+            public Identity getIdentity(PublicKey key) {
+                return null;
+            }
 
-        System.out.println(acl);
+            @Override
+            public Enumeration<Identity> identities() {
+                return null;
+            }
+        };
 
-        LegacyAuthPolicyChecker checker = new LegacyAuthPolicyChecker();
-        boolean allowed = checker.isAccessAllowed(new Subject(), new CodeSource(null, (java.security.cert.Certificate[]) null));
-        System.out.println("Access allowed: " + allowed);
-        
+        // Create an Identity (deprecated)
+        Identity identity = new Identity("TestIdentity") {
+            @Override
+            public String toString() {
+                return "Deprecated Identity: " + getName();
+            }
+        };
+        System.out.println(identity);
+
+        // Create a Signer (also deprecated)
+        Signer signer = new Signer("TestSigner") {
+            @Override
+            public String toString() {
+                return "Deprecated Signer: " + getName();
+            }
+        };
+        System.out.println(signer);
+
+        // Use a Certificate (abstract and deprecated)
+        Certificate cert = new Certificate("DeprecatedCert") {
+            @Override
+            public byte[] getEncoded() {
+                return new byte[0];
+            }
+
+            @Override
+            public void verify(PublicKey key) {}
+
+            @Override
+            public void verify(PublicKey key, String sigProvider) {}
+
+            @Override
+            public String toString() {
+                return "Deprecated Certificate";
+            }
+
+            @Override
+            public PublicKey getPublicKey() {
+                return null;
+            }
+        };
+        System.out.println(cert);
+
+        // ---
+
+        Principal owner = () -> "ownerUser";
+
+        Acl acl = new Acl() {
+            private String name = "exampleAcl";
+            private Principal ownerPrincipal = owner;
+            private Vector<AclEntry> entries = new Vector<>();
+
+            @Override
+            public void setName(Principal caller, String name) throws NotOwnerException {
+                this.name = name;
+            }
+
+            @Override
+            public String getName() {
+                return name;
+            }
+
+            @Override
+            public boolean addEntry(Principal caller, AclEntry entry) throws NotOwnerException {
+                return entries.add(entry);
+            }
+
+            @Override
+            public boolean removeEntry(Principal caller, AclEntry entry) throws NotOwnerException {
+                return entries.remove(entry);
+            }
+
+            @Override
+            public Enumeration<AclEntry> entries() {
+                return entries.elements();
+            }
+
+            @Override
+            public boolean checkPermission(Principal principal, Permission permission) {
+                return false; // not implemented
+            }
+
+            @Override
+            public Enumeration<Principal> getPrincipals() {
+                Vector<Principal> principals = new Vector<>();
+                principals.add(ownerPrincipal);
+                return principals.elements();
+            }
+
+            @Override
+            public String toString() {
+                return "Deprecated ACL Implementation";
+            }
+        };
+
+        System.out.println("ACL Name: " + acl.getName());
+        System.out.println("ACL Entries: " + acl.entries().hasMoreElements());
+
+        // ---
+
+        try {
+            // Create a Subject with a dummy Principal
+            Principal principal = () -> "testUser";
+            Subject subject = new Subject();
+            subject.getPrincipals().add(principal);
+
+            // Use the deprecated Policy class
+            Policy policy = Policy.getPolicy(); // 🚫 Deprecated usage
+            PermissionCollection permissions = policy.getPermissions(subject);
+
+            System.out.println("Permissions retrieved from deprecated javax.security.auth.Policy:");
+            permissions.elements().asIterator().forEachRemaining(System.out::println);
+
+        } catch (Exception e) {
+            System.err.println("An error occurred: " + e);
+        }
+
     }
+
 }
