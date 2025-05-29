@@ -1,9 +1,9 @@
-rulesPath: ../01-java-18-deprecate-finalize.yaml
+rulesPath: ../java-18-deprecate-finalize.yaml
 providers:
 - name: java
-  dataPath: ./data/01-java-18-deprecate-finalize
+  dataPath: ./data/java-18-deprecate-finalize
 - name: builtin
-  dataPath: ./data/01-java-18-deprecate-finalize
+  dataPath: ./data/java-18-deprecate-finalize
 tests:
 - ruleID: java-18-deprecate-finalize-00000
   testCases:

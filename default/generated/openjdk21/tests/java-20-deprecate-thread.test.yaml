@@ -1,9 +1,9 @@
-rulesPath: ../03-java-20-deprecate-thread.yaml
+rulesPath: ../java-20-deprecate-thread.yaml
 providers:
 - name: java
-  dataPath: ./data/03-java-20-deprecate-thread
+  dataPath: ./data/java-20-deprecate-thread
 - name: builtin
-  dataPath: ./data/03-java-20-deprecate-thread
+  dataPath: ./data/java-20-deprecate-thread
 tests:
 - ruleID: java-20-deprecate-thread-00000
   testCases:

@@ -1,9 +1,9 @@
-rulesPath: ../02-java-19-deprecate-spec.yaml
+rulesPath: ../java-19-deprecate-spec.yaml
 providers:
 - name: java
-  dataPath: ./data/02-java-19-deprecate-spec
+  dataPath: ./data/java-19-deprecate-spec
 - name: builtin
-  dataPath: ./data/02-java-19-deprecate-spec
+  dataPath: ./data/java-19-deprecate-spec
 tests:
 - ruleID: java-19-deprecate-param-spec-00000
   testCases:

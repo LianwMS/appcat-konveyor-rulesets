@@ -18,7 +18,7 @@
   message: |-
     Dynamic loading of agents will be restricted at a later JDK release.
      JDKs can use the `-XX:-EnableDynamicAgentLoading` command line option starting in JDK21 to ensure that agents cannot be loaded dynamically.
-  ruleID: dynamic-agents-00000
+  ruleID: java-21-deprecate-dynamic-agents-00000
   when:
     java.referenced:
       location: PACKAGE

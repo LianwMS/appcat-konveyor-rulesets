@@ -1,9 +1,9 @@
-rulesPath: ../01-java-18-deprecate-property.yaml
+rulesPath: ../java-18-deprecate-property.yaml
 providers:
 - name: java
-  dataPath: ./data/01-java-18-deprecate-property
+  dataPath: ./data/java-18-deprecate-property
 - name: builtin
-  dataPath: ./data/01-java-18-deprecate-property
+  dataPath: ./data/java-18-deprecate-property
 tests:
 - ruleID: java-18-deprecate-property-00000
   testCases:

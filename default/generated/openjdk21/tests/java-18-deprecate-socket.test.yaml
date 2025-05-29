@@ -1,9 +1,9 @@
-rulesPath: ../01-java-18-deprecate-socket.yaml
+rulesPath: ../java-18-deprecate-socket.yaml
 providers:
 - name: java
-  dataPath: ./data/01-java-18-deprecate-socket
+  dataPath: ./data/java-18-deprecate-socket
 - name: builtin
-  dataPath: ./data/01-java-18-deprecate-socket
+  dataPath: ./data/java-18-deprecate-socket
 tests:
 - ruleID: java-18-deprecate-socket-00000
   testCases:

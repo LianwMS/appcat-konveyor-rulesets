@@ -1,9 +1,9 @@
-rulesPath: ../04-java-21-deprecate-signer.yaml
+rulesPath: ../java-21-deprecate-signer.yaml
 providers:
 - name: java
-  dataPath: ./data/04-java-21-deprecate-signer
+  dataPath: ./data/java-21-deprecate-signer
 - name: builtin
-  dataPath: ./data/04-java-21-deprecate-signer
+  dataPath: ./data/java-21-deprecate-signer
 tests:
 - ruleID: java-21-deprecate-signer-00000
   testCases:

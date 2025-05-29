@@ -1,9 +1,9 @@
-rulesPath: ../06-utf-8-by-default.yaml
+rulesPath: ../java-21-utf-8-by-default.yaml
 providers:
 - name: java
-  dataPath: ./data/06-utf-8-by-default
+  dataPath: ./data/java-21-utf-8-by-default
 - name: builtin
-  dataPath: ./data/06-utf-8-by-default
+  dataPath: ./data/java-21-utf-8-by-default
 tests:
 - ruleID: utf-8-by-default-00000
   testCases:

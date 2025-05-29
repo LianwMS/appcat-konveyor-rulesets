@@ -1,9 +1,9 @@
-rulesPath: ../03-java-20-deprecate-net.yaml
+rulesPath: ../java-20-deprecate-net.yaml
 providers:
 - name: java
-  dataPath: ./data/03-java-20-deprecate-net
+  dataPath: ./data/java-20-deprecate-net
 - name: builtin
-  dataPath: ./data/03-java-20-deprecate-net
+  dataPath: ./data/java-20-deprecate-net
 tests:
 - ruleID: java-20-deprecate-net-00000
   testCases:

@@ -1,9 +1,9 @@
-rulesPath: ../04-java-21-deprecate-property.yaml
+rulesPath: ../java-21-deprecate-property.yaml
 providers:
 - name: java
-  dataPath: ./data/04-java-21-deprecate-property
+  dataPath: ./data/java-21-deprecate-property
 - name: builtin
-  dataPath: ./data/04-java-21-deprecate-property
+  dataPath: ./data/java-21-deprecate-property
 tests:
 - ruleID: java-21-deprecate-property-00000
   testCases:

@@ -1,9 +1,9 @@
-rulesPath: ../02-java-19-deprecate-locale.yaml
+rulesPath: ../java-19-deprecate-locale.yaml
 providers:
 - name: java
-  dataPath: ./data/02-java-19-deprecate-locale
+  dataPath: ./data/java-19-deprecate-locale
 - name: builtin
-  dataPath: ./data/02-java-19-deprecate-locale
+  dataPath: ./data/java-19-deprecate-locale
 tests:
 - ruleID: java-19-deprecate-locale-00000
   testCases:
