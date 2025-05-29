@@ -1,9 +1,9 @@
-rulesPath: ../08-removed-packages.yaml
+rulesPath: ../java-17-removed-packages.yaml
 providers:
 - name: java
-  dataPath: ./data/08-removed-packages
+  dataPath: ./data/java-17-removed-packages
 - name: builtin
-  dataPath: ./data/08-removed-packages
+  dataPath: ./data/java-17-removed-packages
 tests:
 - ruleID: removed-packages-00000
   testCases:

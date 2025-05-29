@@ -1,9 +1,9 @@
-rulesPath: ../02-java-13-deprecate-runtime.yaml
+rulesPath: ../java-13-deprecate-runtime.yaml
 providers:
 - name: java
-  dataPath: ./data/02-java-13-deprecate-runtime
+  dataPath: ./data/java-13-deprecate-runtime
 - name: builtin
-  dataPath: ./data/02-java-13-deprecate-runtime
+  dataPath: ./data/java-13-deprecate-runtime
 tests:
 - ruleID: java-13-deprecate-runtime-00000
   testCases:

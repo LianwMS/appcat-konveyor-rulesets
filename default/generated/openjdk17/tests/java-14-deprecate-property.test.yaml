@@ -1,9 +1,9 @@
-rulesPath: ../03-java-14-deprecate-property.yaml
+rulesPath: ../java-14-deprecate-property.yaml
 providers:
 - name: java
-  dataPath: ./data/03-java-14-deprecate-property
+  dataPath: ./data/java-14-deprecate-property
 - name: builtin
-  dataPath: ./data/03-java-14-deprecate-property
+  dataPath: ./data/java-14-deprecate-property
 tests:
 - ruleID: java-14-deprecate-property-00000
   testCases:

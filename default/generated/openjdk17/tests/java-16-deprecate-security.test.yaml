@@ -1,9 +1,9 @@
-rulesPath: ../05-java-16-deprecate-security.yaml
+rulesPath: ../java-16-deprecate-security.yaml
 providers:
 - name: java
-  dataPath: ./data/05-java-16-deprecate-security
+  dataPath: ./data/java-16-deprecate-security
 - name: builtin
-  dataPath: ./data/05-java-16-deprecate-security
+  dataPath: ./data/java-16-deprecate-security
 tests:
 - ruleID: java-16-deprecate-security-00000
   testCases:

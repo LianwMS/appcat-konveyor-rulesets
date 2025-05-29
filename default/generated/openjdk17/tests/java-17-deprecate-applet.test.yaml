@@ -1,9 +1,9 @@
-rulesPath: ../06-java-17-deprecate-applet.yaml
+rulesPath: ../java-17-deprecate-applet.yaml
 providers:
 - name: java
-  dataPath: ./data/06-java-17-deprecate-applet
+  dataPath: ./data/java-17-deprecate-applet
 - name: builtin
-  dataPath: ./data/06-java-17-deprecate-applet
+  dataPath: ./data/java-17-deprecate-applet
 tests:
 - ruleID: java-17-deprecate-applet-00000
   testCases:

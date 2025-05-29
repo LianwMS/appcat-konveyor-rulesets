@@ -1,9 +1,9 @@
-rulesPath: ../07-lombok.yaml
+rulesPath: ../java-17-lombok.yaml
 providers:
 - name: java
-  dataPath: ./data/07-lombok
+  dataPath: ./data/java-17-lombok
 - name: builtin
-  dataPath: ./data/07-lombok
+  dataPath: ./data/java-17-lombok
 tests:
 - ruleID: lombok-incompatibility-00001
   testCases:

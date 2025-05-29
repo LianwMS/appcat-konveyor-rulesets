@@ -1,9 +1,9 @@
-rulesPath: ../06-java-17-deprecate-unsafe.yaml
+rulesPath: ../java-17-deprecate-unsafe.yaml
 providers:
 - name: java
-  dataPath: ./data/06-java-17-deprecate-unsafe
+  dataPath: ./data/java-17-deprecate-unsafe
 - name: builtin
-  dataPath: ./data/06-java-17-deprecate-unsafe
+  dataPath: ./data/java-17-deprecate-unsafe
 tests:
 - ruleID: java-17-deprecate-unsafe-00000
   testCases:

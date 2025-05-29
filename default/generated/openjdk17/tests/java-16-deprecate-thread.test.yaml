@@ -1,9 +1,9 @@
-rulesPath: ../05-java-16-deprecate-thread.yaml
+rulesPath: ../java-16-deprecate-thread.yaml
 providers:
 - name: java
-  dataPath: ./data/05-java-16-deprecate-thread
+  dataPath: ./data/java-16-deprecate-thread
 - name: builtin
-  dataPath: ./data/05-java-16-deprecate-thread
+  dataPath: ./data/java-16-deprecate-thread
 tests:
 - ruleID: java-16-deprecate-thread-group-00000
   testCases:

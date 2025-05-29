@@ -1,9 +1,9 @@
-rulesPath: ../04-java-15-deprecate-ssl.yaml
+rulesPath: ../java-15-deprecate-ssl.yaml
 providers:
 - name: java
-  dataPath: ./data/04-java-15-deprecate-ssl
+  dataPath: ./data/java-15-deprecate-ssl
 - name: builtin
-  dataPath: ./data/04-java-15-deprecate-ssl
+  dataPath: ./data/java-15-deprecate-ssl
 tests:
 - ruleID: java-15-deprecate-ssl-00000
   testCases:
