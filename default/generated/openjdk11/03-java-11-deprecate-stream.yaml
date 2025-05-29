@@ -20,7 +20,4 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: java.lang.Thread.destroy
+        pattern: org.ietf.jgss.GSSContext.(initSecContext|acceptSecContext|wrap|unwrap|getMIC|verifyMIC)

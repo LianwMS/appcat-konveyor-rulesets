@@ -21,7 +21,7 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: Thread.stop(Throwable)
+        pattern: java.lang.Thread.stop
     - java.referenced:
         location: METHOD_CALL
         pattern: java.lang.Thread.destroy

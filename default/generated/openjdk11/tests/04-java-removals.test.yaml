@@ -1,0 +1,23 @@
+rulesPath: ../04-java-removals.yaml
+providers:
+- name: java
+  dataPath: ./data/04-java-removals
+- name: builtin
+  dataPath: ./data/04-java-removals
+tests:
+- ruleID: java-removals-00000
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: The `sun.misc.BASE64Encoder` class has been remove.*
+  - name: tc-2
+    hasIncidents:
+      atLeast: 1
+      messageMatches: The `sun.misc.BASE64Decoder` class has been remove.*
+- ruleID: java-removals-00010
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 2
+      messageMatches: The `java.lang.System.runFinalizersOnExit

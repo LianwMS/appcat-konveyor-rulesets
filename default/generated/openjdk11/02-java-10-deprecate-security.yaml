@@ -99,16 +99,7 @@
     or:
     - java.referenced:
         location: IMPORT
-        pattern: java.security.Certificate
-    - java.referenced:
-        location: IMPORT
-        pattern: java.security.Identity
-    - java.referenced:
-        location: IMPORT
-        pattern: java.security.IdentityScope
-    - java.referenced:
-        location: IMPORT
-        pattern: java.security.Signer
+        pattern: java.security.(Certificate|Identity|IdentityScope|Signer)
 - category: mandatory
   customVariables: []
   description: java.security.acl APIs Deprecated forRemoval

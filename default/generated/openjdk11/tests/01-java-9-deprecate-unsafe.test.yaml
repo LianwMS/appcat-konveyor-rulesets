@@ -9,5 +9,11 @@ tests:
   testCases:
   - name: tc-1
     hasIncidents:
+      exactly: 3
+      messageMatches: The methods monitorEnter, monitorExit and tryMonitorEnter on
+- ruleID: java-9-deprecate-unsafe-00001
+  testCases:
+  - name: tc-1
+    hasIncidents:
       exactly: 1
       messageMatches: The method `sun.misc.Unsafe.defineClass` is deprecated for removal.
