@@ -27,16 +27,16 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Thread.suspend*
+        pattern: java.lang.Thread.suspend
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Thread.resume*
+        pattern: java.lang.Thread.resume
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.suspend*
+        pattern: java.lang.ThreadGroup.suspend
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.resume*
+        pattern: java.lang.ThreadGroup.resume
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.allowThreadSuspension*
+        pattern: java.lang.ThreadGroup.allowThreadSuspension

@@ -21,7 +21,7 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: javax.net.ssl.SSLSession.getPeerCertificateChain*
+        pattern: javax.net.ssl.SSLSession.getPeerCertificateChain
 - category: mandatory
   customVariables: []
   description: Removal of com.sun.net.ssl.internal.ssl.Provider Name

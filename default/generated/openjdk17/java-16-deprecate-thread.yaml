@@ -23,16 +23,16 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.destroy*
+        pattern: java.lang.ThreadGroup.destroy
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.isDestroyed*
+        pattern: java.lang.ThreadGroup.isDestroyed
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.setDaemon*
+        pattern: java.lang.ThreadGroup.setDaemon
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.isDaemon*
+        pattern: java.lang.ThreadGroup.isDaemon
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.stop*
+        pattern: java.lang.ThreadGroup.stop

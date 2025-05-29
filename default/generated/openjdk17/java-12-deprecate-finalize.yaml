@@ -21,10 +21,10 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.io.FileInputStream.finalize*
+        pattern: java.io.FileInputStream.finalize
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.io.FileOutputStream.finalize*
+        pattern: java.io.FileOutputStream.finalize
 - category: mandatory
   customVariables: []
   description: Removal of finalize Method in java.util.ZipFile/Inflator/Deflator
@@ -47,10 +47,10 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.util.ZipFile.finalize*
+        pattern: java.util.ZipFile.finalize
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.util.Inflator.finalize*
+        pattern: java.util.Inflator.finalize
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.util.Deflater.finalize*
+        pattern: java.util.Deflater.finalize

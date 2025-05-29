@@ -40,4 +40,4 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: netscape.javascript.JSObject.getWindow*
+        pattern: netscape.javascript.JSObject.getWindow

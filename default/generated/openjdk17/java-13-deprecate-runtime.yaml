@@ -19,7 +19,7 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Runtime.traceInstructions*
+        pattern: java.lang.Runtime.traceInstructions
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Runtime.traceMethodCalls*
+        pattern: java.lang.Runtime.traceMethodCalls

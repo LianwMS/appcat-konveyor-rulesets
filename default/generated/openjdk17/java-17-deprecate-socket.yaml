@@ -25,10 +25,10 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.net.ServerSocket.setSocketFactory*
+        pattern: java.net.ServerSocket.setSocketFactory
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.net.Socket.setSocketImplFactory*
+        pattern: java.net.Socket.setSocketImplFactory
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.net.DatagramSocket.setDatagramSocketImplFactory*
+        pattern: java.net.DatagramSocket.setDatagramSocketImplFactory
