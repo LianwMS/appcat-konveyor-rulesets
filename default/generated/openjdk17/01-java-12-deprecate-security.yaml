@@ -18,5 +18,5 @@
   when:
     or:
     - java.referenced:
-        location: PACKAGE
-        pattern: com.sun.awt.SecurityWarning*
+        location: IMPORT
+        pattern: com.sun.awt.SecurityWarning
