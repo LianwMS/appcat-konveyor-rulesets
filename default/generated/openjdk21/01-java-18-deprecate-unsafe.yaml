@@ -21,10 +21,10 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: sun.misc.Unsafe.objectFieldOffset*
+        pattern: sun.misc.Unsafe.objectFieldOffset
     - java.referenced:
         location: METHOD_CALL
-        pattern: sun.misc.Unsafe.staticFieldOffset*
+        pattern: sun.misc.Unsafe.staticFieldOffset
     - java.referenced:
         location: METHOD_CALL
-        pattern: sun.misc.Unsafe.staticFieldBase*
+        pattern: sun.misc.Unsafe.staticFieldBase

@@ -29,25 +29,25 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.destroy*
+        pattern: java.lang.ThreadGroup.destroy
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.isDestroyed*
+        pattern: java.lang.ThreadGroup.isDestroyed
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.setDaemon*
+        pattern: java.lang.ThreadGroup.setDaemon
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.isDaemon*
+        pattern: java.lang.ThreadGroup.isDaemon
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.suspend*
+        pattern: java.lang.ThreadGroup.suspend
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.resume*
+        pattern: java.lang.ThreadGroup.resume
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.ThreadGroup.stop*
+        pattern: java.lang.ThreadGroup.stop
 - category: mandatory
   customVariables: []
   description: This method is not final and may be overridden to return a value that is not the thread ID. Use Thread.threadId() instead.
@@ -69,7 +69,7 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Thread.getId*
+        pattern: java.lang.Thread.getId
 - category: mandatory
   customVariables: []
   description: Remove the Alternate ThreadLocal Implementation of the Subject::current and Subject::callAs APIs
@@ -91,9 +91,9 @@
     or: 
     - java.referenced:
         location: METHOD_CALL
-        pattern: javax.security.auth.Subject.current*
+        pattern: javax.security.auth.Subject.current
     - java.referenced:
         location: METHOD_CALL
-        pattern: javax.security.auth.Subject.callAs*
+        pattern: javax.security.auth.Subject.callAs
     - builtin.filecontent:
         pattern: getProperty\("jdk\.security\.auth\.subject\.useTL"\)

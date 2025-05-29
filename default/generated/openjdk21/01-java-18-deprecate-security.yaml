@@ -18,4 +18,4 @@
   when:
     java.referenced:
       location: METHOD_CALL
-      pattern: javax.security.auth.Subject.doAs*
+      pattern: javax.security.auth.Subject.doAs

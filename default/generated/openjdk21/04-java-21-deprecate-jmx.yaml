@@ -43,4 +43,4 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: javax.management.remote.JMXConnector.getMBeanServerConnection*
+        pattern: javax.management.remote.JMXConnector.getMBeanServerConnection

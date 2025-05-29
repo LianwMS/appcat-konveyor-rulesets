@@ -20,4 +20,4 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Runtime.exec*
+        pattern: java.lang.Runtime.exec

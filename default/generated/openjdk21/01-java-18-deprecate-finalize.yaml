@@ -22,13 +22,13 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.awt.color.ICC_Profile.finalize*
+        pattern: java.awt.color.ICC_Profile.finalize
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.awt.image.ColorModel.finalize*
+        pattern: java.awt.image.ColorModel.finalize
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.awt.image.IndexColorModel.finalize*
+        pattern: java.awt.image.IndexColorModel.finalize
 - category: mandatory
   customVariables: []
   description: Deprecated Finalization for Removal
@@ -53,13 +53,13 @@
     or:
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Object.finalize*
+        pattern: java.lang.Object.finalize
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Runtime.runFinalization*
+        pattern: java.lang.Runtime.runFinalization
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.System.runFinalization*
+        pattern: java.lang.System.runFinalization
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.lang.Enum.finalize*
+        pattern: java.lang.Enum.finalize
