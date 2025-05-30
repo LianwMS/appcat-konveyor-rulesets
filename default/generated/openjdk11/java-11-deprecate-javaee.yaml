@@ -3,7 +3,7 @@
   description: The java.activation (JAF) module has been removed from OpenJDK 11
   effort: 1
   labels:
-  - konveyor.io/source=openjdk8-
+  - konveyor.io/source=openjdk11-
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
@@ -29,7 +29,7 @@
     OpenJDK 11
   effort: 1
   labels:
-  - konveyor.io/source=openjdk8-
+  - konveyor.io/source=openjdk11-
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk

@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: JEP 320 Remove the Java EE and CORBA Modules
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk11-
   - konveyor.io/source=openjdk

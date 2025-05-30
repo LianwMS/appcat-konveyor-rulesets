@@ -6,7 +6,7 @@
   description: The `sun.misc.BASE64` class has been removed.
   effort: 1
   labels:
-  - konveyor.io/source=openjdk8-
+  - konveyor.io/source=openjdk11-
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
@@ -40,7 +40,7 @@
   description: The `runFinalizersOnExit` methods have been removed
   effort: 1
   labels:
-  - konveyor.io/source=openjdk8-
+  - konveyor.io/source=openjdk11-
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk

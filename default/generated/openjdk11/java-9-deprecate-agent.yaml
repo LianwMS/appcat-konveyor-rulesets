@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: management-agent.jar is removed.
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk9-
   - konveyor.io/source=openjdk

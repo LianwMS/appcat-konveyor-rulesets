@@ -2,7 +2,7 @@
   customVariables: []
   description: The `java.awt.Font.getPeer()` and `java.awt.Component.getPeer()` methods
     have been removed
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk11-
   - konveyor.io/source=openjdk

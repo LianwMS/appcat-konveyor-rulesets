@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: JEP 336 Deprecate the Pack200 Tools and API
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk11-
   - konveyor.io/source=openjdk

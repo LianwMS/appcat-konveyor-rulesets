@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: sun.lang.ClassLoader.allowArraySyntax system property is no longer supported
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk9-
   - konveyor.io/source=openjdk
@@ -22,7 +22,7 @@
 - category: mandatory
   customVariables: []
   description: The system property sun.zip.disableMemoryMapping has been removed
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk9-
   - konveyor.io/source=openjdk

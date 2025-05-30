@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: Removal of Thread.destroy() and Thread.stop(Throwable) Methods
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk11-
   - konveyor.io/source=openjdk

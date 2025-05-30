@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: Remove com.sun.security.auth.callback.DialogCallbackHandler
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk9-
   - konveyor.io/source=openjdk
@@ -23,7 +23,7 @@
 - category: mandatory
   customVariables: []
   description: Deprecate the java.security.acl API
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk9-
   - konveyor.io/source=openjdk
@@ -46,7 +46,7 @@
 - category: mandatory
   customVariables: []
   description: Deprecate the javax.security.cert API
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk9-
   - konveyor.io/source=openjdk

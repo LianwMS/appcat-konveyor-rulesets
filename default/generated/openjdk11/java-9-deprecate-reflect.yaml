@@ -3,9 +3,9 @@
   description: sun.reflect.Reflection class was deprecated in Java 9
   effort: 1
   labels:
-  - konveyor.io/source=openjdk8-
+  - konveyor.io/source=openjdk9-
   - konveyor.io/source=openjdk
-  - konveyor.io/target=openjdk11+
+  - konveyor.io/target=openjdk9+
   - konveyor.io/target=openjdk
   - domain=java-modernization
   - category=deprecated-apis
@@ -31,9 +31,9 @@
   description: sun.reflect.CallerSensitive annotation was deprecated in Java 9
   effort: 1
   labels:
-  - konveyor.io/source=openjdk8-
+  - konveyor.io/source=openjdk9-
   - konveyor.io/source=openjdk
-  - konveyor.io/target=openjdk11+
+  - konveyor.io/target=openjdk9+
   - konveyor.io/target=openjdk
   - domain=java-modernization
   - category=deprecated-apis

@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: References to java.awt.peer and java.awt.dnd.peer packages were removed from the public API
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk9-
   - konveyor.io/source=openjdk

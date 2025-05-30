@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: Removal of rarely used sun.misc.Unsafe methods
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk9-
   - konveyor.io/source=openjdk
@@ -23,7 +23,7 @@
 - category: mandatory
   customVariables: []
   description: Deprecate sun.misc.Unsafe.defineClass
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk9-
   - konveyor.io/source=openjdk

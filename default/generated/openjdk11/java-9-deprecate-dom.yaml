@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: Deprecation of common DOM APIs
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk9-
   - konveyor.io/source=openjdk

@@ -6,7 +6,7 @@
   description: Certain methods under `java.lang.SecurityManager` tied to the AWT stack have been removed in Java 11
   effort: 1
   labels:
-  - konveyor.io/source=openjdk8-
+  - konveyor.io/source=openjdk11-
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk
@@ -39,7 +39,7 @@
     has been removed
   effort: 1
   labels:
-  - konveyor.io/source=openjdk8-
+  - konveyor.io/source=openjdk11-
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk11+
   - konveyor.io/target=openjdk

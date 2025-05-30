@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: Removal of Runtime.getLocalizedInputStream and getLocalizedOutputStream Methods
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk10-
   - konveyor.io/source=openjdk
