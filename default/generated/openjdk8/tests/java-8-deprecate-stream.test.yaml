@@ -5,7 +5,7 @@ providers:
 - name: builtin
   dataPath: ./data/java-8-deprecate-stream
 tests:
-- ruleID: java-stream-factory-00001
+- ruleID: java-8-deprecate-stream-00001
   testCases:
   - name: tc-1
     hasIncidents:

@@ -14,7 +14,7 @@
     url: https://www.oracle.com/java/technologies/javase/8-compatibility-guide.html
   message: |-
     The JDK internal package com.sun.corba.se and sub-packages have been added to the restricted package list and cannot be used directly when running with a security manager.
-  ruleID: java-corba-00001
+  ruleID: java-8-deprecate-corba-00001
   when:
     or:
     - java.referenced:

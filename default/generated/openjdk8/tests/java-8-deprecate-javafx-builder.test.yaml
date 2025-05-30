@@ -5,7 +5,7 @@ providers:
 - name: builtin
   dataPath: ./data/java-8-deprecate-javafx-builder
 tests:
-- ruleID: javafx-builder-00001
+- ruleID: java-8-deprecate-javafx-builder-00001
   testCases:
   - name: tc-1
     hasIncidents:

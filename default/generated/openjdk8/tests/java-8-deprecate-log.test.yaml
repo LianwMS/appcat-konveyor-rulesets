@@ -5,7 +5,7 @@ providers:
 - name: builtin
   dataPath: ./data/java-8-deprecate-log
 tests:
-- ruleID: java-log-manager-00001
+- ruleID: java-8-deprecate-log-00001
   testCases:
   - name: tc-1
     hasIncidents:

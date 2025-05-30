@@ -5,7 +5,7 @@ providers:
 - name: builtin
   dataPath: ./data/java-8-deprecate-odbc
 tests:
-- ruleID: java-odbc-00001
+- ruleID: java-8-deprecate-odbc-00001
   testCases:
   - name: tc-1
     hasIncidents:

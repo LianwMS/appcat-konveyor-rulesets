@@ -5,13 +5,13 @@ providers:
 - name: builtin
   dataPath: ./data/java-8-deprecate-pack
 tests:
-- ruleID: java-pack200-00001
+- ruleID: java-8-deprecate-pack-00001
   testCases:
   - name: tc-1
     hasIncidents:
       exactly: 2
       messageMatches: The addPropertyChangeListener and removePropertyChangeListener methods under Pack200.Packer interface
-- ruleID: java-pack200-00002
+- ruleID: java-8-deprecate-pack-00002
   testCases:
   - name: tc-1
     hasIncidents:

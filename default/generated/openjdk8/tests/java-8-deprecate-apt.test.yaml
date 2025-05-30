@@ -5,7 +5,7 @@ providers:
 - name: builtin
   dataPath: ./data/java-8-deprecate-apt
 tests:
-- ruleID: java-apt-00001
+- ruleID: java-8-deprecate-apt-00001
   testCases:
   - name: tc-1
     hasIncidents:
