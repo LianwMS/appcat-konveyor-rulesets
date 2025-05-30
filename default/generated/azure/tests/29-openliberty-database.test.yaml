@@ -60,3 +60,10 @@ tests:
     hasIncidents:
       atLeast: 1
       messageMatches: To migrate a Java application that uses an Oracle database to Azure
+
+- ruleID: openliberty-database-00009
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: To migrate a Java application that uses a PostgreSQL database to Azure

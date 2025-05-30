@@ -3,13 +3,19 @@
   description: Detect OpenLiberty JMS ConnectionFactory configurations
   effort: 4
   labels:
-  - konveyor.io/source=java-ee
+  - konveyo    JMS resource references in deployment descriptors detected that require removal and replacement with Azure Service Bus configuration.
+
+    **Migration Requirements:**
+    • **Remove JMS Configuration:** Clean up resource-ref entries from web.xml and ejb-jar.xml
+    • **Externalize Configuration:** Move messaging configuration to application properties and environment variablessource=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
   message: |
-    OpenLiberty JMS ConnectionFactory configurations detected that require migration to Azure messaging services for AKS deployment.
+    OpenLiberty JMS ConnectionFactory configurations detected that require migration to Azure messaging services.
 
     **Azure Migration Options:**
     • **Azure Service Bus** - Enterprise messaging with advanced features (recommended for JMS replacement)
@@ -22,7 +28,7 @@
     2. **Remove JMS Configuration:** Clean up server.xml JMS ConnectionFactory, Queue, and Topic definitions
     3. **Configure Azure Service Bus:** Set up namespace, queues/topics, and access policies in Azure portal
     4. **Update Application Code:** Replace JMS clients with Azure Service Bus SDK
-    5. **Secure Credentials:** Store connection strings in Kubernetes Secrets or Azure Key Vault
+    5. **Secure Credentials:** Store connection strings in Azure Key Vault or secure configuration
 
   links:
   - title: "Azure Service Bus documentation"
@@ -45,17 +51,19 @@
   effort: 4
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
   message: |
-    JMS resource injections detected that require refactoring for Azure Service Bus integration in AKS environments.
+    JMS resource injections detected that require refactoring for Azure Service Bus integration.
 
     **Migration Strategy:**
     • **Replace JMS Annotations:** Remove @Resource annotations for JMS ConnectionFactory and Queue/Topic references
     • **Implement Azure Service Bus Clients:** Use Azure SDK for message operations
-    • **Dependency Injection:** Configure Azure clients as Spring beans or CDI components
+    • **Dependency Injection:** Configure Azure clients as CDI components or application-managed beans
     • **Connection Management:** Implement proper lifecycle management for Azure clients
 
     **Refactoring Steps:**
@@ -68,7 +76,7 @@
   links:
   - title: "Azure Service Bus SDK for Java"
     url: "https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/servicebus"
-  - title: "Spring Boot Azure Service Bus integration"
+  - title: "Azure Service Bus Java integration"
     url: "https://docs.microsoft.com/en-us/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus"
   ruleID: openliberty-jms-00002
   when:
@@ -94,18 +102,20 @@
   effort: 5
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
   message: |
-    Message-Driven Beans (MDBs) detected that require migration to Azure Service Bus message processing for AKS deployment.
+    Message-Driven Beans (MDBs) detected that require migration to Azure Service Bus message processing.
 
     **Migration Approaches:**
-    • **Azure Service Bus Processor:** Implement message processing with Service Bus SDK (recommended for Kubernetes)
+    • **Azure Service Bus Processor:** Implement message processing with Service Bus SDK (recommended for containerized environments)
     • **Azure Functions:** Migrate to serverless functions with Service Bus triggers for event-driven processing
     • **Event-Driven Microservices:** Decompose MDBs into dedicated message processing services
-    • **Background Services:** Use Kubernetes CronJobs or long-running pods for message consumption
+    • **Background Services:** Use container-based background services for message consumption
 
     **Implementation Strategies:**
     1. **Analyze Message Processing Logic:** Extract business logic from MDB onMessage methods
@@ -133,7 +143,9 @@
   effort: 3
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
@@ -156,10 +168,10 @@
   links:
   - title: "Azure Service Bus Java configuration"
     url: "https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-java-how-to-use-queues"
-  - title: "Spring Boot externalized configuration"
-    url: "https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config"
-  - title: "Kubernetes ConfigMaps and Secrets"
-    url: "https://kubernetes.io/docs/concepts/configuration/"
+  - title: "Environment variable configuration"
+    url: "https://learn.microsoft.com/en-us/azure/app-service/configure-common#configure-app-settings"
+  - title: "Azure Key Vault configuration"
+    url: "https://learn.microsoft.com/en-us/azure/key-vault/general/overview"
   ruleID: openliberty-jms-00004
   when:
     builtin.xml:
@@ -177,7 +189,9 @@
   effort: 4
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
@@ -200,12 +214,14 @@
   effort: 4
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
   message: |
-    JMS API usage detected that requires comprehensive migration to Azure messaging services for AKS deployment.
+    JMS API usage detected that requires comprehensive migration to Azure messaging services.
 
     **Migration Strategy by Use Case:**
     • **Point-to-Point Messaging:** Migrate to Azure Service Bus queues for reliable message delivery

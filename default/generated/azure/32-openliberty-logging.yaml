@@ -4,26 +4,27 @@
   effort: 3
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
   message: |
-    OpenLiberty server logging configurations detected that require optimization for Azure Monitor integration and containerized deployment in AKS.
+    OpenLiberty server logging configurations detected that require optimization for Azure Monitor integration and containerized deployment.
 
     **Azure Logging Strategy:**
-    • **Console Output:** Configure logs to stdout/stderr for Kubernetes collection by FluentD/Fluent Bit
+    • **Console Output:** Configure logs to stdout/stderr for container log collection
     • **Azure Monitor Integration:** Enable Application Insights for application performance monitoring
     • **Log Analytics:** Use Azure Log Analytics workspace for centralized log aggregation and analysis
     • **Structured Logging:** Implement JSON format for better parsing and querying in Azure Monitor
 
     **Configuration Migration Steps:**
     1. **Update server.xml:** Configure console logging with JSON format for Azure Monitor compatibility
-    2. **Environment Variables:** Use Kubernetes environment variables for dynamic logging configuration
+    2. **Environment Variables:** Use environment variables for dynamic logging configuration
     3. **Azure Application Insights:** Integrate with Application Insights Java agent for automatic telemetry
-    4. **Log Forwarding:** Configure AKS log forwarding to Azure Monitor Logs
+    4. **Log Forwarding:** Configure container log forwarding to Azure Monitor Logs
     5. **Monitoring Setup:** Create Azure Monitor alerts and dashboards for application health
-
   links:
   - title: "Azure Monitor for containers"
     url: "https://docs.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview"
@@ -31,15 +32,15 @@
     url: "https://docs.microsoft.com/en-us/azure/azure-monitor/app/java-in-process-agent"
   - title: "OpenLiberty logging configuration"
     url: "https://openliberty.io/docs/latest/log-trace-configuration.html"
-  - title: "Kubernetes logging architecture"
-    url: "https://kubernetes.io/docs/concepts/cluster-administration/logging/"
+  - title: "Container logging best practices"
+    url: "https://learn.microsoft.com/en-us/azure/container-instances/container-instances-log-analytics"
   ruleID: openliberty-logging-00001
   when:
     builtin.xml:
       filepaths:
       - server.xml
       namespaces: {}
-      xpath: //server/logging
+      xpath: //server/logging[not(@logDirectory)]
 
 - category: mandatory
   customVariables: []
@@ -47,35 +48,36 @@
   effort: 2
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
   message: |
-    Custom log file location configurations detected that require containerization and Azure storage integration for AKS deployment.
+    Custom log file location configurations detected that require containerization and Azure storage integration.
 
     **Container-Native Logging Strategy:**
-    • **Ephemeral Storage:** Avoid persistent file logging in containers due to pod lifecycle management
-    • **Stdout/Stderr Output:** Redirect all logging to console for Kubernetes log collection
+    • **Ephemeral Storage:** Avoid persistent file logging in containers due to container lifecycle management
+    • **Stdout/Stderr Output:** Redirect all logging to console for container log collection
     • **Azure Storage Integration:** Use Azure Files or Blob Storage for persistent logging requirements
     • **Centralized Logging:** Leverage Azure Monitor Logs for log aggregation and analysis
 
     **Migration Recommendations:**
     1. **Remove File-Based Logging:** Replace logDirectory configurations with console output
     2. **Update Bootstrap Properties:** Configure console logging in bootstrap.properties
-    3. **Environment Variables:** Use Kubernetes environment variables for dynamic configuration
+    3. **Environment Variables:** Use environment variables for dynamic configuration
     4. **Persistent Volumes:** Mount Azure Files for debugging or compliance logging needs
     5. **Log Rotation:** Implement log rotation policies for any persistent storage
-
   links:
-  - title: "Azure Files with AKS"
-    url: "https://docs.microsoft.com/en-us/azure/aks/azure-files-volume"
+  - title: "Azure Monitor for containers"
+    url: "https://docs.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview"
+  - title: "Application Insights Java agent"
+    url: "https://docs.microsoft.com/en-us/azure/azure-monitor/app/java-in-process-agent"
+  - title: "OpenLiberty logging configuration"
+    url: "https://openliberty.io/docs/latest/log-trace-configuration.html"
   - title: "Container logging best practices"
-    url: "https://kubernetes.io/docs/concepts/cluster-administration/logging/"
-  - title: "OpenLiberty logging configuration reference"
-    url: "https://openliberty.io/docs/latest/reference/config/logging.html"
-  - title: "Azure Storage account keys management"
-    url: "https://docs.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage"
+    url: "https://learn.microsoft.com/en-us/azure/container-instances/container-instances-log-analytics"
   ruleID: openliberty-logging-00002
   when:
     builtin.xml:
@@ -86,97 +88,56 @@
 
 - category: mandatory
   customVariables: []
-  description: Detect Java Logging Frameworks Usage
-  effort: 3
-  labels:
-  - konveyor.io/source=java-ee
-  - konveyor.io/target=azure-aks
-  - domain=azure-readiness
-  - category=openliberty-migration
-  - openliberty
-  message: |
-    Java logging frameworks usage detected that requires optimization for Azure Monitor integration and cloud-native observability in AKS.
-
-    **Azure-Optimized Logging Strategy:**
-    • **Structured Logging:** Implement JSON format logging for better Azure Monitor parsing and querying
-    • **Unified Facade:** Use SLF4J as a logging facade for flexibility and framework independence
-    • **Azure Integration:** Configure direct integration with Azure Application Insights and Log Analytics
-    • **Performance Optimization:** Implement asynchronous logging to avoid blocking application threads
-    • **Security Compliance:** Ensure latest versions to address security vulnerabilities (Log4j 2.17.0+)
-
-    **Security and Best Practices:**
-    • **Sensitive Data:** Never log sensitive information (passwords, tokens, PII)
-    • **Log Sanitization:** Implement custom filters to sanitize log messages
-    • **Rate Limiting:** Use async appenders to prevent logging from affecting performance
-    • **Version Management:** Keep logging frameworks updated for security patches
-    • **Cost Optimization:** Set appropriate log retention policies in Azure Monitor
-
-  links:
-  - title: "Azure Application Insights for Java"
-    url: "https://docs.microsoft.com/en-us/azure/azure-monitor/app/java-get-started"
-  - title: "SLF4J best practices"
-    url: "http://www.slf4j.org/manual.html"
-  - title: "Logback configuration reference"
-    url: "http://logback.qos.ch/manual/configuration.html"
-  - title: "Log4j2 security advisories"
-    url: "https://logging.apache.org/log4j/2.x/security.html"
-  - title: "Structured logging patterns"
-    url: "https://docs.microsoft.com/en-us/azure/azure-monitor/logs/data-platform-logs"
-  ruleID: openliberty-logging-00003
-  when:
-    or:
-    - java.referenced:
-        pattern: java.util.logging.Logger
-    - java.referenced:
-        pattern: org.apache.log4j.Logger
-    - java.referenced:
-        pattern: org.slf4j.Logger
-
-- category: mandatory
-  customVariables: []
-  description: Detect Log4j Configuration Files
+  description: Detect Log4j Dependencies
   effort: 4
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
   message: |
-    Log4j configuration files detected that require updates for Azure Monitor integration, security compliance, and containerized deployment optimization.
+    Log4j dependencies detected that require version assessment and Azure Monitor integration optimization.
 
-    **Critical Security and Performance Updates:**
-    • **Version Upgrade:** Migrate to Log4j 2.21.1+ to address all known security vulnerabilities (CVE-2021-44228, CVE-2021-45046, etc.)
-    • **Container Optimization:** Replace file appenders with console output for Kubernetes log collection
-    • **Azure Integration:** Configure JSON layout for Azure Monitor parsing and Application Insights integration
-    • **Performance Enhancement:** Implement asynchronous logging to prevent application thread blocking
+    **Security and Compatibility Assessment:**
+    • **Version Audit:** Check Log4j version for known security vulnerabilities (CVE-2021-44228, CVE-2021-45046, etc.)
+    • **Upgrade Path:** Ensure using Log4j 2.21.1+ for latest security patches
+    • **Configuration Review:** Validate current logging configuration for cloud compatibility
 
-    **Comprehensive Migration Strategy:**
-    1. **Security Assessment:** Audit current Log4j version and update to latest stable release
-    2. **Configuration Analysis:** Review existing appenders, loggers, and patterns
-    3. **Azure Optimization:** Configure structured JSON logging for cloud-native observability
-    4. **Testing Validation:** Verify logging performance and Azure Monitor integration
-    5. **Monitoring Setup:** Implement log-based alerts and dashboards in Azure Monitor
+    **Azure Monitor Integration Strategy:**
+    1. **JSON Format Logging:** Configure JSON layout for better Azure Monitor parsing and querying
+    2. **Console Output:** Enable stdout/stderr logging for container log collection
+    3. **Application Insights:** Integrate with Azure Application Insights Java agent for enhanced telemetry
+    4. **Structured Logging:** Implement consistent log format across microservices
+    5. **Performance Optimization:** Use asynchronous appenders to prevent application blocking
+
+    **Migration Checklist:**
+    • Update Log4j to latest stable version (2.21.1+)
+    • Configure JSON layout for Azure Monitor compatibility
+    • Enable console logging for container environments
+    • Set up Application Insights integration
+    • Test logging performance and Azure Monitor connectivity
+
   links:
-  - title: "Log4j security vulnerabilities"
-    url: "https://logging.apache.org/log4j/2.x/security.html"
-  - title: "Azure Application Insights Java agent"
+  - title: "Azure Monitor for containers"
+    url: "https://docs.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview"
+  - title: "Application Insights Java agent"
     url: "https://docs.microsoft.com/en-us/azure/azure-monitor/app/java-in-process-agent"
-  - title: "Log4j2 JSON configuration"
-    url: "https://logging.apache.org/log4j/2.x/manual/json-template-layout.html"
-  - title: "Container security best practices"
-    url: "https://kubernetes.io/docs/concepts/security/pod-security-standards/"
-  - title: "Azure Monitor structured logging"
-    url: "https://docs.microsoft.com/en-us/azure/azure-monitor/logs/data-platform-logs"
-  ruleID: openliberty-logging-00004
+  - title: "OpenLiberty logging configuration"
+    url: "https://openliberty.io/docs/latest/log-trace-configuration.html"
+  - title: "Container logging best practices"
+    url: "https://learn.microsoft.com/en-us/azure/container-instances/container-instances-log-analytics"
+  ruleID: openliberty-logging-00003
   when:
-    builtin.filecontent:
-      filepaths:
-      - log4j.properties
-      - log4j.xml
-      - log4j2.properties
-      - log4j2.xml
-      - logback.xml
-      - logback-spring.xml
-      pattern: "log4j"
-
+    or:
+    - java.dependency:
+        lowerbound: 0.0.0
+        name: log4j.log4j
+    - java.dependency:
+        lowerbound: 0.0.0
+        name: org.apache.log4j.log4j
+    - builtin.filecontent:
+        filePattern: (/|\\)(log4j2?|logback)(-[a-zA-Z0-9]+)*?\.(properties|xml|yml|yaml)$
+        pattern: (log4j|logback)

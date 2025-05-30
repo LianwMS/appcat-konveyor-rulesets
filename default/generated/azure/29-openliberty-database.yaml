@@ -4,7 +4,9 @@
   effort: 3
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
@@ -14,7 +16,7 @@
     **Migration Options:**
     * **Azure Database for MySQL/PostgreSQL/SQL Server**: Use fully managed Azure database services for better scalability, security, and maintenance
     * **Connection String Updates**: Update connection strings to point to Azure database endpoints
-    * **Credential Management**: Store database credentials securely in Azure Key Vault or Kubernetes Secrets
+    * **Credential Management**: Store database credentials securely in Azure Key Vault or application configuration
     * **High Availability**: Configure geo-replication and backup strategies for production workloads
     
     **Implementation Steps:**
@@ -40,23 +42,15 @@
       - server.xml
       namespaces: {}
       xpath: //server/dataSource
-- category: mandatory
-  customVariables: []
-  description: Detect OpenLiberty Oracle Data Source configurations
-  effort: 3
-  labels:
-  - konveyor.io/source=java-ee
-  - konveyor.io/target=azure-aks
-  - domain=azure-readiness
-  - category=openliberty-migration
-  - openliberty
 - category: potential
   customVariables: []
-  description: Oracle database found
+  description: Detect OpenLiberty Oracle Data Source configurations
   effort: 5 
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
@@ -102,13 +96,59 @@
       - server.xml
       namespaces: {}
       xpath: //server/dataSource/properties.oracle
+- category: potential
+  customVariables: []
+  description: Detect OpenLiberty PostgreSQL Data Source configurations
+  effort: 5 
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
+  - domain=azure-readiness
+  - category=openliberty-migration
+  - openliberty
+  links:
+  - title: Azure PostgreSQL Flexible Server documentation
+    url: https://learn.microsoft.com/azure/postgresql/flexible-server
+  - title: Azure Database Migration Service documentation
+    url: https://learn.microsoft.com/azure/dms
+  - title: Azure Monitor documentation
+    url: https://learn.microsoft.com/azure/azure-monitor
+  - title: Microsoft Defender for Cloud
+    url: https://learn.microsoft.com/azure/defender-for-cloud
+  - title: Backup and restore in Azure Database for PostgreSQL
+    url: https://learn.microsoft.com/azure/postgresql/single-server/concepts-backup
+  message: |-
+    To migrate a Java application that uses a PostgreSQL database to Azure, you can follow these recommendations:
+
+     * Use a managed **Azure Database for PostgreSQL Flexible Server**: For that create a managed PostgreSQL Flexible Server database in Azure and choose the appropriate pricing tier based on your application's requirements for performance, storage, and availability.
+
+     * **Migrate** the existing PostgreSQL database: For that you can use the Azure Database Migration Service (DMS) to perform an online migration with minimal downtime.
+
+     * Update the application's **database connection** details: Modify the Java application's configuration to point to the newly provisioned Azure Database for PostgreSQL. Update the connection string, hostname, port, username, and password information accordingly.
+
+     * Enable **monitoring and diagnostics**: Utilize Azure Monitor to gain insights into the performance and health of your Java application and the underlying PostgreSQL database. Set up metrics, alerts, and log analytics to proactively identify and resolve issues.
+
+     * Implement **security** measures: Apply security best practices to protect your Java application and the PostgreSQL database. This includes implementing authentication and authorization mechanisms with passwordless connections and leveraging Microsoft Defender for Cloud for threat detection and vulnerability assessments.
+
+     * **Backup** your data: Azure Database for PostgreSQL provides automated backups by default. You can configure the retention period for backups based on your requirements. You can also enable geo-redundant backups, if needed, to enhance data durability and availability.
+  ruleID: openliberty-database-00009
+  when:
+    builtin.xml:
+      filepaths:
+      - server.xml
+      namespaces: {}
+      xpath: //server/dataSource/properties.postgresql
 - category: mandatory
   customVariables: []
   description: Detect EntityManager usage in application code
   effort: 4
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
@@ -145,12 +185,14 @@
   effort: 3
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
   message: |
-    Detected database driver configurations that need to be included in your container image when migrating to AKS.
+    Detected database driver configurations that need to be included in your container image when migrating to Azure.
     
     **Migration Considerations:**
     * **Container Image**: Include appropriate JDBC drivers in your application container image
@@ -184,7 +226,9 @@
   effort: 4
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
@@ -192,7 +236,7 @@
     Detected application-level data source references that need updating for Azure database services.
     
     **Migration Requirements:**
-    * **JNDI Updates**: Update JNDI lookup references to match your Kubernetes deployment configuration
+    * **JNDI Updates**: Update JNDI lookup references to match your deployment configuration
     * **Connection Pool Optimization**: Configure connection pool settings for containerized environments
     * **Cloud-Native Libraries**: Consider using cloud-optimized connection pooling libraries
     * **Environment Variables**: Use environment variables for database connection parameters
@@ -201,7 +245,7 @@
     **Implementation Steps:**
     1. Update web.xml resource references to use environment-specific JNDI names
     2. Configure external database connection properties
-    3. Set up Kubernetes ConfigMaps and Secrets for database configuration
+    3. Set up environment configuration for database settings
     4. Implement health checks for database connectivity
   links:
   - title: "Configure data sources in OpenLiberty"
@@ -224,7 +268,9 @@
   effort: 4
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
@@ -232,7 +278,7 @@
     Detected @Resource annotations for database injection that need configuration updates for Azure migration.
     
     **Migration Requirements:**
-    * **JNDI Name Updates**: Update JNDI names to match your Kubernetes/OpenLiberty configuration
+    * **JNDI Name Updates**: Update JNDI names to match your deployment configuration
     * **Connection Pool Settings**: Review and optimize connection pooling for containerized environments
     * **Resilience Patterns**: Implement retry logic and circuit breakers for connection failures
     * **Monitoring**: Add database connection monitoring and health checks
@@ -265,7 +311,9 @@
   effort: 4
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
@@ -273,7 +321,7 @@
     Detected manual JNDI lookups for database connections that need updates for Azure.
     
     **Required changes:**
-    - Update JNDI references to match your Kubernetes configuration
+    - Update JNDI references to match your deployment configuration
     - Consider using CDI injection (@Resource) instead of manual lookups
     - Configure OpenLiberty server.xml with Azure database connections
     
@@ -292,7 +340,9 @@
   effort: 4
   labels:
   - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
   - openliberty
@@ -309,7 +359,7 @@
     **Implementation Steps:**
     1. Update persistence.xml with Azure database connection properties
     2. Configure HikariCP for optimal cloud performance
-    3. Set up environment-specific configurations using Spring profiles or system properties
+    3. Set up environment-specific configurations using system properties or configuration files
     4. Add monitoring and logging for database performance
   links:
   - title: "JPA configuration for Azure SQL"
