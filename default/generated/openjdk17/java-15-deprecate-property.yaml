@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: Removal of Deprecated Constant RMIConnectorServer.CREDENTIAL_TYPES
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk15-
   - konveyor.io/source=openjdk

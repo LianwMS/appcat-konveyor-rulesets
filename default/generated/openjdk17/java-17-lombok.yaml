@@ -1,9 +1,9 @@
 - category: mandatory
   customVariables: []
   description: The Lombok version is incompatible with Open JDK 17
-  effort: 3
+  effort: 1
   labels:
-  - konveyor.io/source=openjdk11-
+  - konveyor.io/source=openjdk17-
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk17+
   - konveyor.io/target=openjdk

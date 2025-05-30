@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: Added forRemoval=true to Previously Deprecated ContentSigner APIs
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk15-
   - konveyor.io/source=openjdk

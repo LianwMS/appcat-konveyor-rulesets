@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: Removal of com.sun.awt.SecurityWarning Class
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk12-
   - konveyor.io/source=openjdk

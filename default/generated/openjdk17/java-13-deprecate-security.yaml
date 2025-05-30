@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: Deprecated javax.security.cert APIs with forRemoval=true
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk13-
   - konveyor.io/source=openjdk
