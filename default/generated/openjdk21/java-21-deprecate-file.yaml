@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: java.io.File's Canonical Path Cache Is Removed
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk21-
   - konveyor.io/source=openjdk
@@ -30,7 +30,7 @@
 - category: mandatory
   customVariables: []
   description: com.sun.nio.file.SensitivityWatchEventModifier Is Deprecated
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk21-
   - konveyor.io/source=openjdk

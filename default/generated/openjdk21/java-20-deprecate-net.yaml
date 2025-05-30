@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: java.net.URL Constructors Are Deprecated
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk20-
   - konveyor.io/source=openjdk

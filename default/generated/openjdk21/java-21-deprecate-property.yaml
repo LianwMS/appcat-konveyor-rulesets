@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: Removal of the java.compiler System Property
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk21-
   - konveyor.io/source=openjdk
@@ -24,7 +24,7 @@
 - category: mandatory
   customVariables: []
   description: The java.lang.Compiler Class Has Been Removed
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk21-
   - konveyor.io/source=openjdk

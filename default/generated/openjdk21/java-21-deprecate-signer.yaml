@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: Removal of ContentSigner APIs and jarsigner -altsigner and -altsignerpath Options
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk21-
   - konveyor.io/source=openjdk

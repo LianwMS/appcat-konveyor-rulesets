@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: Removal of Legacy PlainSocketImpl and PlainDatagramSocketImpl Implementations
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk18-
   - konveyor.io/source=openjdk

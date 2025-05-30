@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: The Runtime.exec(String, ...) method is error-prone and should not be used
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk18-
   - konveyor.io/source=openjdk

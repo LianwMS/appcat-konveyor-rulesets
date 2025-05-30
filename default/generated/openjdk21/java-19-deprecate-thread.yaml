@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: java.lang.ThreadGroup Is Degraded
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk19-
   - konveyor.io/source=openjdk
@@ -51,7 +51,7 @@
 - category: mandatory
   customVariables: []
   description: This method is not final and may be overridden to return a value that is not the thread ID. Use Thread.threadId() instead.
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk19-
   - konveyor.io/source=openjdk
@@ -73,7 +73,7 @@
 - category: mandatory
   customVariables: []
   description: Remove the Alternate ThreadLocal Implementation of the Subject::current and Subject::callAs APIs
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk19-
   - konveyor.io/source=openjdk

@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: PSSParameterSpec(int) Constructor and DEFAULT Static Constant Are Deprecated
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk19-
   - konveyor.io/source=openjdk
@@ -25,7 +25,7 @@
 - category: mandatory
   customVariables: []
   description: OAEPParameterSpec.DEFAULT Static Constant Is Deprecated
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk19-
   - konveyor.io/source=openjdk

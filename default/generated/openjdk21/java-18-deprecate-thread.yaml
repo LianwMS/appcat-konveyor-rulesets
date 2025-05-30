@@ -1,7 +1,7 @@
 - category: mandatory
   customVariables: []
   description: Terminally Deprecated Thread.stop
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk18-
   - konveyor.io/source=openjdk

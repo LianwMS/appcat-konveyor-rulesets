@@ -1,7 +1,7 @@
 - category: potential
   customVariables: []
   description: Dynamic loading of agents will be removed at a later JDK release
-  effort: 3
+  effort: 1
   labels:
   - konveyor.io/source=openjdk21-
   - konveyor.io/source=openjdk
