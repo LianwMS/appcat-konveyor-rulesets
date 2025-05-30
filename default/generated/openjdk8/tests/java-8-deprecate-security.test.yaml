@@ -17,3 +17,15 @@ tests:
     hasIncidents:
       atLeast: 1
       messageMatches: The `java.security.SecurityPermission insertProvider.{provider name}`
+- ruleID: java-security-manager-00001
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      exactly: 2
+      messageMatches: The SecurityManager.checkMemberAccess method is deprecated.
+- ruleID: java-security-manager-00002
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      exactly: 6
+      messageMatches: The checkTopLevelWindow, checkSystemClipboardAccess, and checkAwtEventQueueAccess methods under SecurityManager class are deprecated.
