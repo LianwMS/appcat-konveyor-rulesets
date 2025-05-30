@@ -19,13 +19,6 @@ tests:
       atLeast: 1
       messageMatches: Detected EntityManager usage in application code
 
-- ruleID: openliberty-database-00003
-  testCases:
-  - name: tc-1
-    hasIncidents:
-      atLeast: 1
-      messageMatches: Detected database driver configurations that need to be included in your container image
-
 - ruleID: openliberty-database-00004
   testCases:
   - name: tc-1
@@ -67,3 +60,10 @@ tests:
     hasIncidents:
       atLeast: 1
       messageMatches: To migrate a Java application that uses a PostgreSQL database to Azure
+
+- ruleID: openliberty-database-00010
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: To migrate a Java application that uses a Sybase database to Azure

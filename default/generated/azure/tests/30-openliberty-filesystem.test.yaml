@@ -26,13 +26,6 @@ tests:
       atLeast: 1
       messageMatches: Detected @Resource annotations for file path injections
 
-# - ruleID: aks-jakarta-file-injection-00063
-#   testCases:
-#   - name: tc-1
-#     hasIncidents:
-#       atLeast: 1
-#       messageMatches: Detected Jakarta @Resource annotations for file path injections
-
 - ruleID: openliberty-filesystem-00004
   testCases:
   - name: tc-1

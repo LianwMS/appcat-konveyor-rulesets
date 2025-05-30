@@ -37,15 +37,90 @@
     url: "https://openliberty.io/docs/latest/data-persistence-jpa.html"
   ruleID: openliberty-database-00001
   when:
-    builtin.xml:
-      filepaths:
-      - server.xml
-      namespaces: {}
-      xpath: //server/dataSource
+    or:
+    - builtin.xml:
+        filepaths:
+        - server.xml
+        namespaces: {}
+        xpath: //server/dataSource[not(properties.oracle) and not(properties.oracle.ucp) and not(properties.postgresql) and not(properties.microsoft.sqlserver) and not(properties.sybase)]
+    - builtin.xml:
+        filepaths:
+        - server.xml
+        namespaces: {}
+        xpath: //server/library/fileset[contains(@includes, 'jdbc') and not(contains(@includes, 'oracle')) and not(contains(@includes, 'postgresql')) and not(contains(@includes, 'sybase')) and not(contains(@includes, 'sqlserver'))]
+- category: potential
+  customVariables: []
+  description: Detect OpenLiberty Sybase Data Source configurations
+  effort: 6
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/target=azure-appservice
+  - konveyor.io/target=azure-aks
+  - konveyor.io/target=azure-container-apps
+  - domain=azure-readiness
+  - category=openliberty-migration
+  - openliberty
+  links:
+  - title: Migration guide Sybase to Azure SQL Database
+    url: https://learn.microsoft.com/en-us/azure/azure-sql/migration-guides/database/sybase-to-sql-database-guide
+  - title: SQL Server Migration Assistant for Sybase (SSMA)
+    url: https://learn.microsoft.com/en-us/sql/ssma/sybase/sql-server-migration-assistant-for-sybase-sybasetosql
+  - title: Azure Database Migration Service documentation
+    url: https://learn.microsoft.com/azure/dms
+  - title: Azure SQL Database documentation
+    url: https://learn.microsoft.com/en-us/azure/azure-sql/database/
+  - title: Azure Monitor documentation
+    url: https://learn.microsoft.com/azure/azure-monitor
+  - title: Microsoft Defender for Cloud
+    url: https://learn.microsoft.com/azure/defender-for-cloud
+  message: |-
+    To migrate a Java application that uses a Sybase database to Azure, you can follow these recommendations:
+
+    * **Choose your Azure target**:
+      * **Azure SQL Database**: The recommended target for Sybase migration, offering a fully managed PaaS service with high compatibility for most Sybase features.
+      * **Azure SQL Managed Instance**: Provides near 100% compatibility with SQL Server and better support for complex Sybase features like stored procedures and triggers.
+      * **SQL Server on Azure VMs**: For maximum compatibility when PaaS migration is not feasible due to specific Sybase dependencies.
+
+    * **Assess migration complexity**:
+      * Use **SQL Server Migration Assistant (SSMA) for Sybase** to assess database schema compatibility and generate migration reports.
+      * Identify Sybase-specific features that need conversion (e.g., stored procedures, triggers, data types).
+      * Review T-SQL syntax differences and plan for code modifications.
+
+    * **Migrate** the existing Sybase database:
+      * Use **SSMA for Sybase** to convert database schema and migrate data to Azure SQL Database or SQL Managed Instance.
+      * Utilize **Azure Database Migration Service (DMS)** for online migrations with minimal downtime.
+      * Test migrated database thoroughly, especially stored procedures and complex queries.
+
+    * Update the application's **database connection** details: Modify the Java application's configuration to point to the newly provisioned Azure SQL service. Update the connection string (JDBC URL), driver class (from Sybase jConnect to SQL Server JDBC driver), hostname, port, username, and password information accordingly.
+
+    * **Address compatibility issues**:
+      * Replace Sybase-specific SQL syntax with T-SQL equivalents.
+      * Update data type mappings (e.g., Sybase datetime to SQL Server datetime2).
+      * Modify stored procedures and functions to use T-SQL syntax.
+      * Test and update any Sybase-specific driver configurations.
+
+    * Enable **monitoring and diagnostics**: Utilize Azure Monitor to gain insights into the performance and health of your Java application and the underlying Azure SQL database. Set up metrics, alerts, and log analytics to proactively identify and resolve issues.
+
+    * Implement **security** measures: Apply security best practices including Azure AD authentication, transparent data encryption, and leverage Microsoft Defender for Cloud for threat detection and vulnerability assessments.
+
+    * **Backup** your data: Azure SQL Database and SQL Managed Instance provide automated backups by default. Configure retention periods and consider geo-redundant backups for enhanced data durability.
+  ruleID: openliberty-database-00010
+  when:
+    or:
+    - builtin.xml:
+        filepaths:
+        - server.xml
+        namespaces: {}
+        xpath: //server/dataSource/properties.sybase
+    - builtin.xml:
+        filepaths:
+        - server.xml
+        namespaces: {}
+        xpath: //server/library/fileset[contains(@includes, 'sybase')]
 - category: potential
   customVariables: []
   description: Detect OpenLiberty Oracle Data Source configurations
-  effort: 5 
+  effort: 5
   labels:
   - konveyor.io/source=java-ee
   - konveyor.io/target=azure-appservice
@@ -91,11 +166,17 @@
     * **Backup** your data: Azure managed database services (Azure SQL, Azure Database for PostgreSQL) provide automated backups by default. Configure retention periods and consider geo-redundant backups for enhanced data durability. For Oracle on Azure VMs, you are responsible for configuring and managing backups using Oracle tools or Azure Backup.
   ruleID: openliberty-database-00008
   when:
-    builtin.xml:
-      filepaths:
-      - server.xml
-      namespaces: {}
-      xpath: //server/dataSource/properties.oracle
+    or:
+    - builtin.xml:
+        filepaths:
+        - server.xml
+        namespaces: {}
+        xpath: //server/dataSource[properties.oracle or properties.oracle.ucp]
+    - builtin.xml:
+        filepaths:
+        - server.xml
+        namespaces: {}
+        xpath: //server/library/fileset[contains(@includes, 'oracle')]
 - category: potential
   customVariables: []
   description: Detect OpenLiberty PostgreSQL Data Source configurations
@@ -135,11 +216,17 @@
      * **Backup** your data: Azure Database for PostgreSQL provides automated backups by default. You can configure the retention period for backups based on your requirements. You can also enable geo-redundant backups, if needed, to enhance data durability and availability.
   ruleID: openliberty-database-00009
   when:
-    builtin.xml:
-      filepaths:
-      - server.xml
-      namespaces: {}
-      xpath: //server/dataSource/properties.postgresql
+    or:
+    - builtin.xml:
+        filepaths:
+        - server.xml
+        namespaces: {}
+        xpath: //server/dataSource/properties.postgresql
+    - builtin.xml:
+        filepaths:
+        - server.xml
+        namespaces: {}
+        xpath: //server/library/fileset[contains(@includes, 'postgresql')]
 - category: mandatory
   customVariables: []
   description: Detect EntityManager usage in application code
@@ -181,47 +268,6 @@
       pattern: javax.persistence.EntityManager
 - category: mandatory
   customVariables: []
-  description: Detect database driver configurations
-  effort: 3
-  labels:
-  - konveyor.io/source=java-ee
-  - konveyor.io/target=azure-appservice
-  - konveyor.io/target=azure-aks
-  - konveyor.io/target=azure-container-apps
-  - domain=azure-readiness
-  - category=openliberty-migration
-  - openliberty
-  message: |
-    Detected database driver configurations that need to be included in your container image when migrating to Azure.
-    
-    **Migration Considerations:**
-    * **Container Image**: Include appropriate JDBC drivers in your application container image
-    * **Driver Compatibility**: Verify driver compatibility with Azure managed database services
-    * **Version Management**: Use latest stable driver versions for security and performance
-    * **Configuration Updates**: Update driver-specific configurations for cloud environments
-    * **Connection Security**: Enable SSL/TLS connections for secure database communication
-    
-    **Implementation Steps:**
-    1. Add JDBC drivers to your Maven/Gradle dependencies
-    2. Configure SSL connections in your connection strings
-    3. Test driver compatibility with Azure database services
-    4. Set up proper connection timeouts and retry policies
-  links:
-  - title: "JDBC driver for SQL Server"
-    url: "https://learn.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server"
-  - title: "Connect to Azure Database for MySQL"
-    url: "https://learn.microsoft.com/en-us/azure/mysql/single-server/how-to-connection-string"
-  - title: "Connect to Azure Database for PostgreSQL"
-    url: "https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/connect-java"
-  ruleID: openliberty-database-00003
-  when:
-    builtin.xml:
-      filepaths:
-      - server.xml
-      namespaces: {}
-      xpath: //server/library/fileset[contains(@includes, 'jdbc') or contains(@includes, 'sql') or contains(@includes, 'db') or contains(@includes, 'oracle')]
-- category: mandatory
-  customVariables: []
   description: Detect application-level data source references
   effort: 4
   labels:
@@ -258,7 +304,7 @@
   when:
     builtin.xml:
       filepaths:
-        - web.xml
+      - web.xml
       namespaces:
         jee: http://xmlns.jcp.org/xml/ns/javaee
       xpath: //jee:resource-ref/jee:res-type[contains(text(), 'javax.sql.DataSource')] | //jee:env-entry[contains(jee:env-entry-value, 'jdbc')]

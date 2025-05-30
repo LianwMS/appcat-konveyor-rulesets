@@ -44,6 +44,17 @@
         <connectionManager minPoolSize="5" maxPoolSize="100"/>
     </dataSource>
 
+    <dataSource id="DefaultDataSource" jndiName="jdbc/mydb">
+        <jdbcDriver libraryRef="MySQLLib"/>
+        <properties.sybase serverName="localhost"
+                   portNumber="3306"
+                   databaseName="mydb"
+                   user="dbuser"
+                   password="dbpass"/>
+        <connectionManager minPoolSize="5" maxPoolSize="100"/>
+    </dataSource>
+
+
     <!-- Database Driver Configuration -->
     <library id="MySQLLib">
         <fileset dir="${server.config.dir}/lib" includes="mysql-connector-java-*.jar"/>
