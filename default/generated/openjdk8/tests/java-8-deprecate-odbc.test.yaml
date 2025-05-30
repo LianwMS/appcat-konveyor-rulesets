@@ -1,9 +1,9 @@
-rulesPath: ../12-java-odbc.yaml
+rulesPath: ../java-8-deprecate-odbc.yaml
 providers:
 - name: java
-  dataPath: ./data/12-java-odbc
+  dataPath: ./data/java-8-deprecate-odbc
 - name: builtin
-  dataPath: ./data/12-java-odbc
+  dataPath: ./data/java-8-deprecate-odbc
 tests:
 - ruleID: java-odbc-00001
   testCases:

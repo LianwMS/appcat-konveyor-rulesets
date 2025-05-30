@@ -1,9 +1,9 @@
-rulesPath: ../16-java-log-manager.yaml
+rulesPath: ../java-8-deprecate-log.yaml
 providers:
 - name: java
-  dataPath: ./data/16-java-log-manager
+  dataPath: ./data/java-8-deprecate-log
 - name: builtin
-  dataPath: ./data/16-java-log-manager
+  dataPath: ./data/java-8-deprecate-log
 tests:
 - ruleID: java-log-manager-00001
   testCases:

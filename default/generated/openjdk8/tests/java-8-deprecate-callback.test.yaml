@@ -1,9 +1,9 @@
-rulesPath: ../17-java-callback.yaml
+rulesPath: ../java-8-deprecate-callback.yaml
 providers:
 - name: java
-  dataPath: ./data/17-java-callback
+  dataPath: ./data/java-8-deprecate-callback
 - name: builtin
-  dataPath: ./data/17-java-callback
+  dataPath: ./data/java-8-deprecate-callback
 tests:
 - ruleID: java-callback-00001
   testCases:

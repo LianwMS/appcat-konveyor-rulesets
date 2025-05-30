@@ -1,9 +1,9 @@
-rulesPath: ../13-java-apt.yaml
+rulesPath: ../java-8-deprecate-apt.yaml
 providers:
 - name: java
-  dataPath: ./data/13-java-apt
+  dataPath: ./data/java-8-deprecate-apt
 - name: builtin
-  dataPath: ./data/13-java-apt
+  dataPath: ./data/java-8-deprecate-apt
 tests:
 - ruleID: java-apt-00001
   testCases:

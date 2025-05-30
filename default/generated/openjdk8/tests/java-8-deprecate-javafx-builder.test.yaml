@@ -1,9 +1,9 @@
-rulesPath: ../18-javafx-builder.yaml
+rulesPath: ../java-8-deprecate-javafx-builder.yaml
 providers:
 - name: java
-  dataPath: ./data/18-javafx-builder
+  dataPath: ./data/java-8-deprecate-javafx-builder
 - name: builtin
-  dataPath: ./data/18-javafx-builder
+  dataPath: ./data/java-8-deprecate-javafx-builder
 tests:
 - ruleID: javafx-builder-00001
   testCases:

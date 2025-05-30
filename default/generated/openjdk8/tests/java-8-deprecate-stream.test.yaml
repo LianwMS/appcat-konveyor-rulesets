@@ -1,9 +1,9 @@
-rulesPath: ../10-java-stream-factory.yaml
+rulesPath: ../java-8-deprecate-stream.yaml
 providers:
 - name: java
-  dataPath: ./data/10-java-stream-factory
+  dataPath: ./data/java-8-deprecate-stream
 - name: builtin
-  dataPath: ./data/10-java-stream-factory
+  dataPath: ./data/java-8-deprecate-stream
 tests:
 - ruleID: java-stream-factory-00001
   testCases:

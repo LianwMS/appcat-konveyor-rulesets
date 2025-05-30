@@ -1,9 +1,9 @@
-rulesPath: ../11-java-thread.yaml
+rulesPath: ../java-8-deprecate-thread.yaml
 providers:
 - name: java
-  dataPath: ./data/11-java-thread
+  dataPath: ./data/java-8-deprecate-thread
 - name: builtin
-  dataPath: ./data/11-java-thread
+  dataPath: ./data/java-8-deprecate-thread
 tests:
 - ruleID: java-thread-00001
   testCases:

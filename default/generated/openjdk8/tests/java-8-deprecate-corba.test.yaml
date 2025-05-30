@@ -1,9 +1,9 @@
-rulesPath: ../09-java-corba.yaml
+rulesPath: ../java-8-deprecate-corba.yaml
 providers:
 - name: java
-  dataPath: ./data/09-java-corba
+  dataPath: ./data/java-8-deprecate-corba
 - name: builtin
-  dataPath: ./data/09-java-corba
+  dataPath: ./data/java-8-deprecate-corba
 tests:
 - ruleID: java-corba-00001
   testCases:

@@ -1,9 +1,9 @@
-rulesPath: ../15-java-pack200.yaml
+rulesPath: ../java-8-deprecate-pack.yaml
 providers:
 - name: java
-  dataPath: ./data/15-java-pack200
+  dataPath: ./data/java-8-deprecate-pack
 - name: builtin
-  dataPath: ./data/15-java-pack200
+  dataPath: ./data/java-8-deprecate-pack
 tests:
 - ruleID: java-pack200-00001
   testCases:

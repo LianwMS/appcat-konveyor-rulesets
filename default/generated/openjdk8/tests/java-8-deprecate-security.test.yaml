@@ -1,9 +1,9 @@
-rulesPath: ../08-java-security.yaml
+rulesPath: ../java-8-deprecate-security.yaml
 providers:
 - name: java
-  dataPath: ./data/08-java-security
+  dataPath: ./data/java-8-deprecate-security
 - name: builtin
-  dataPath: ./data/08-java-security
+  dataPath: ./data/java-8-deprecate-security
 tests:
 - ruleID: java-security-00001
   testCases:
