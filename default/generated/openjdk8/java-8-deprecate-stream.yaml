@@ -8,14 +8,15 @@
   - konveyor.io/target=openjdk8+
   - konveyor.io/target=openjdk
   - domain=java-modernization
-  - category=java-version-upgrade
+  - category=deprecated-apis
   links:
   - title: Compatibility Guide for JDK 8
     url: https://www.oracle.com/java/technologies/javase/8-compatibility-guide.html
   message: |-
-    The ClassLoader parameter is no longer ignored in javax.xml.stream factories.
+    The `ClassLoader` parameter is no longer ignored in `javax.xml.stream` factories.
 
-    The javax.xml.stream package contains factory classes (XMLEventFactory, XMLOutputFactory, XMLInputFactory) which define newFactory methods that take two parameters: a factoryId and a ClassLoader. In JDK 7, the second parameter (ClassLoader) was ignored by the factories when looking up and instantiating the services. This is no longer the case in JDK 8. Refer to the Java API documentation of those methods for more details.
+    The `javax.xml.stream` package contains factory classes (`XMLEventFactory`, `XMLOutputFactory`, `XMLInputFactory`) which define newFactory methods that take two parameters: a `factoryId` and a `ClassLoader`. 
+    In JDK 7, the second parameter (`ClassLoader`) was ignored by the factories when looking up and instantiating the services. This is no longer the case in JDK 8. Refer to the Java API documentation of those methods for more details.
   ruleID: java-8-deprecate-stream-00001
   when:
     or:

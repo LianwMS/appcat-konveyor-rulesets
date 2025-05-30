@@ -13,7 +13,8 @@
   - title: Compatibility Guide for JDK 8
     url: https://www.oracle.com/java/technologies/javase/8-compatibility-guide.html
   message: |-
-    The apt tool and its associated API contained in the package com.sun.mirror have been removed in this release. Use the options available in the javac tool and the APIs contained in the packages javax.annotation.processing and javax.lang.model to process annotations.
+    The `apt` tool and its associated API contained in the package` com.sun.mirror` have been removed in this release. 
+    Use the options available in the `javac` tool and the APIs contained in the packages `javax.annotation.processing` and `javax.lang.model` to process annotations.
   ruleID: java-8-deprecate-apt-00001
   when:
     or:

@@ -13,7 +13,7 @@
   - title: Compatibility Guide for JDK 8
     url: https://www.oracle.com/java/technologies/javase/8-compatibility-guide.html
   message: |-
-    The Thread.stop method has been deprecated since release 1.2. This method now throws an UnsupportedOperationException.
+    The `Thread.stop` method has been deprecated since release 1.2. This method now throws an `UnsupportedOperationException`.
   ruleID: java-8-deprecate-thread-00001
   when:
     or:

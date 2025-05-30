@@ -13,7 +13,7 @@
   - title: Compatibility Guide for JDK 8
     url: https://www.oracle.com/java/technologies/javase/8-compatibility-guide.html
   message: |-
-    The class com.sun.security.auth.callback.DialogCallbackHandler has been deprecated and is expected to be removed in a future release of Java SE.
+    The class `com.sun.security.auth.callback.DialogCallbackHandler` has been deprecated and is expected to be removed in a future release of Java SE.
   ruleID: java-8-deprecate-callback-00001
   when:
     or:

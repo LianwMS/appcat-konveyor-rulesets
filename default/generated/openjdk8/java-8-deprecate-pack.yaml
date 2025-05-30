@@ -13,9 +13,9 @@
   - title: Compatibility Guide for JDK 8
     url: https://www.oracle.com/java/technologies/javase/8-compatibility-guide.html
   message: |-
-    The addPropertyChangeListener and removePropertyChangeListener methods under Pack200.Packer interface are expected to be removed in a future release of Java SE.
+    The `addPropertyChangeListener` and `removePropertyChangeListener` methods under `Pack200.Packer` interface are expected to be removed in a future release of Java SE.
     
-    Use Instead: To monitor the progress of the packer, poll the value of the PROGRESS property.
+    Use Instead: To monitor the progress of the packer, poll the value of the `PROGRESS` property.
   ruleID: java-8-deprecate-pack-00001
   when:
     or:
@@ -40,9 +40,9 @@
   - title: Compatibility Guide for JDK 8
     url: https://www.oracle.com/java/technologies/javase/8-compatibility-guide.html
   message: |-
-    The addPropertyChangeListener and removePropertyChangeListener methods under Pack200.Unpacker interface are expected to be removed in a future release of Java SE.
+    The `addPropertyChangeListener` and `removePropertyChangeListener` methods under `Pack200.Unpacker` interface are expected to be removed in a future release of Java SE.
 
-    Use Instead: To monitor the progress of the unpacker, poll the value of the PROGRESS property.
+    Use Instead: To monitor the progress of the unpacker, poll the value of the `PROGRESS` property.
   ruleID: java-8-deprecate-pack-00002
   when:
     or:
