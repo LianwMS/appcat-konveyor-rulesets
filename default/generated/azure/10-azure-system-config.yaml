@@ -60,3 +60,6 @@
     - java.referenced:
         location: METHOD_CALL
         pattern: java.lang.System.setProperties*
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.java$
+        pattern: System\.getenv\("(.+)"\)
