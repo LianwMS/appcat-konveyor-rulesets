@@ -12,11 +12,13 @@
     Using Web Forms authentication requires that user accounts and passwords be created and managed in a storage such as a database. This mechanism does not offer the flexibility of claims-based authentication and should not be used in Cloud applications. Ideally, user authentication should be replaced by a Cloud-based and OS-agnostic identity & access management solution such as Active Directory.
   ruleID: webform-auth-00000
   when:
-    or:
+    and:
     - java.referenced:
-        location: METHOD_CALL
-        pattern: javax.servlet.http.HttpServletRequest.getParameter("username")
-    - java.referenced:
-        location: METHOD_CALL
-        pattern: javax.servlet.http.HttpServletRequest.getParameter("password")
-    
+        location: IMPORT
+        pattern: javax.servlet.http.HttpServletRequest
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.java$
+        pattern: getParameter\("username"\)
+    - builtin.filecontent:
+        filePattern: (/|\\)([a-zA-Z0-9._-]+)\.java$
+        pattern: getParameter\("password"\)

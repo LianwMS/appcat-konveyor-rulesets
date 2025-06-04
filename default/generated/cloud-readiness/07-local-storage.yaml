@@ -237,7 +237,7 @@
         pattern: java.nio.file.Files.(createTempFile|createTempDirectory)
     - java.referenced:
         location: METHOD_CALL
-        pattern: java.nio.file.Paths.get*
+        pattern: java.nio.file.Paths.get
     - java.referenced:
         location: IMPORT
         pattern: java.nio.file.(Files|Paths)*
