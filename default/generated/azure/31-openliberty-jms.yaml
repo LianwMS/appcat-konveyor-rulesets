@@ -3,11 +3,7 @@
   description: Detect OpenLiberty JMS ConnectionFactory configurations
   effort: 4
   labels:
-  - konveyo    JMS resource references in deployment descriptors detected that require removal and replacement with Azure Service Bus configuration.
-
-    **Migration Requirements:**
-    • **Remove JMS Configuration:** Clean up resource-ref entries from web.xml and ejb-jar.xml
-    • **Externalize Configuration:** Move messaging configuration to application properties and environment variablessource=java-ee
+  - konveyor.io/source=java-ee
   - konveyor.io/target=azure-appservice
   - konveyor.io/target=azure-aks
   - konveyor.io/target=azure-container-apps

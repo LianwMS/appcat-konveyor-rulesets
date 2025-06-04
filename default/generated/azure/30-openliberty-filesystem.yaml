@@ -41,7 +41,7 @@
       filepaths:
       - server.xml
       namespaces: {}
-      xpath: //*[@dir] | //*[@directory] | //*[@path] | //*[@location][not(contains(@location, '.war') or contains(@location, '.ear') or contains(@location, '.jar'))]
+      xpath: //*[@dir] | //*[@directory] | //*[@path]
 
 - category: mandatory
   customVariables: []
