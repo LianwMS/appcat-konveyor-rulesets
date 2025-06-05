@@ -243,5 +243,5 @@
   ruleID: openliberty-jms-00005
   when:
     java.referenced:
-      location: PACKAGE
+      location: IMPORT
       pattern: javax.jms*
