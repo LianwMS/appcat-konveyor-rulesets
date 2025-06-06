@@ -10,7 +10,7 @@
   links: []
   message: Several classes under `javax.swing.plaf.basic` have been deprecated in
     JDK 19 for removal in a future release.
-  ruleID: deprecation-00010
+  ruleID: java-19-deprecate-class-00010
   when:
     or:
     - java.referenced:
@@ -31,7 +31,7 @@
         pattern: javax.swing.plaf.basic.BasicDirectoryModel.intervalRemoved(*)
     - java.referenced:
         location: METHOD_CALL
-        pattern: javax.swing.plaf.basic.BasicDirectoryModel.lt(*)
+        pattern: javax.swing.plaf.basic.BasicDirectoryModel.lt
     - java.referenced:
         location: METHOD_CALL
         pattern: javax.swing.plaf.basic.BasicToolBarUI.createFloatingFrame(*)
