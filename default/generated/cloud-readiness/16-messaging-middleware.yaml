@@ -6,7 +6,7 @@
   - konveyor.io/target=cloud-readiness
   - konveyor.io/source
   - domain=cloud-native
-  - category=containerization
+  - category=messaging-service-migration
   links:
   - title: Microservices with RabbitMQ and Docker
     url: https://medium.com/@codescrum/microservices-with-rabbitmq-and-docker-2bbe26c3fc55
