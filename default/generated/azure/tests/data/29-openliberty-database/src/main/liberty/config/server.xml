@@ -20,7 +20,7 @@
                    portNumber="3306"
                    databaseName="mydb"
                    user="dbuser"
-                   password="dbpass"/>
+                   password="<your password>"/>
         <connectionManager minPoolSize="5" maxPoolSize="100"/>
     </dataSource>
 
@@ -30,7 +30,7 @@
                    portNumber="3306"
                    databaseName="mydb"
                    user="dbuser"
-                   password="dbpass"/>
+                   password="<your password>"/>
         <connectionManager minPoolSize="5" maxPoolSize="100"/>
     </dataSource>
 
@@ -40,7 +40,7 @@
                    portNumber="3306"
                    databaseName="mydb"
                    user="dbuser"
-                   password="dbpass"/>
+                   password="<your password>"/>
         <connectionManager minPoolSize="5" maxPoolSize="100"/>
     </dataSource>
 
@@ -50,7 +50,7 @@
                    portNumber="3306"
                    databaseName="mydb"
                    user="dbuser"
-                   password="dbpass"/>
+                   password="<your password>"/>
         <connectionManager minPoolSize="5" maxPoolSize="100"/>
     </dataSource>
 
