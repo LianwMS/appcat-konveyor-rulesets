@@ -120,12 +120,13 @@
     - java.referenced:
         pattern: org.springframework.security.web.context.HttpSessionSecurityContextRepository
         location: TYPE
-    - java.referenced:
-        pattern: SessionCreationPolicy.IF_REQUIRED
-        location: ENUM
-    - java.referenced:
-        pattern: SessionCreationPolicy.ALWAYS
-        location: ENUM
+    # TODO: ENUM is not implemented yet, so this rule is not working
+    # - java.referenced:
+    #     pattern: org.springframework.security.config.http.SessionCreationPolicy.IF_REQUIRED
+    #     location: ENUM
+    # - java.referenced:
+    #     pattern: org.springframework.security.config.http.SessionCreationPolicy.ALWAYS
+    #     location: ENUM
     - java.referenced:
         pattern: org.springframework.security.config.Customizer.withDefaults()
         location: METHOD_CALL

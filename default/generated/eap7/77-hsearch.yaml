@@ -539,7 +539,7 @@
   when:
     or:
     - java.referenced:
-        location: ENUM_CONSTANT
+        location: ENUM
         pattern: org.hibernate.search.backend.configuration.impl.IndexWriterSetting.(MAX_THREAD_STATES|TERM_INDEX_INTERVAL)
     - java.referenced:
         location: IMPORT
