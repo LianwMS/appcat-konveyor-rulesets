@@ -4,7 +4,6 @@
   - License={{matchingText}}
   labels:
   - konveyor.io/include=always
-  - konveyor.io/target=discovery
   when:
     or:
     - builtin.filecontent:
@@ -31,7 +30,6 @@
   description: "Hardcoded IP Address"
   labels:
   - konveyor.io/target=cloud-readiness
-  - konveyor.io/target=discovery
   - domain=cloud-native
   - category=remote-communication
   - source-category=hardcode-ip
@@ -46,7 +44,6 @@
   description: "Properties file"
   labels:
   - konveyor.io/include=always
-  - konveyor.io/target=discovery
   when:
     builtin.file:
       pattern: "^.*\\.properties$"
@@ -55,7 +52,6 @@
   description: "Manifest file"
   labels:
   - konveyor.io/include=always
-  - konveyor.io/target=discovery
   when:
     builtin.file:
       pattern: "MANIFEST.MF"
@@ -64,7 +60,6 @@
   description: "Java source files"
   labels:
   - konveyor.io/include=always
-  - konveyor.io/target=discovery
   when:
     builtin.file:
       pattern: "*.java"
@@ -73,7 +68,6 @@
   description: "Maven XML file"
   labels:
   - konveyor.io/include=always
-  - konveyor.io/target=discovery
   when:
     builtin.file:
       pattern: "pom.xml"
@@ -82,7 +76,6 @@
   description: "EJB XML Configuration"
   labels:
   - konveyor.io/include=always
-  - konveyor.io/target=discovery
   tag: ["EJB XML"]
   when:
     builtin.xml:
@@ -92,7 +85,6 @@
   tag: ["Spring XML"]
   labels:
   - konveyor.io/include=always
-  - konveyor.io/target=discovery
   when:
     builtin.xml:
       xpath: "/beans"
@@ -101,7 +93,6 @@
   tag: ["JPA XML"]
   labels:
   - konveyor.io/include=always
-  - konveyor.io/target=discovery
   when:
     or:
       - builtin.xml:
@@ -114,7 +105,6 @@
   description: "Web XML Configuration"
   labels:
   - konveyor.io/include=always
-  - konveyor.io/target=discovery
   tag: ["Web XML"]
   when:
     # TODO extract version as in rules-java-ee/addon/src/main/java/org/jboss/windup/rules/apps/javaee/rules/DiscoverWebXmlRuleProvider.java

@@ -12,10 +12,6 @@
     java.referenced:
       location: ANNOTATION
       pattern: javax.annotation.sql.DataSourceDefinition
-      annotated:
-        elements:
-          - name: transactional
-            value: false
 - customVariables: []
   description: JDBC XA datasources
   labels:
@@ -30,10 +26,6 @@
     java.referenced:
       location: ANNOTATION
       pattern: javax.annotation.sql.DataSourceDefinition
-      annotated:
-        elements:
-          - name: transactional
-            value: false
 - customVariables: []
   description: JPA Entities
   labels:

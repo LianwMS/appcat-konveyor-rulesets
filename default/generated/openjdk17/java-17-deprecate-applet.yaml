@@ -7,6 +7,8 @@
   - konveyor.io/source=openjdk
   - konveyor.io/target=openjdk17+
   - konveyor.io/target=openjdk
+  - konveyor.io/source=spring5
+  - konveyor.io/target=spring6+
   - domain=java-modernization
   - category=deprecated-apis
   links:
