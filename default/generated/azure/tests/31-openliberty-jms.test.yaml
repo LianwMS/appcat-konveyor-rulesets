@@ -33,16 +33,16 @@ tests:
       atLeast: 1
       messageMatches: Detected JMS resource references in deployment descriptors
 
-- ruleID: openliberty-jms-00006
-  testCases:
-  - name: tc-1
-    hasIncidents:
-      atLeast: 1
-      messageMatches: Detected manual JNDI lookups for JMS resources that need to be updated for Azure messaging services.
-
 - ruleID: openliberty-jms-00005
   testCases:
   - name: tc-1
     hasIncidents:
       atLeast: 1
       messageMatches: Detected JMS API usage that needs to be updated
+      
+- ruleID: openliberty-jms-00006
+  testCases:
+  - name: tc-1
+    hasIncidents:
+      atLeast: 1
+      messageMatches: Detected manual JNDI lookups for JMS resources that need to be updated for Azure messaging services.
