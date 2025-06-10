@@ -1,9 +1,9 @@
-rulesPath: ../18-webform-auth.yaml
+rulesPath: ../17-webform-auth.yaml
 providers:
 - name: java
-  dataPath: ./data/18-webform-auth
+  dataPath: ./data/17-webform-auth
 - name: builtin
-  dataPath: ./data/18-webform-auth
+  dataPath: ./data/17-webform-auth
 tests:
 - ruleID: webform-auth-00000
   testCases:

@@ -1,9 +1,9 @@
-rulesPath: ../19-windows-registry.yaml
+rulesPath: ../18-windows-registry.yaml
 providers:
 - name: java
-  dataPath: ./data/19-windows-registry
+  dataPath: ./data/18-windows-registry
 - name: builtin
-  dataPath: ./data/19-windows-registry
+  dataPath: ./data/18-windows-registry
 tests:
 - ruleID: windows-registry-00000
   testCases:

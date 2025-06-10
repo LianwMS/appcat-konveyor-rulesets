@@ -1,9 +1,9 @@
-rulesPath: ../17-unsecure-network-protocol.yaml
+rulesPath: ../16-unsecure-network-protocol.yaml
 providers:
 - name: java
-  dataPath: ./data/17-unsecure-network-protocol
+  dataPath: ./data/16-unsecure-network-protocol
 - name: builtin
-  dataPath: ./data/17-unsecure-network-protocol
+  dataPath: ./data/16-unsecure-network-protocol
 tests:
 - ruleID: unsecure-network-protocol-00000
   testCases:
