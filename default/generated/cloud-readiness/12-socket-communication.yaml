@@ -13,10 +13,10 @@
   links: []
   message: |-
     Java sockets are internal endpoints of two-way communications. They are defined by an IP address, port, and protocol (TCP/UDP).
-    
-    Socket communication is not suitable for a cloud environment because it requires fixed communication with a target host.
-    
-    Recommendation: Use Java EE standard or loosely coupled protocols such as JMS, JAX-RS, or JAX-WS for backing service interactions.
+
+     Socket communication is not suitable for a cloud environment because it requires fixed communication with a target host.
+
+     Recommendation: Use Java EE standard or loosely coupled protocols such as JMS, JAX-RS, or JAX-WS for backing service interactions.
   ruleID: socket-communication-00000
   when:
     or:
@@ -50,10 +50,10 @@
   links: []
   message: |-
     Java NIO channels provide bulk data transfer to and from NIO buffers. They can be synchronously and asynchronously read and written.
-    
-    Channels are not suitable for a cloud environment because they are not a reliable or scalable way to interact with other systems.
-    
-    Recommendation: Use Java EE standard or loosely coupled protocols such as JMS, JAX-RS, or JAX-WS for backing service interactions.
+
+     Channels are not suitable for a cloud environment because they are not a reliable or scalable way to interact with other systems.
+
+     Recommendation: Use Java EE standard or loosely coupled protocols such as JMS, JAX-RS, or JAX-WS for backing service interactions.
   ruleID: socket-communication-00001
   when:
     java.referenced:
