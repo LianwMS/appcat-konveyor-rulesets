@@ -18,10 +18,3 @@ tests:
     hasIncidents:
       atLeast: 1
       messageMatches: Custom log file location configurations detected that require containerization and Azure storage integration
-
-- ruleID: openliberty-logging-00003
-  testCases:
-  - name: tc-1
-    hasIncidents:
-      atLeast: 1
-      messageMatches: Log4j dependencies detected that require version assessment and Azure Monitor integration optimization

@@ -9,6 +9,7 @@
   - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
+  - source-category=openliberty-filesystem
   - openliberty
   message: |
     Detected file path configurations in OpenLiberty server that need to be migrated to Azure storage solutions.

@@ -9,6 +9,7 @@
   - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
+  - source-category=openliberty-logging
   - openliberty
   message: |
     OpenLiberty server logging configurations detected that require optimization for Azure Monitor integration and containerized deployment.
@@ -53,6 +54,7 @@
   - konveyor.io/target=azure-container-apps
   - domain=azure-readiness
   - category=openliberty-migration
+  - source-category=openliberty-logging
   - openliberty
   message: |
     Custom log file location configurations detected that require containerization and Azure storage integration.
@@ -85,59 +87,3 @@
       - server.xml
       namespaces: {}
       xpath: //server/logging[@logDirectory]
-
-- category: mandatory
-  customVariables: []
-  description: Detect Log4j Dependencies
-  effort: 4
-  labels:
-  - konveyor.io/source=java-ee
-  - konveyor.io/target=azure-appservice
-  - konveyor.io/target=azure-aks
-  - konveyor.io/target=azure-container-apps
-  - domain=azure-readiness
-  - category=openliberty-migration
-  - openliberty
-  message: |
-    Log4j dependencies detected that require version assessment and Azure Monitor integration optimization.
-
-    **Security and Compatibility Assessment:**
-    • **Version Audit:** Check Log4j version for known security vulnerabilities (CVE-2021-44228, CVE-2021-45046, etc.)
-    • **Upgrade Path:** Ensure using Log4j 2.21.1+ for latest security patches
-    • **Configuration Review:** Validate current logging configuration for cloud compatibility
-
-    **Azure Monitor Integration Strategy:**
-    1. **JSON Format Logging:** Configure JSON layout for better Azure Monitor parsing and querying
-    2. **Console Output:** Enable stdout/stderr logging for container log collection
-    3. **Application Insights:** Integrate with Azure Application Insights Java agent for enhanced telemetry
-    4. **Structured Logging:** Implement consistent log format across microservices
-    5. **Performance Optimization:** Use asynchronous appenders to prevent application blocking
-
-    **Migration Checklist:**
-    • Update Log4j to latest stable version (2.21.1+)
-    • Configure JSON layout for Azure Monitor compatibility
-    • Enable console logging for container environments
-    • Set up Application Insights integration
-    • Test logging performance and Azure Monitor connectivity
-
-  links:
-  - title: "Azure Monitor for containers"
-    url: "https://docs.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview"
-  - title: "Application Insights Java agent"
-    url: "https://docs.microsoft.com/en-us/azure/azure-monitor/app/java-in-process-agent"
-  - title: "OpenLiberty logging configuration"
-    url: "https://openliberty.io/docs/latest/log-trace-configuration.html"
-  - title: "Container logging best practices"
-    url: "https://learn.microsoft.com/en-us/azure/container-instances/container-instances-log-analytics"
-  ruleID: openliberty-logging-00003
-  when:
-    or:
-    - java.dependency:
-        lowerbound: 0.0.0
-        name: log4j.log4j
-    - java.dependency:
-        lowerbound: 0.0.0
-        name: org.apache.log4j.log4j
-    - builtin.filecontent:
-        filePattern: (/|\\)(log4j2?|logback)(-[a-zA-Z0-9]+)*?\.(properties|xml|yml|yaml)$
-        pattern: (log4j|logback)

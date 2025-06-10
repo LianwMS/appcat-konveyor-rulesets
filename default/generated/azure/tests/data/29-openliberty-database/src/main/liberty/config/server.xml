@@ -19,8 +19,7 @@
         <properties serverName="localhost"
                    portNumber="3306"
                    databaseName="mydb"
-                   user="dbuser"
-                   password="<your password>"/>
+                   user="dbuser"/>
         <connectionManager minPoolSize="5" maxPoolSize="100"/>
     </dataSource>
 
@@ -29,8 +28,7 @@
         <properties.oracle serverName="localhost"
                    portNumber="3306"
                    databaseName="mydb"
-                   user="dbuser"
-                   password="<your password>"/>
+                   user="dbuser"/>
         <connectionManager minPoolSize="5" maxPoolSize="100"/>
     </dataSource>
 
@@ -39,8 +37,7 @@
         <properties.postgresql serverName="localhost"
                    portNumber="3306"
                    databaseName="mydb"
-                   user="dbuser"
-                   password="<your password>"/>
+                   user="dbuser"/>
         <connectionManager minPoolSize="5" maxPoolSize="100"/>
     </dataSource>
 
@@ -49,8 +46,7 @@
         <properties.sybase serverName="localhost"
                    portNumber="3306"
                    databaseName="mydb"
-                   user="dbuser"
-                   password="<your password>"/>
+                   user="dbuser"/>
         <connectionManager minPoolSize="5" maxPoolSize="100"/>
     </dataSource>
 
