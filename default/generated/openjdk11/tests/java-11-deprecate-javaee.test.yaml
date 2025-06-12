@@ -10,10 +10,10 @@ tests:
   - name: tc-1
     hasIncidents:
       exactly: 26
-      messageMatches: Add the `jakarta.activation` dependency to your application's `pom.xml`.
+      messageMatches: Add the `jakarta.activation` dependency to your application.
 - ruleID: java-11-deprecate-javaee-00001
   testCases:
   - name: tc-1
     hasIncidents:
       exactly: 17
-      messageMatches: Add the `jakarta.annotation` dependency to your application's `pom.xml`.
+      messageMatches: Add the `jakarta.annotation` dependency to your application.

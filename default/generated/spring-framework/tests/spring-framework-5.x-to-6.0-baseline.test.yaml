@@ -9,7 +9,7 @@ tests:
   testCases:
   - name: tc-1
     hasIncidents:
-      exactly: 1
+      exactly: 5
 - ruleID: spring-framework-5.x-to-6.0-baseline-00010
   testCases:
   - name: tc-1

@@ -13,7 +13,7 @@
   - title: Removed Java EE modules
     url: https://www.oracle.com/java/technologies/javase/11-relnote-issues.html#JDK-8190378
   message: |-
-    Add the `jakarta.activation` dependency to your application's `pom.xml`.
+    Add the `jakarta.activation` dependency to your application. E.g. update maven `pom.xml`.
 
      `<groupId>jakarta.activation</groupId>`
 
@@ -39,7 +39,7 @@
   - title: Removed Java EE modules
     url: https://www.oracle.com/java/technologies/javase/11-relnote-issues.html#JDK-8190378
   message: |-
-    Add the `jakarta.annotation` dependency to your application's `pom.xml`.
+    Add the `jakarta.annotation` dependency to your application. E.g. update maven `pom.xml`.
 
      `<groupId>jakarta.annotation</groupId>`
 
