@@ -1,0 +1,148 @@
+name: End-to-End Test Workflow
+on:
+  workflow_dispatch:
+
+jobs:
+  end-to-end-test:
+    name: Run End-to-End Tests in Windows
+    runs-on: windows-2025
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          path: rulesets
+
+      # - name: Checkout Java AppCat nightly build repository (with secret token)
+      #   uses: actions/checkout@v3
+      #   with:
+      #     repository: LianwMS/appcat-nightly-build
+      #     ref: main
+      #     token: ${{ secrets.JAVA_APPCAT_NIGHTLY_BUILD_TOKEN }}
+      #     path: appcat-nightly-build
+
+      - name: Downloading release with tag v7.6.0.6 from github.com/LianwMS/appcat-nightly-build with gh CLI
+        run: |
+          $COMPRESSED_DIR = "appcat-nightly-build-compressed"
+          # need using token to access private repository
+          echo "Using GitHub CLI to download the release..$COMPRESSED_DIR"
+          echo ${{ secrets.JAVA_APPCAT_NIGHTLY_BUILD_TOKEN }} | gh auth login --with-token
+          gh release download v7.6.0.6 --repo LianwMS/appcat-nightly-build --pattern "*win*" --dir $COMPRESSED_DIR
+          echo "Extracting ..."
+          Expand-Archive -Path $COMPRESSED_DIR\*.zip -DestinationPath appcat-nightly-build -Force
+          echo "Extraction completed."
+          $expandedDir = Get-ChildItem -Path appcat-nightly-build | Where-Object { $_.PSIsContainer } | Select-Object -First 1
+          echo "expanded directory: $expandedDir"
+          # output expanded directory to GITHUB_ENV
+          echo "APPCAT_PATH=$expandedDir" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Checkout appcat-test repository
+        uses: actions/checkout@v3
+        with:
+          repository: LianwMS/appcat-validation 
+          ref: main
+          path: appcat-validation
+
+      - name: Replace rulesets in APPCAT_PATH with rulesets from rulesets directory
+        run: |
+          echo "Target rulesets directory:"
+          dir $env:APPCAT_PATH\rulesets
+          echo "Source rulesets directory:"
+          dir "$(pwd)\rulesets\default\generated"
+          $sourceRulesetsPath = "$(pwd)\rulesets\default\generated"
+          $targetRulesetsPath = "$env:APPCAT_PATH\rulesets"
+
+          # Remove all existing rulesets in the target directory
+          echo "Removing existing rulesets in the target directory..."
+          Get-ChildItem -Path $targetRulesetsPath -File | Remove-Item -Force
+          echo "Recursive copying new rulesets from source to target directory"
+          # Copy new rulesets from source to target directory recursively
+          Copy-Item -Path "$sourceRulesetsPath\*" -Destination $targetRulesetsPath -Recurse -Force
+          echo "Rulesets replaced successfully."
+
+          echo "Show target rulesets directory after replacement recursively: "
+          Get-ChildItem -Path $targetRulesetsPath -Recurse | ForEach-Object { Write-Host $_.FullName }
+
+      - name: Show current directory
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Contents:"
+          dir
+
+      - name: Install OpenJDK 17 and set JAVA_HOME environment variable
+        run: |
+          echo "Searching for Microsoft OpenJDK 17 with winget..."
+          winget search Microsoft.OpenJDK
+          echo "Installing Microsoft OpenJDK 17..."
+          winget install --id Microsoft.OpenJDK.17 -e --accept-package-agreements --accept-source-agreements
+          echo "OpenJDK 17 installed successfully."
+          echo "Setting JAVA_HOME environment variable..."
+          $jdk = Get-ChildItem 'C:\Program Files\Microsoft\jdk-17*' | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+          if (-not $jdk) { throw "Could not find Microsoft OpenJDK 17 installation." }
+          $env:JAVA_HOME = $jdk.FullName
+          echo "JAVA_HOME set to: $env:JAVA_HOME"
+          $env:PATH += ";$env:JAVA_HOME\bin"
+          echo "JAVA_HOME and PATH updated successfully."
+          "JAVA_HOME=$env:JAVA_HOME" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "PATH=$env:PATH" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Install Maven and add to PATH
+        run: |
+          echo "Installing Maven..."
+          choco install maven -y
+          echo "Maven installed successfully."
+          echo "Adding Maven to PATH..."
+          $env:PATH += ";C:\Program Files\Apache\maven\bin"
+          echo "Maven added to PATH successfully."
+          "PATH=$env:PATH" | Out-File -FilePath $env:GITHUB_ENV -Append
+      
+      - name: Install go
+        run: |
+          echo "Installing Go..."
+          choco install go --version=1.23.5 -y
+          echo "Go installed successfully."
+
+      - name: Prepare validation
+        run: |
+          echo "Preparing validation environment..."
+          cd appcat-validation
+          git config --system core.longpaths true
+          echo "downloading submodules..."
+          git submodule update --init --recursive
+
+          echo "build validation tool with go..."
+          cd src
+          go build -o appcat-validation.exe .
+          echo "Validation tool built successfully."
+
+      - name: Run End-to-End Tests
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Prepare variable for appcat path, combine with $(pwd)"
+          $APPCAT_PATH = $env:APPCAT_PATH
+          echo "AppCat path: $APPCAT_PATH"
+          $APPCAT_TEST_TARGET = "$(pwd)\appcat-validation\src\TargetCatalog\SmokeTest"
+          echo "AppCat test target: $APPCAT_TEST_TARGET"
+          cd appcat-validation\src
+          echo "Running End-to-End Tests..."
+          ./appcat-validation.exe -appcat $APPCAT_PATH -target $APPCAT_TEST_TARGET
+          echo "End-to-End Tests completed."
+          echo "Reading test results from appcat-validation\testResults\*.md first file..."
+          $testResultsFile = Get-ChildItem -Path "../testResults/*.md" | Select-Object -First 1
+          echo "Send to Workflow Summary..."
+          if ($testResultsFile) {
+            $testResultsContent = Get-Content -Path $testResultsFile.FullName
+            Write-Host "Test Results Content:"
+            Write-Host $testResultsContent
+            $testResultsContent | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          } else {
+            Write-Host "No test results file found."
+          }
+          $testDetailsFile = Get-ChildItem -Path "../testResults/*.csv" | Select-Object -First 1
+          if ($testDetailsFile) {
+            $testDetailsContent = Get-Content -Path $testDetailsFile.FullName
+            Write-Host "Test Details Content:"
+            Write-Host $testDetailsContent
+            $testDetailsContent | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          } else {
+            Write-Host "No test details file found."
+          }
